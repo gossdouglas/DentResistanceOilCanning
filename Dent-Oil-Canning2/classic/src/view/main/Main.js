@@ -32,9 +32,10 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
             align: 'stretchmax'
         },
         title: {
-            bind: {
-                text: '{name}'
-            },
+            text: 'Dent Resistance/Oil Canning',
+            //bind: {
+            //    text: '{name}'
+            //},
             flex: 0
         },
         iconCls: 'fa-th-list'
@@ -74,30 +75,35 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         }
     },
 
-    items: [{
-        title: 'Home',
+    items: [
+        {
+        title: 'Dent Resistance',
         iconCls: 'fa-home',
         // The following grid shares a store with the classic version's grid as well!
         items: [{
             xtype: 'mainlist'
         }]
-    }, {
-        title: 'Users',
+        },
+        {
+        title: 'Oil Canning',
         iconCls: 'fa-user',
         bind: {
             html: '{loremIpsum}'
         }
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }]
+        },
+        //{
+        //title: 'Groups',
+        //iconCls: 'fa-users',
+        //bind: {
+        //    html: '{loremIpsum}'
+        //}
+        //},
+        //{
+        //title: 'Settings',
+        //iconCls: 'fa-cog',
+        //bind: {
+        //    html: '{loremIpsum}'
+        //}
+        //}
+    ]
 });
