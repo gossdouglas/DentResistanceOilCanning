@@ -21,6 +21,8 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         'DentResistanceOilCanning.view.main.DentResistanceOverview',
         'DentResistanceOilCanning.view.main.DentResistancemM1',
         'DentResistanceOilCanning.view.main.DentResistancemM2',
+        'DentResistanceOilCanning.view.main.DrM1Grid',
+        'DentResistanceOilCanning.view.main.DrM1Form',
 
         'DentResistanceOilCanning.view.main.OilCanningContainer',
         //'DentResistanceOilCanning.view.main.DentResistanceOverview',
@@ -87,6 +89,7 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
 
     items: [
         {
+        xtype: 'panel',
         title: 'Dent Resistance Overview',
         //id: 'nav-dent-resistance',
         //itemId: 'nav-dent-resistance',
@@ -96,12 +99,24 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         //    click: {
         //        element: 'el', //bind to the underlying el property on the panel
         //        fn: function () { console.log('click el'); }
+                
         //    },
         //    dblclick: {
         //        element: 'body', //bind to the underlying body property on the panel
         //        fn: function () { console.log('dblclick body'); }
         //    }
         //},
+
+            listeners: {
+                //render: function () {
+                //    Ext.MessageBox.alert('Tab one', 'Tab One was clicked.');
+                //}
+                show: function () {
+                    //Ext.MessageBox.alert('Tab one', 'Tab One was clicked.');
+                    resetTab1();
+                }
+            },
+
         // The following grid shares a store with the classic version's grid as well!
         items: [{
             //xtype: 'mainlist'
@@ -112,7 +127,18 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         {
         title: 'Oil Canning Overview',
         iconCls: 'fa-user',
-        scrollable: true,
+            scrollable: true,
+
+            listeners: {
+                //render: function () {
+                //    Ext.MessageBox.alert('Tab one', 'Tab One was clicked.');
+                //}
+                show: function () {
+                    //Ext.MessageBox.alert('Tab two', 'Tab two was clicked.');
+                    resetTab2();
+                }
+            },
+
         //bind: {
         //    html: '{loremIpsum}'
         //}
@@ -353,21 +379,175 @@ function loadDRModel1() {
     }).show()
 }
 
+function resetTab1() {
+    Ext.getCmp('dr-overview').setConfig('hidden', false);
+    Ext.getCmp('dr-model1').setConfig('hidden', true);
+    Ext.getCmp('dr-model2').setConfig('hidden', true);
+
+    //alert("dent resistance tab.")
+}
+
+function resetTab2() {
+    //Ext.getCmp('dr-overview').setConfig('hidden', false);
+    //Ext.getCmp('dr-model1').setConfig('hidden', true);
+    //Ext.getCmp('dr-model2').setConfig('hidden', true);
+    //alert("oil canning tab.")
+}
+
+//verify the dent resistance model 1 form
+function verifyDrM1Form() {
+
+    var bGood = true
+    var dblR1 = DRM.R1.value
+    var dblR2 = DRM.R2.value
+    var dblMajStrain = DRM.MajStrain.value
+    var dblMinStrain = DRM.MinStrain.value
+    var dblThickness = DRM.Thickness.value
+
+    if (DRM.GradeKey.value == "0") {
+
+        bGood = false
+        alert('Please choose a grade')
+
+    }
+    if ((dblR1.length < 1) && (dblR2.length < 1) && (dblMajStrain.length < 1) && (dblMinStrain.length < 1) && (dblThickness.length < 1)) {
+        alert('Please enter values for R1, R2, Major Strain, Minor Strain, and Thickness')
+    }
+    else {
+        if (isNaN(dblR1)) {
+
+            bGood = false
+            alert('Please use a numeric value for R1')
+
+        } else {
+
+            if (dblR1.length < 1) {
+
+                bGood = false
+                alert('Please enter a value for R1')
+
+            } else {
+
+                if (dblR1 < 150) {
+
+                    alert('R1 must be at least 150mm')
+                    bGood = false
+
+                }
+
+            }
+
+        }
+
+        if (isNaN(dblR2)) {
+
+            bGood = false
+            alert('Please use a numeric value for R2')
+
+        } else {
+
+            if (dblR2.length < 1) {
+
+                bGood = false
+                alert('Please enter a value for R2')
+
+            } else {
+
+                if (dblR2 < 15000) {
+
+                    alert('R2 must be at least 15000mm')
+                    bGood = false
+
+                }
+
+            }
+
+        }
+
+        if (isNaN(dblMajStrain)) {
+
+            bGood = false
+            alert('Please use a numeric value for Major Strain')
+
+        } else {
+
+            if (dblMajStrain.length < 1) {
+
+                bGood = false
+                alert('Please enter a value for Major Strain')
+
+            } else {
+
+                if ((dblMajStrain < 0) || (dblMajStrain > 2.5)) {
+
+                    alert('The Major Strain must be between 0 and 2.5')
+                    bGood = false
+
+                }
+
+            }
+
+        }
+
+        if (isNaN(dblMinStrain)) {
+
+            bGood = false
+            alert('Please use a numeric value for Minor Strain')
+
+        } else {
+
+            if (dblMinStrain.length < 1) {
+
+                bGood = false
+                alert('Please enter a value for Minor Strain')
+
+            } else {
+
+                if ((dblMinStrain < 0) || (dblMinStrain > 2.5)) {
+
+                    alert('The Minor Strain must be between 0 and 2.5')
+                    bGood = false
+
+                }
+
+            }
+
+        }
+
+        if (isNaN(dblThickness)) {
+
+            bGood = false
+            alert('Please use a numeric value for Thickness')
+
+        } else {
+
+            if (dblThickness.length < 1) {
+
+                bGood = false
+                alert('Please enter a value for Thickness')
+
+            } else {
+
+                if ((dblThickness < 0.60) || (dblThickness > .85)) {
+
+                    alert('The thickness must be between 0.65 and .85')
+                    bGood = false
+
+                }
+
+            }
+
+        }
+    }
+    if (bGood) {
+
+        DRM.submit()
+
+    }
+
+}
+
 $(document).ready(function () {
 
-    $(function () {
-        $("#tab-1066").click(function () {
-            //alert("dent resistance tab.")
-            Ext.getCmp('dr-overview').setConfig('hidden', false);
-            Ext.getCmp('dr-model1').setConfig('hidden', true);
-            Ext.getCmp('dr-model2').setConfig('hidden', true);
-        });
-    });
-
-    $(function () {
-        $("#tab-1067").click(function () {
-            alert("oil canning tab.")
-        });
-    });
 
 });

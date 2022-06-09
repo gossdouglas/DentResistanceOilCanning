@@ -39,7 +39,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistancemM2', {
         [
             {
                 xtype: 'panel',
-                title: 'Dent Resistance Model 2',
+                title: 'Dent Depth for a Given Applied Load, Model 2',
                 titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
