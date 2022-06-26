@@ -1,9 +1,3 @@
-////var str1 = '<a href="dentresistancemodel.asp"><b>Load for 0.1mm Dent Depth</b></a>' +
-////    '<br>A commonly accepted measure of quasi-static dent resistance is the load to produce a ' +
-////    'residual dent of depth 0.1mm, which is considered as a visible dent for most panel conditions.  ' +
-////    'The visible dent load is determined by linear regression between the pair of load-dent depth data ' +
-////    'that are closest to 0.1mm.'
-
 var str1 = '<a href="#" onclick="showDRModel1()"><b>Load for 0.1mm Dent Depth</b></a>' +
     '<br>A commonly accepted measure of quasi-static dent resistance is the load to produce a ' +
     'residual dent of depth 0.1mm, which is considered as a visible dent for most panel conditions.  ' +
@@ -30,13 +24,6 @@ var str4 = '<u>Procedures for evaluating dent resistance of automotive body pane
 var str5 = '<p><center>&copy;Arcelor Mittal<br>' +
     'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021</center>'
 
-//var str5 = '<p>&copy;Arcelor Mittal<br>' +
-//    'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021'
-
-/**
- * This view is an example list of people.
- */
-//Ext.define('DentResistanceOilCanning.view.main.List', {
 Ext.define('DentResistanceOilCanning.view.main.DentResistancemM1', {
     extend: 'Ext.form.Panel',
     xtype: 'dent-resistance-model1',
@@ -60,24 +47,6 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistancemM1', {
                             },
                             items:
                                 [
-                                    //{
-                                    //    xtype: 'dr-model1-form',
-                                    //},
-
-                                    //{
-                                    //    xtype: 'dr-model1-grid',
-                                    //},
-
-
-                                    //{
-                                    //    xtype: 'panel',
-                                    //    width: '10%',
-                                    //    //style: {
-                                    //    //    background: 'red',
-                                    //    //    border: '1px solid black'
-                                    //    //},
-                                    //    //html: '1.'
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '100%',
@@ -91,143 +60,21 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistancemM1', {
                                                 xtype: 'dr-model1-form',
                                             },
                                             //{
-                                            //    xtype: 'panel',
-                                            //    layout: {
-                                            //        type: 'hbox',
-                                            //        align: 'stretch',
-                                            //    },
-                                            //    items:
-                                            //        [
-                                            //            {
-                                            //                xtype: 'panel',
-                                            //                width: '5%',
-                                            //                html: 'Grade'
-                                            //            },
-                                            //            {
-                                            //                xtype: 'panel',
-                                            //                width: '5%',
-                                            //                html: 'R1 (mm)'
-                                            //            },
-                                            //        ]
+                                            //    xtype: 'dr-model1-calc-results',
+                                            //    xtype: 'dr-model1-calc-results',
+                                            //    id: '',
+                                            //    name: '',
+                                            //    width: '11%',
+                                            //    value: 'Grade Name',
+                                            //    editable: false
                                             //},
-                                            //{
-                                            //    xtype: 'dr-model1-grid',
-                                            //}
                                         ],
                                     },
-                                    //{
-                                    //    xtype: 'panel',
-                                    //    width: '10%',
-                                    //    //style: {
-                                    //    //    background: 'red',
-                                    //    //    border: '1px solid black'
-                                    //    //},
-                                    //    //html: '1.'
-                                    //},
+
+                                    
                                 ]
                         },
-                        //{
-                        //    xtype: 'panel',
-                        //    layout: {
-                        //        type: 'hbox',
-                        //        align: 'stretch',
-                        //    },
-                        //    items:
-                        //        [
-                        //            {
-                        //                xtype: 'panel',
-                        //                width: '5%',
-                        //                html: '2.'
-                        //            },
-                        //            {
-                        //                xtype: 'panel',
-                        //                width: '95%',
-                        //                html: str2
-                        //            },
-                        //        ]
-                        //},
                     ]
             },
-            //{
-            //    xtype: 'panel',
-            //    title: 'Brief Description of Dent Resistance models',
-            //    titleAlign: 'center',
-            //    width: '100%',
-            //    bodyPadding: '5',
-            //    flex: 9,
-            //    items:
-            //        [
-            //            {
-            //                xtype: 'panel',
-            //                layout: {
-            //                    type: 'hbox',
-            //                    align: 'stretch',
-            //                },
-            //                items:
-            //                    [
-            //                        {
-            //                            xtype: 'panel',
-            //                            width: '100%',
-            //                            html: str3
-            //                        },
-            //                    ]
-            //            },
-            //        ]
-            //},
-            //{
-            //    xtype: 'panel',
-            //    title: 'References',
-            //    titleAlign: 'center',
-            //    width: '100%',
-            //    bodyPadding: '5',
-            //    flex: 9,
-            //    items:
-            //        [
-            //            {
-            //                xtype: 'panel',
-            //                layout: {
-            //                    type: 'hbox',
-            //                    align: 'stretch',
-            //                },
-            //                items:
-            //                    [
-            //                        {
-            //                            xtype: 'panel',
-            //                            width: '5%',
-            //                            html: '1.'
-            //                        },
-            //                        {
-            //                            xtype: 'panel',
-            //                            width: '95%',
-            //                            html: str4
-            //                        },
-            //                    ]
-            //            },
-            //        ]
-            //},
-            //{
-            //    xtype: 'panel',
-            //    width: '100%',
-            //    bodyPadding: '5',
-            //    flex: 9,
-            //    items:
-            //        [
-            //            {
-            //                xtype: 'panel',
-            //                layout: {
-            //                    type: 'hbox',
-            //                    align: 'stretch',
-            //                },
-            //                items:
-            //                    [
-            //                        {
-            //                            xtype: 'panel',
-            //                            width: '95%',
-            //                            html: str5
-            //                        },
-            //                    ]
-            //            },
-            //        ]
-            //},
         ],
 });

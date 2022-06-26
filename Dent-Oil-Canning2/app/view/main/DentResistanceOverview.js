@@ -187,6 +187,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                                                     html: str5
                                                 },
                                             ]
+
                                     },
                                 ]
                         },

@@ -14,12 +14,15 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         'Ext.window.MessageBox',
 
         'DentResistanceOilCanning.view.main.MainController',
+        'DentResistanceOilCanning.view.main.DrM1FormController',
         'DentResistanceOilCanning.view.main.MainModel',
         'DentResistanceOilCanning.view.main.List',
 
         'DentResistanceOilCanning.view.main.DentResistanceContainer',
         'DentResistanceOilCanning.view.main.DentResistanceOverview',
         'DentResistanceOilCanning.view.main.DentResistancemM1',
+        'DentResistanceOilCanning.view.main.DrM1FormCalcResults',
+
         'DentResistanceOilCanning.view.main.DentResistancemM2',
         'DentResistanceOilCanning.view.main.DrM1Grid',
         'DentResistanceOilCanning.view.main.DrM1Form',
@@ -28,6 +31,9 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         //'DentResistanceOilCanning.view.main.DentResistanceOverview',
         //'DentResistanceOilCanning.view.main.DentResistancemM1',
         //'DentResistanceOilCanning.view.main.DentResistancemM2',
+
+        'DentResistanceOilCanning.store.GradeStoreModel1',
+        //'DentResistanceOilCanning.store.GradeStoreModel2',
     ],
 
     controller: 'main',

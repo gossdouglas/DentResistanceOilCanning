@@ -143,21 +143,21 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DentResistanceController.cs" />
-    <Compile Include="Controllers\dentResistanceModelController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OilCanningController.cs" />
+    <Compile Include="Api\Controllers\DentResistanceController.cs" />
+    <Compile Include="Api\Controllers\dentResistanceModelController.cs" />
+    <Compile Include="Api\Controllers\HomeController.cs" />
+    <Compile Include="Api\Controllers\OilCanningController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\Calculation.cs" />
-    <Compile Include="Models\Chart.cs" />
-    <Compile Include="Models\dr_Formulas.cs" />
-    <Compile Include="Models\dr_Grades.cs" />
-    <Compile Include="Models\OilCanning.cs" />
-    <Compile Include="Models\ReturnObject.cs" />
+    <Compile Include="Api\Models\ApplicationDbContext.cs" />
+    <Compile Include="Api\Models\CalculationDentReistance.cs" />
+    <Compile Include="Api\Models\Chart.cs" />
+    <Compile Include="Api\Models\dr_Formulas.cs" />
+    <Compile Include="Api\Models\dr_Grades.cs" />
+    <Compile Include="Api\Models\OilCanning.cs" />
+    <Compile Include="Api\Models\ReturnObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DrCalcViewModel - Copy.cs" />
     <Compile Include="ViewModels\DrGradesViewModel.cs" />
@@ -175,9 +175,14 @@
     <Content Include="app.js" />
     <Content Include="app\Application.js" />
     <Content Include="app\model\Base.js" />
+    <Content Include="app\model\CalculationDentReistanceModel.js" />
+    <Content Include="app\model\GradeModel.js" />
     <Content Include="app\model\Personnel.js" />
+    <Content Include="app\store\GradeStoreModel1.js" />
     <Content Include="app\store\Personnel.js" />
+    <Content Include="app\view\main\DrM1FormCalcResults.js" />
     <Content Include="app\view\main\DrM1Form.js" />
+    <Content Include="app\view\main\DrM1FormController.js" />
     <Content Include="app\view\main\DrM1Grid.js" />
     <Content Include="app\view\main\OilCanningOverview.js" />
     <Content Include="app\view\main\OilCanningContainer.js" />
@@ -924,9 +929,9 @@
     <Content Include="Views\dentResistanceModel\_formEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Api\Models\db models\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Models\db models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

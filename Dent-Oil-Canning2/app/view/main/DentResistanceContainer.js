@@ -1,9 +1,3 @@
-////var str1 = '<a href="dentresistancemodel.asp"><b>Load for 0.1mm Dent Depth</b></a>' +
-////    '<br>A commonly accepted measure of quasi-static dent resistance is the load to produce a ' +
-////    'residual dent of depth 0.1mm, which is considered as a visible dent for most panel conditions.  ' +
-////    'The visible dent load is determined by linear regression between the pair of load-dent depth data ' +
-////    'that are closest to 0.1mm.'
-
 var str1 = '<a href="#" onclick="showDRModel1()"><b>Load for 0.1mm Dent Depth</b></a>' +
     '<br>A commonly accepted measure of quasi-static dent resistance is the load to produce a ' +
     'residual dent of depth 0.1mm, which is considered as a visible dent for most panel conditions.  ' +
@@ -30,18 +24,12 @@ var str4 = '<u>Procedures for evaluating dent resistance of automotive body pane
 var str5 = '<p><center>&copy;Arcelor Mittal<br>' +
     'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021</center>'
 
-//var str5 = '<p>&copy;Arcelor Mittal<br>' +
-//    'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021'
-
-/**
- * This view is an example list of people.
- */
 //Ext.define('DentResistanceOilCanning.view.main.List', {
 Ext.define('DentResistanceOilCanning.view.main.DentResistanceContainer', {
     extend: 'Ext.form.Panel',
     xtype: 'dent-resistance-container',
     items:
-        [
+        [          
             {
                 xtype: 'dent-resistance-overview',
                 id: 'dr-overview',
@@ -50,6 +38,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceContainer', {
                 //flex: 9,
                 //hidden: true,
             },
+
             {
                 xtype: 'dent-resistance-model1',
                 id: 'dr-model1',

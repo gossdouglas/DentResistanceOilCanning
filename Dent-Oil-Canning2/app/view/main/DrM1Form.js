@@ -1,39 +1,11 @@
-/**
- * This view is an example list of people.
- */
-//Ext.define('DentResistanceOilCanning.view.main.DrM1Grid', {
-//    extend: 'Ext.grid.Panel',
-//    xtype: 'dr-model1-grid',
-
-//    requires: [
-//        'DentResistanceOilCanning.store.Personnel'
-//    ],
-
-//    title: 'Personnel',
-
-//    store: {
-//        type: 'personnel'
-//    },
-
-//    columns: [
-//        { text: 'Name',  dataIndex: 'name' },
-//        { text: 'Email', dataIndex: 'email', flex: 1 },
-//        { text: 'Phone', dataIndex: 'phone', flex: 1 }
-//    ],
-
-//    listeners: {
-//        select: 'onItemSelected'
-//    }
-//});
-
 Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
     extend: 'Ext.form.Panel',
     //xtype: 'tislotform',
     xtype: 'dr-model1-form',
     border: false,
-    //controller: 'dr-model1-form',
+    controller: 'dr-model1-form-controller',
     scrollable: true,
-    //url: 'api/TiSlot/UpdateTiSlot',
+    url: 'api/DentResistanc/CalculateModelOne',
 
     items:
         [
@@ -46,6 +18,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                 flex: 1,
                 items:
                     [
+                        //entry fields
                         {
                             xtype: 'panel',
                             layout: {
@@ -54,24 +27,59 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                             },
                             items:
                                 [
-                                    //{
-                                    //    xtype: 'label',
-                                    //    width: '11%',
-                                    //    text: 'Grade'
-                                    //},
-                                    
-                                    //{
-                                    //    xtype: 'panel',
-                                    //    width: '11%',
-                                    //    html: 'R1 (mm)'
-                                    //},
+                                    {
+                                        xtype: 'textfield',
+                                        //width: '3%',
+                                        id: 'GradeKey',
+                                        name: 'GradeKey',
+                                        bind: '{gradeKeyDrM1Combo.value}',
+                                        hidden: true,
+                                        readOnly: true,
+                                    },
+                                    {
+                                        xtype: 'textfield',
+                                        //width: '3%',
+                                        id: 'GradeName',
+                                        name: 'GradeName',
+                                        hidden: true,
+                                        readOnly: false,
+                                    },
                                     {
                                         xtype: 'combobox',
-                                        id: 'GradeKeyDrM1',
-                                        name: 'GradeKey',
+                                        width: '11%',
+                                        id: 'GradeKeyDrM1Combo',
+                                        reference: 'gradeKeyDrM1Combo',
+                                        publishes: 'value',
                                         fieldLabel: 'Grade',
                                         labelAlign: 'top',
-                                        width: '11%',
+                                        displayField: 'grade_name',
+                                        valueField: 'grade_key',
+                                        store: {
+                                            type: 'GradeStoreModel1',
+                                            autoLoad: true
+                                        },
+                                        queryMode: 'local',
+                                        //queryMode: 'remote',
+                                        allowBlank: false,
+                                        listeners: {
+                                            select: function (combo, record) {
+
+                                                console.log(this.selection);
+                                                console.log(this.selection.data.grade_name);
+                                                Ext.getCmp('GradeName').setValue(record.get('grade_name'));
+
+                                                //Ext.getCmp('AmnsDepartmentIdentifier').setValue(record.get('DepartmentIdentifier'));
+                                                //Ext.getCmp('SubDepartmentCombo').setValue('');
+                                                //Ext.getCmp('SubDepartmentCombo').getStore().load(
+                                                //    {
+                                                //        params:
+                                                //        {
+                                                //            command: 2,
+                                                //            departmentIdentifier: record.get('DepartmentIdentifier'),
+                                                //        }
+                                                //    });
+                                            }
+                                        }
                                     },
                                     {
                                         xtype: 'textfield',
@@ -142,7 +150,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                 ]
                         },
-
+                        //range notes
                         {
                             xtype: 'panel',
                             layout: {
@@ -154,105 +162,44 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     {
                                         xtype: 'label',
                                         text: '',
-                                        //margin: 'auto',
                                         width: '11%',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    text: '150 to 2500',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
                                         html: '<center>150<br>to<br>2500</center>',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    text: '15,000 to 150,000',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>150<br>to<br>2500</center>',
+                                        html: '<center>15000<br>to<br>150000</center>',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    text: '0.25% to 2%',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>150<br>to<br>2500</center>',
+                                        html: '<center>.25%<br>to<br>2%</center>',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    name: '',
-                                    //    text: '0.25% to 2%',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>150<br>to<br>2500</center>',
+                                        html: '<center>.25%<br>to<br>2%</center>',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    text: '0.65 mm to 0.8 mm',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>150<br>to<br>2500</center>',
+                                        html: '<center>.65 mm<br>to<br>.8 mm</center>',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    text: '',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>150<br>to<br>2500</center>',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    text: '',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>150<br>to<br>2500</center>',
                                     },
-
-                                    //{
-                                    //    xtype: 'label',
-                                    //    text: '',
-                                    //    //margin: 'auto',
-                                    //    width: '11%',
-                                    //},
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>150<br>to<br>2500</center>',
                                     },
                                 ]
                         },
@@ -271,13 +218,132 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                         margin: '20 10 0 0',
                                         width: '100%',
                                         listeners: {
-                                            //click: 'onSaveClick'
+                                            click: 'onCalculateDrM1Click'
                                         }
                                     },
                                 ]
                         },
                     ]
-            },        
+            },
+            //results panel
+            {
+                xtype: 'panel',
+                //id: 'DrM1FormResultsPanel',
+                //itemId: 'DrM1FormResultsPanel',
+                //name: 'DrM1FormResultsPanel',
+                title: 'Results',
+                titleAlign: 'center',
+                width: '100%',
+                bodyPadding: '5',
+                //html: '<div id="DrM1FormResultsPanel">yo</div>',
+                items:
+                    [
+
+                        //{
+                        //    xtype: 'dr-model1-calc-results',
+                        //    //xtype: 'dr-model1-calc-results',
+                        //    //id: '',
+                        //    //name: '',
+                        //    //width: '11%',
+                        //    //value: 'Grade Name',
+                        //    //editable: false
+                        //},
+
+                        //
+                        {
+                            xtype: 'panel',
+                            id: 'DrM1FormResultsPanel',
+                            //name: 'DrM1FormResultsPanel',
+                            layout: {
+                                type: 'hbox',
+                                align: 'stretch',
+                            },
+                            items:
+                                [
+                                    //{
+                                    //    xtype: 'dr-model1-calc-results',
+                                    //    //xtype: 'dr-model1-calc-results',
+                                    //    //id: '',
+                                    //    //name: '',
+                                    //    //width: '11%',
+                                    //    //value: 'Grade Name',
+                                    //    //editable: false
+                                    //},
+
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //id: '',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'Grade Name',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //id: '',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'R1',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //id: '',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'R2',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //id: '',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'Major Strain',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //id: '',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'Minor Strain',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    ///id: '',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'Thickness',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: '.1',
+                                    //    value: 'Dent Depth',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'RunningTotal',
+                                    //    editable: false
+                                    //},
+                                    //{
+                                    //    xtype: 'textfield',
+                                    //    //name: '',
+                                    //    width: '11%',
+                                    //    value: 'FootPounds',
+                                    //    editable: false
+                                    //},
+                                ]
+                        },
+                    ]
+            },
         ],
 });
 
