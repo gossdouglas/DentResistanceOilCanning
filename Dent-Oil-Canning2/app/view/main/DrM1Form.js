@@ -228,7 +228,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
             //results panel
             {
                 xtype: 'panel',
-                //id: 'DrM1FormResultsPanel',
+                id: 'DrM1FormResultsPanel',
                 //itemId: 'DrM1FormResultsPanel',
                 //name: 'DrM1FormResultsPanel',
                 title: 'Results',
@@ -238,7 +238,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                 //html: '<div id="DrM1FormResultsPanel">yo</div>',
                 items:
                     [
-
+                        ////load calculation results from a component works
                         //{
                         //    xtype: 'dr-model1-calc-results',
                         //    //xtype: 'dr-model1-calc-results',
@@ -248,100 +248,110 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                         //    //value: 'Grade Name',
                         //    //editable: false
                         //},
+                        //{
+                        //    xtype: 'dr-model1-calc-results',
+                        //    //xtype: 'dr-model1-calc-results',
+                        //    //id: '',
+                        //    //name: '',
+                        //    //width: '11%',
+                        //    //value: 'Grade Name',
+                        //    //editable: false
+                        //},
+                        ////load calculation results from a component works
 
                         //
-                        {
-                            xtype: 'panel',
-                            id: 'DrM1FormResultsPanel',
-                            //name: 'DrM1FormResultsPanel',
-                            layout: {
-                                type: 'hbox',
-                                align: 'stretch',
-                            },
-                            items:
-                                [
-                                    //{
-                                    //    xtype: 'dr-model1-calc-results',
-                                    //    //xtype: 'dr-model1-calc-results',
-                                    //    //id: '',
-                                    //    //name: '',
-                                    //    //width: '11%',
-                                    //    //value: 'Grade Name',
-                                    //    //editable: false
-                                    //},
+                        //{
+                        //    xtype: 'panel',
+                        //    id: 'DrM1FormResultsPanel',
+                        //    //name: 'DrM1FormResultsPanel',
+                        //    layout: {
+                        //        type: 'hbox',
+                        //        align: 'stretch',
+                        //    },
+                        //    items:
+                        //        [
+                        //            {
+                        //                xtype: 'dr-model1-calc-results',
+                        //                //xtype: 'dr-model1-calc-results',
+                        //                //id: '',
+                        //                //name: '',
+                        //                //width: '11%',
+                        //                //value: 'Grade Name',
+                        //                //editable: false
+                        //            },
 
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //id: '',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'Grade Name',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //id: '',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'R1',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //id: '',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'R2',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //id: '',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'Major Strain',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //id: '',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'Minor Strain',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    ///id: '',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'Thickness',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: '.1',
-                                    //    value: 'Dent Depth',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'RunningTotal',
-                                    //    editable: false
-                                    //},
-                                    //{
-                                    //    xtype: 'textfield',
-                                    //    //name: '',
-                                    //    width: '11%',
-                                    //    value: 'FootPounds',
-                                    //    editable: false
-                                    //},
-                                ]
-                        },
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //id: '',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'Grade Name',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //id: '',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'R1',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //id: '',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'R2',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //id: '',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'Major Strain',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //id: '',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'Minor Strain',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    ///id: '',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'Thickness',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: '.1',
+                        //            //    value: 'Dent Depth',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'RunningTotal',
+                        //            //    editable: false
+                        //            //},
+                        //            //{
+                        //            //    xtype: 'textfield',
+                        //            //    //name: '',
+                        //            //    width: '11%',
+                        //            //    value: 'FootPounds',
+                        //            //    editable: false
+                        //            //},
+                        //        ]
+                        //},
                     ]
             },
         ],

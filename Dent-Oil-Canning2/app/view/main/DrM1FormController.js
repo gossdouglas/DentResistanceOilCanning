@@ -148,10 +148,6 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
                             value: resp.data.FootPounds,
                             editable: false
                         },
-                        //{
-                        //    xtype: 'panel',
-                        //    html: '<br>'
-                        //},
                     ]
                 });
 
@@ -159,29 +155,115 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
                 console.log(calculationResults);
                 console.log(calculationResults.config);
 
+                //var calcResults = Ext.create('dr-model1-calc-results');
+                var calcResults = Ext.create('dr-model1-calc-results',
+                    //{ title: 'panel 1', height: 350 }
+                    {
+                        items: [
+                            {
+                                xtype: 'textfield',
+                                //id: '',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.GradeName,
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                //id: '',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.R1,
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                //id: '',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.R2,
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                //id: '',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.MajorStrain,
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                //id: '',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.MinorStrain,
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                ///id: '',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.Thickness,
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                //name: '',
+                                width: '11%',
+                                value: '.1',
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.RunningTotal,
+                                editable: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                //name: '',
+                                width: '11%',
+                                value: resp.data.FootPounds,
+                                editable: false
+                            },
+                        ]
+                    }
+                );
+
+                console.log('dr-model1-calc-results');
+                console.log(calcResults);
+                //console.log(calcResults.items[0]);//doesn't work
+                //console.log(calcResults.items.items);works
+
+                //console.log('calcResults.items.items[0]');//works
+                //console.log(calcResults.items.items[0]);//works
+                //console.log('calcResults.items.items[0].config');//works
+                //console.log(calcResults.items.items[0].config);//works
+                //console.log('calcResults.items.items[0].config.value');//works
+                //console.log(calcResults.items.items[0].config.value);//works
+                //calcResults.items.items[0].config.value = 'bitches'
+
+                //console.log('calcResults.items.items[0].value');//works
+                //console.log(calcResults.items.items[0].value);//works
+                //calcResults.items.items[0].value = 'yo'
+                //console.log('calcResults.items.items[0].value');//works
+                //console.log(calcResults.items.items[0].value);//
+
                 //Ext.ComponentQuery.query('DrM1FormResultsPanel-targetEl')[0].createChildcreateChild({
                 //    tag: 'div',
                 //    id: 'btnChild'
-                //});;
-
-                //Ext.get(document.getElementsByTagName('head')[0]).createChild({
-                //    tag: 'link',
-                //    //href: 'test.css',
-                //    //rel: 'stylesheet',
-                //    //type: 'text/css'
-                //});
-
-                //Ext.get(document.getElementsById('DrM1FormResultsPanel-targetEl')[0]).createChild({
-                //    tag: 'link',
-                //    //href: 'test.css',
-                //    //rel: 'stylesheet',
-                //    //type: 'text/css'
                 //});
 
                 //Ext.get(document.getElementById('DrM1FormResultsPanel-targetEl')).createChild(calculationResults.config);
 
                 //Ext.get(document.getElementById('DrM1FormResultsPanel')).add(calculationResults.config);//causes an error
-                Ext.getCmp('DrM1FormResultsPanel').add(calculationResults.config);//works
+
+                //Ext.getCmp('DrM1FormResultsPanel').add(calculationResults.config);//works
+                Ext.getCmp('DrM1FormResultsPanel').add(calcResults);//works
+
                 //Ext.getCmp('DrM1FormResultsPanel-targetEl').add(calculationResults.config);//causes an error
 
                 //$("#DrM1FormResultsPanel-targetEl").append(calculationResults);
