@@ -51,6 +51,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                 //hidden: true,
                 items:
                     [
+                        //model 1 and model 2
                         {
                             xtype: 'panel',
                             title: 'Models',
@@ -60,6 +61,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                             flex: 9,
                             items:
                                 [
+                                    //Load for 0.1mm Dent Depth
                                     {
                                         xtype: 'panel',
                                         layout: {
@@ -80,6 +82,8 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                                                 },
                                             ]
                                     },
+
+                                    //Dent Depth for a Given Applied Load
                                     {
                                         xtype: 'panel',
                                         layout: {
@@ -102,6 +106,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                                     },
                                 ]
                         },
+                        //Brief Description of Dent Resistance models
                         {
                             xtype: 'panel',
                             title: 'Brief Description of Dent Resistance models',
@@ -128,6 +133,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                                     },
                                 ]
                         },
+                        //References
                         {
                             xtype: 'panel',
                             title: 'References',
@@ -159,6 +165,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                                     },
                                 ]
                         },
+                        //page footer
                         {
                             xtype: 'panel',
                             //title: 'References',

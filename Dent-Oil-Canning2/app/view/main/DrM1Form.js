@@ -235,6 +235,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                 titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
+                flex: 2,
                 //html: '<div id="DrM1FormResultsPanel">yo</div>',
                 items:
                     [
@@ -352,6 +353,247 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                         //            //},
                         //        ]
                         //},
+                    ]
+            },
+            {
+                xtype: 'panel',
+                //title: 'Ti-slot Information',
+                //titleAlign: 'center',
+                width: '100%',
+                bodyPadding: '5',
+                flex: 1,
+                items:
+                    [
+                        //clear button
+                        {
+                            xtype: 'panel',
+                            layout: {
+                                type: 'hbox',
+                                align: 'stretch',
+                            },
+                            items:
+                                [
+                                    {
+                                        xtype: 'button',
+                                        text: "Clear Results",
+                                        margin: '20 10 0 0',
+                                        width: '100%',
+                                        listeners: {
+                                            click: 'onClearResultsClick'
+                                        }
+                                    },
+                                ]
+                        },
+                    ]
+            },
+            {
+                xtype: 'panel',
+                title: 'Correlation with Test Data',
+                titleAlign: 'center',
+                width: '100%',
+                bodyPadding: '5',
+                flex: 1,
+                items:
+                    [
+                        //clear button
+                        {
+                            xtype: 'panel',
+                            layout: {
+                                type: 'hbox',
+                                align: 'stretch',
+                            },
+                            items:
+                                [
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartUlsac',
+                                        cls: 'test-results-button',
+                                        text: "ULSAC",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        hidden: false,
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: console.log(this)
+
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //    //onTestResultsClick();
+                                            //}
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartBH210Door1',
+                                        //cls: 'test-results-button',
+                                        text: "BH210-Door 1",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //}
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartBH250Door1',
+                                        text: "BH250-Door 1",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //}
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartBH210Door2',
+                                        text: "BH210-Door 2",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //}
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartBH250Door2',
+                                        text: "BH250-Door 2",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //}
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartDP500Door2',
+                                        text: "DP500-Door 2",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //}
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartBH210Door3',
+                                        text: "BH210-Door 3",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //}
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'DDEChartDP500Door3',
+                                        text: "DP500- Door 3",
+                                        margin: '20 10 0 0',
+                                        width: '12.5%',
+                                        listeners: {
+                                            click: 'onTestResultsClick'
+                                            //click: function (btn, record) {
+                                            //    console.log(btn.config.itemId)
+                                            //    //console.log(record)
+                                            //}
+                                        }
+                                    },
+                                ]
+                        },
+                    ]
+            },
+            {
+                xtype: 'panel',
+                id: 'DrM1FormTestResultsPanel',
+                //title: 'Correlation with Test Data',
+                //titleAlign: 'center',
+                width: '100%',
+                bodyPadding: '5',
+                flex: 5,
+                //html: '<center><small>Figure 1: Load vs. dent depth characteristics.</small><br><img src="images/dentresistance2.gif" border="1"></center >'
+                items:
+                    [
+                        //
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartUlsacGif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for ULSAC</strong><br><img src="images/DDEChartULSAC.gif" border="1"></center >'
+                        },
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartBH210Door1Gif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for BH210-Door 1</strong><br><img src="images/DDEChartBH210Door1.gif" border="1"></center >'
+                        },
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartBH250Door1Gif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for BH250-Door 1</strong><br><img src="images/DDEChartBH250Door1.gif" border="1"></center >'
+                        },
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartBH210Door2Gif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for BH210-Door 2</strong><br><img src="images/DDEChartBH210Door2.gif" border="1"></center >'
+                        },
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartBH250Door2Gif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for BH250-Door 2</strong><br><img src="images/DDEChartBH250Door2.gif" border="1"></center >'
+                        },
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartDP500Door2Gif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for DP500-Door 2</strong><br><img src="images/DDEChartDP500Door2.gif" border="1"></center >'
+                        },
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartBH210Door3Gif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for BH210-Door 3</strong><br><img src="images/DDEChartBH210Door3.gif" border="1"></center >'
+                        },
+                        {
+                            xtype: 'panel',
+                            id: 'DDEChartDP500Door3Gif',
+                            cls: 'test-results-image',
+                            hidden: true,
+                            html: '<p><center><strong>Chart for DP500-Door 3</strong><br><img src="images/DDEChartDP500Door3.gif" border="1"></center >'
+                        },
                     ]
             },
         ],

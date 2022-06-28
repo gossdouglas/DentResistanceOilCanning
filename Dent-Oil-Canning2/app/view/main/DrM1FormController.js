@@ -263,26 +263,6 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
 
                 //Ext.getCmp('DrM1FormResultsPanel').add(calculationResults.config);//works
                 Ext.getCmp('DrM1FormResultsPanel').add(calcResults);//works
-
-                //Ext.getCmp('DrM1FormResultsPanel-targetEl').add(calculationResults.config);//causes an error
-
-                //$("#DrM1FormResultsPanel-targetEl").append(calculationResults);
-                //$("#DrM1FormResultsPanel-targetEl").append("<div>yo</div>");
-
-                //if (resp.data[0]) {
-                //    model.set(resp.data[0]);
-                //    form.loadRecord(model);
-                //}
-
-                //Ext.Msg.alert('Status', 'Record created successfully.', function (btn) {
-                //    var win = frm.owner.ownerCt;
-
-                //    var grid = Ext.getCmp('tislotgrid');
-
-                //    grid.store.reload();
-                //    //win.grid.store.reload();
-                //    win.close();
-                //});
             },
             failure: function (frm, action) {
                 if (action.failureType === Ext.form.action.Action.CLIENT_INVALID) {
@@ -297,6 +277,51 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
             }
         });
     },
+
+    //save button for a new ti-slot
+    onClearResultsClick: function (sender, record) {
+        var form = this.getView().getForm();
+
+        Ext.getCmp('DrM1FormResultsPanel').removeAll();
+    },
+
+    //save button for a new ti-slot
+    onTestResultsClick: function (sender, record) {
+
+        //console.clear();
+        var btnId = sender.id;
+        var images = Ext.ComponentQuery.query('panel[cls=test-results-image]');
+
+        $(images).each(function (index) {
+
+            //console.log('----------');
+            //console.log('image number ' + index)
+            //console.log('button id ' + btnId)
+            //console.log('image id ' + images[index].id)
+            //console.log(images[index].id.replace("Gif", ""))
+
+            if (images[index].id.replace("Gif", "") == btnId) {
+                //console.log('image number ' + index + ' clicked.')
+                images[index].setConfig('hidden', false);
+            }
+            else {
+                images[index].setConfig('hidden', true);
+            }
+            //console.log('----------');
+        });
+    },
+
+    //save button for a new ti-slot
+    //onUlsacClick: function (sender, record) {
+    //    //var form = this.getView().getForm();
+
+    //    //Ext.getCmp('DrM1FormTestResultsPanel').update('<center><strong>xxx.</strong><br><img src="images/DDEChartULSAC.gif" border="1"></center>');
+    //    //Ext.getCmp('DDEChartUlsacGif').setConfig('hidden', false);
+    //    console.log('sender:')
+    //    console.log(sender)
+    //    console.log('record:')
+    //    console.log(record)
+    //},
 
     ////save button for a new ti-slot
     //onCreateClick: function (sender, record) {
