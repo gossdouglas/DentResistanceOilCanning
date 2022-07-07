@@ -4,18 +4,6 @@
     idProperty: 'grade_key',
     fields: [
 
-        //'grade_key',
-        ////'model', 
-        //'grade_name', 
-        ////'publish', 
-        ////'normal_anisotropy', 
-        ////'constants', 
-        ////'constants_1', 
-        ////'date_created', 
-        ////'created_by', 
-        ////'date_updated', 
-        ////'updated_by', 
-
         { name: 'grade_key', type: 'string' },
         { name: 'model', type: 'string' },
         { name: 'grade_name', type: 'string' },

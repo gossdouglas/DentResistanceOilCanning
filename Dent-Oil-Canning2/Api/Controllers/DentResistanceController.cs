@@ -70,7 +70,7 @@ namespace Dent_Oil_Canning2.Controllers
         }
 
         [HttpGet]
-        public ReturnObject<List<dr_Grades>> GetGrades()
+        public ReturnObject<List<dr_Grades>> GetGrades(dr_Grades drGrades)
         {
             //a new object that will eventually be sent to the view
             List<dr_Grades> gradesList = new List<dr_Grades>();
@@ -84,25 +84,24 @@ namespace Dent_Oil_Canning2.Controllers
 
             //prepare the query string
             string sqlquery1 =
-                "SELECT Grade_key, Grade_name FROM DR_Grades WHERE model = 1 ORDER BY Grade_name";
+                "SELECT Grade_key, Grade_name FROM DR_Grades WHERE model = @drModel ORDER BY Grade_name";
 
             //prepare a method to interact with the results of the SQL string
             SqlCommand sqlcomm1 = new SqlCommand(sqlquery1, sqlconn);
-            //sqlcomm1.Parameters.AddWithValue("@reportID", reportID);
+            sqlcomm1.Parameters.AddWithValue("@drModel", drGrades.model);
             SqlDataAdapter sda1 = new SqlDataAdapter(sqlcomm1);
             DataTable dt1 = new DataTable();
             sda1.Fill(dt1);
             foreach (DataRow dr1 in dt1.Rows)
             {
                 //create an object for each record in the SQL results
-                //vmDailyReportByReportID vmDailyReportByReportID = new vmDailyReportByReportID();
                 dr_Grades grade = new dr_Grades();
 
                 grade.grade_key = (int)dr1[0];
                 grade.grade_name = dr1[1].ToString();
 
                 //add it to a list
-                gradesList.Add(grade);//
+                gradesList.Add(grade);
             }
 
             //close the SQL connection to the database

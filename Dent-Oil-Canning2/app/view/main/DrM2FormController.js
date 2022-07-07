@@ -1,9 +1,9 @@
 ﻿
-Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
+Ext.define('DentResistanceOilCanning.view.main.DrM2FormController', {
     extend: 'Ext.app.ViewController',
 
     //alias: 'controller.tislotform',
-    alias: 'controller.dr-model1-form-controller',
+    alias: 'controller.dr-model2-form-controller',
 
     //control: {
     //    //tie button to an action
@@ -23,7 +23,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
     //},
 
     //save button for a new ti-slot
-    onCalculateDrM1Click: function (sender, record) {
+    onCalculateDrM2Click: function (sender, record) {
         var form = this.getView().getForm();
         var formValues = form.getValues();
         var formFields = form.getFields();
@@ -47,7 +47,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
         else {
             // Submit the Ajax request and handle the response
             form.submit({
-                url: 'api/DentResistance/CalculateModelOne',
+                url: 'api/DentResistance/CalculateModelTwo',
                 waitMsg: 'Calculating..',
                 clientValidation: true,
                 submitEmptyText: true,
@@ -56,16 +56,21 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
                     //var model = Ext.create('TiSlots.model.TiSlot');
                     //var model = Ext.create('DentResistanceOilCanning.model.CalculationDentReistanceModel');
                     var resp = Ext.decode(action.response.responseText);
+
+                    if (resp.data.Result < 0) {
+                        resp.data.Result = "No Dent"
+                    }
+
                     //console.clear();
                     //console.log("calculation response: ");
                     //console.log(resp);
-                    //console.log(resp.data.GradeName);
+                    //console.log(resp.data.Result);
 
                     //console.log("calculation results object: ");
                     //console.log(calculationResults);
                     //console.log(calculationResults.config);
 
-                    var calcResults = Ext.create('dr-model1-calc-results',
+                    var calcResults = Ext.create('dr-model2-calc-results',
                         {
                             items: [
                                 {
@@ -107,19 +112,13 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
                                 {
                                     xtype: 'textfield',
                                     width: '11%',
-                                    value: '.1',
+                                    value: resp.data.PoundsForce,
                                     editable: false
                                 },
                                 {
                                     xtype: 'textfield',
                                     width: '11%',
-                                    value: resp.data.RunningTotal,
-                                    editable: false
-                                },
-                                {
-                                    xtype: 'textfield',
-                                    width: '11%',
-                                    value: resp.data.FootPounds,
+                                    value: resp.data.Result,
                                     editable: false
                                 },
                             ]
@@ -129,7 +128,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
                     //console.log('dr-model1-calc-results');
                     //console.log(calcResults);
 
-                    Ext.getCmp('DrM1FormResultsPanel').add(calcResults);//works
+                    Ext.getCmp('DrM2FormResultsPanel').add(calcResults);
                 },
                 failure: function (frm, action) {
                     if (action.failureType === Ext.form.action.Action.CLIENT_INVALID) {
@@ -150,7 +149,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
     onClearResultsClick: function (sender, record) {
         var form = this.getView().getForm();
 
-        Ext.getCmp('DrM1FormResultsPanel').removeAll();
+        Ext.getCmp('DrM2FormResultsPanel').removeAll();
     },
 
     //when a test data button is clicked

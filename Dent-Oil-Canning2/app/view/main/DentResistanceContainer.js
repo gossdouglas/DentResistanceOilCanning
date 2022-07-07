@@ -24,7 +24,6 @@ var str4 = '<u>Procedures for evaluating dent resistance of automotive body pane
 var str5 = '<p><center>&copy;Arcelor Mittal<br>' +
     'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021</center>'
 
-//Ext.define('DentResistanceOilCanning.view.main.List', {
 Ext.define('DentResistanceOilCanning.view.main.DentResistanceContainer', {
     extend: 'Ext.form.Panel',
     xtype: 'dent-resistance-container',
@@ -33,10 +32,10 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceContainer', {
             {
                 xtype: 'dent-resistance-overview',
                 id: 'dr-overview',
-                //width: '100%',
-                //bodyPadding: '5',
-                //flex: 9,
-                //hidden: true,
+                width: '100%',
+                bodyPadding: '5',
+                flex: 9,
+                hidden: true,
             },
 
             {

@@ -184,9 +184,9 @@
                 } else {
                     //return the actual array
 
-                    console.clear();
-                    console.log("Returned data: ")
-                    console.log(data.data);
+                    //console.clear();
+                    //console.log("Returned data: ")
+                    //console.log(data.data);
                     return data.data;
                     
                     //console.log(data);

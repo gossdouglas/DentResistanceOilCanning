@@ -1,18 +1,18 @@
 Ext.QuickTips.init();
 
-Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
+Ext.define('DentResistanceOilCanning.view.main.DrM2Form', {
     extend: 'Ext.form.Panel',
-    xtype: 'dr-model1-form',
+    xtype: 'dr-model2-form',
     border: false,
-    controller: 'dr-model1-form-controller',
+    controller: 'dr-model2-form-controller',
     scrollable: true,
-    url: 'api/DentResistanc/CalculateModelOne',
+    url: 'api/DentResistanc/CalculateModelTwo',
 
     items:
         [
             {
                 xtype: 'panel',
-                title: 'Load for 0.1 mm Dent Depth, Model 1',
+                title: 'Dent Depth for a Given Applied Load, Model 2',
                 titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
@@ -22,15 +22,15 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                         //entry fields
                         {
                             xtype: 'panel',
-                            //layout: {
-                            //    type: 'hbox',
-                            //    align: 'stretch',
-                            //},
                             layout: {
                                 type: 'hbox',
-                                pack: 'center',
-                                align: 'middle'
+                                align: 'stretch',
                             },
+                            //layout: {
+                            //    type: 'hbox',
+                            //    pack: 'center',
+                            //    align: 'middle'
+                            //},
                             items:
                                 [
                                     {
@@ -38,7 +38,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                         //width: '3%',
                                         id: 'GradeKey',
                                         name: 'GradeKey',
-                                        bind: '{gradeKeyDrM1Combo.value}',
+                                        bind: '{gradeKeyDrM2Combo.value}',
                                         hidden: true,
                                         readOnly: true,
                                         allowBlank: false,
@@ -55,8 +55,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     {
                                         xtype: 'combobox',
                                         width: '11%',
-                                        id: 'GradeKeyDrM1Combo',
-                                        reference: 'gradeKeyDrM1Combo',
+                                        id: 'GradeKeyDrM2Combo',
+                                        reference: 'gradeKeyDrM2Combo',
                                         publishes: 'value',
                                         fieldLabel: 'Grade',
                                         labelAlign: 'top',
@@ -64,7 +64,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                         valueField: 'grade_key',
                                         allowBlank: false,
                                         store: {
-                                            type: 'GradeStoreModel1',
+                                            type: 'GradeStoreModel2',
                                             autoLoad: true
                                         },
                                         queryMode: 'local',
@@ -93,7 +93,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        id: 'R1DrM1',
+                                        id: 'R1DrM2',
                                         name: 'R1',
                                         fieldLabel: 'R1 (mm)',
                                         labelAlign: 'top',
@@ -106,7 +106,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        id: 'R2DrM1',
+                                        id: 'R2DrM2',
                                         name: 'R2',
                                         fieldLabel: 'R2 (mm)',
                                         labelAlign: 'top',
@@ -115,11 +115,11 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                         regex: /^(1500[0-9]|150[1-9][0-9]|15[1-9][0-9]{2}|1[6-9][0-9]{3}|[2-9][0-9]{4}|1[0-4][0-9]{4}|150000)$/i,
                                         msgTarget: 'side', // location of the error message
                                         invalidText: 'R1 must be a value between 15000 and 15000',
-                                        value: 150000
+                                        value: 15000
                                     },
                                     {
                                         xtype: 'textfield',
-                                        id: 'MajorStrainDrM1',
+                                        id: 'MajorStrainDrM2',
                                         name: 'MajorStrain',
                                         fieldLabel: 'Major Strain (%)',
                                         labelAlign: 'top',
@@ -132,7 +132,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        id: 'MinorStrainDrM1',
+                                        id: 'MinorStrainDrM2',
                                         name: 'MinorStrain',
                                         fieldLabel: 'Minor Strain (%)',
                                         labelAlign: 'top',
@@ -145,7 +145,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        id: 'ThicknessDrM1',
+                                        id: 'ThicknessDrM2',
                                         name: 'Thickness',
                                         fieldLabel: 'Thickness (mm)',
                                         labelAlign: 'top',
@@ -158,51 +158,46 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: '',
-                                        fieldLabel: 'Dent Depth',
+                                        id: 'PoundsForceDrM2',
+                                        name: 'PoundsForce',
+                                        fieldLabel: 'Force (N)',
                                         labelAlign: 'top',
                                         width: '11%',
-                                        value: '.1',
-                                        editable: false
+                                        allowBlank: false,
+                                        regex: /^(\.\d+|\d+\.\d+|\d+)$/i,
+                                        msgTarget: 'side', // location of the error message
+                                        invalidText: 'Pounds of force must be greater than 0.',
+                                        value: '1'
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: '',
-                                        fieldLabel: 'Newtons (N)',
-                                        labelAlign: 'top',
-                                        width: '11%',
-                                        value: 'N/A',
-                                        editable: false
-                                    },
-                                    {
-                                        xtype: 'textfield',
-                                        name: '',
-                                        fieldLabel: 'Lb. Force (lbf)',
+                                        fieldLabel: 'Dent Depth (mm)',
                                         labelAlign: 'top',
                                         width: '11%',
                                         value: 'N/A',
                                         editable: false
                                     },
                                 ]
-                        },
+                        },                     
                         //range notes
                         {
                             xtype: 'panel',
-                            //layout: {
-                            //    type: 'hbox',
-                            //    align: 'stretch',
-                            //},
                             layout: {
                                 type: 'hbox',
-                                pack: 'center',
-                                align: 'middle'
+                                align: 'stretch',
                             },
+                            //layout: {
+                            //    type: 'hbox',
+                            //    pack: 'center',
+                            //    align: 'middle'
+                            //},
                             items:
                                 [
                                     {
                                         xtype: 'label',
                                         text: '',
                                         width: '11%',
+                                        html: '<center>Select a grade</center>',
                                     },
                                     {
                                         xtype: 'panel',
@@ -232,29 +227,23 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                    },
-                                    {
-                                        xtype: 'panel',
-                                        width: '11%',
-                                    },
-                                    {
-                                        xtype: 'panel',
-                                        width: '11%',
+                                        html: '<center>Greater than 0</center>',
                                     },
                                 ]
                         },
-                        //calculate button
+                        //button panel
                         {
                             xtype: 'panel',
-                            //layout: {
-                            //    type: 'hbox',
-                            //    align: 'stretch',
-                            //},
                             layout: {
                                 type: 'hbox',
                                 pack: 'center',
                                 align: 'middle'
                             },
+                            //layout: {
+                            //    type: 'hbox',
+                            //    align: 'stretch',
+                            //},
+                            //layout: 'center',
                             items:
                                 [
                                     {
@@ -263,7 +252,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                         margin: '20 10 0 0',
                                         width: '10%',
                                         listeners: {
-                                            click: 'onCalculateDrM1Click'
+                                            click: 'onCalculateDrM2Click'
                                         }
                                     },
                                     {
@@ -277,8 +266,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'button',
-                                        id: 'DDEChartUlsac',
-                                        text: "ULSAC",
+                                        id: 'DDEChartTest_locations',
+                                        text: "Test Locations",
                                         margin: '20 10 0 0',
                                         width: '10%',
                                         listeners: {
@@ -287,8 +276,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'button',
-                                        id: 'DDEChartBH210Door1',
-                                        text: "BH210-Door 1",
+                                        id: 'DDEChartLocation1',
+                                        text: "Location 1",
                                         margin: '20 10 0 0',
                                         width: '10%',
                                         listeners: {
@@ -297,8 +286,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'button',
-                                        id: 'DDEChartBH250Door1',
-                                        text: "BH250-Door 1",
+                                        id: 'DDEChartLocation2',
+                                        text: "Location 2",
                                         margin: '20 10 0 0',
                                         width: '10%',
                                         listeners: {
@@ -307,8 +296,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'button',
-                                        id: 'DDEChartBH210Door2',
-                                        text: "BH210-Door 2",
+                                        id: 'DDEChartLocation3',
+                                        text: "Location 3",
                                         margin: '20 10 0 0',
                                         width: '10%',
                                         listeners: {
@@ -317,38 +306,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     },
                                     {
                                         xtype: 'button',
-                                        id: 'DDEChartBH250Door2',
-                                        text: "BH250-Door 2",
-                                        margin: '20 10 0 0',
-                                        width: '10%',
-                                        listeners: {
-                                            click: 'onTestResultsClick'
-                                        }
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        id: 'DDEChartDP500Door2',
-                                        text: "DP500-Door 2",
-                                        margin: '20 10 0 0',
-                                        width: '10%',
-                                        listeners: {
-                                            click: 'onTestResultsClick'
-                                        }
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        id: 'DDEChartBH210Door3',
-                                        text: "BH210-Door 3",
-                                        margin: '20 10 0 0',
-                                        width: '10%',
-                                        listeners: {
-                                            click: 'onTestResultsClick'
-                                        }
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        id: 'DDEChartDP500Door3',
-                                        text: "DP500- Door 3",
+                                        id: 'DDEChartLocation4',
+                                        text: "Location 4",
                                         margin: '20 10 0 0',
                                         width: '10%',
                                         listeners: {
@@ -362,84 +321,59 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
             //results panel
             {
                 xtype: 'panel',
-                id: 'DrM1FormResultsPanel',
+                id: 'DrM2FormResultsPanel',
                 title: 'Results',
                 titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
                 flex: 2,
                 items:
-                    [
-                        
+                    [                      
                     ]
             },
             //test results panel
             {
                 xtype: 'panel',
-                id: 'DrM1FormTestResultsPanel',
-                //title: 'Correlation with Test Data',
-                //titleAlign: 'center',
+                id: 'DrM2FormTestResultsPanel',
                 width: '100%',
                 bodyPadding: '5',
                 flex: 5,
                 items:
                     [
-                        //
                         {
                             xtype: 'panel',
-                            id: 'DDEChartUlsacGif',
+                            id: 'DDEChartTest_locationsGif',
                             cls: 'test-results-image',
                             hidden: true,
-                            html: '<p><center><strong>Chart for ULSAC</strong><br><img src="images/DDEChartULSAC.gif" border="1"></center >'
+                            html: '<p><center><strong>Chart for Test Locations</strong><br><img src="images/DDEChartTest_locations.gif" border="1"></center >'
                         },
                         {
                             xtype: 'panel',
-                            id: 'DDEChartBH210Door1Gif',
+                            id: 'DDEChartLocation1Gif',
                             cls: 'test-results-image',
                             hidden: true,
-                            html: '<p><center><strong>Chart for BH210-Door 1</strong><br><img src="images/DDEChartBH210Door1.gif" border="1"></center >'
+                            html: '<p><center><strong>Chart for location 1</strong><br><img src="images/DDEChartLocation1.gif" border="1"></center >'
                         },
                         {
                             xtype: 'panel',
-                            id: 'DDEChartBH250Door1Gif',
+                            id: 'DDEChartLocation2Gif',
                             cls: 'test-results-image',
                             hidden: true,
-                            html: '<p><center><strong>Chart for BH250-Door 1</strong><br><img src="images/DDEChartBH250Door1.gif" border="1"></center >'
+                            html: '<p><center><strong>Chart for location 2</strong><br><img src="images/DDEChartLocation2.gif" border="1"></center >'
                         },
                         {
                             xtype: 'panel',
-                            id: 'DDEChartBH210Door2Gif',
+                            id: 'DDEChartLocation3Gif',
                             cls: 'test-results-image',
                             hidden: true,
-                            html: '<p><center><strong>Chart for BH210-Door 2</strong><br><img src="images/DDEChartBH210Door2.gif" border="1"></center >'
+                            html: '<p><center><strong>Chart for location 3</strong><br><img src="images/DDEChartLocation3.gif" border="1"></center >'
                         },
                         {
                             xtype: 'panel',
-                            id: 'DDEChartBH250Door2Gif',
+                            id: 'DDEChartLocation4Gif',
                             cls: 'test-results-image',
                             hidden: true,
-                            html: '<p><center><strong>Chart for BH250-Door 2</strong><br><img src="images/DDEChartBH250Door2.gif" border="1"></center >'
-                        },
-                        {
-                            xtype: 'panel',
-                            id: 'DDEChartDP500Door2Gif',
-                            cls: 'test-results-image',
-                            hidden: true,
-                            html: '<p><center><strong>Chart for DP500-Door 2</strong><br><img src="images/DDEChartDP500Door2.gif" border="1"></center >'
-                        },
-                        {
-                            xtype: 'panel',
-                            id: 'DDEChartBH210Door3Gif',
-                            cls: 'test-results-image',
-                            hidden: true,
-                            html: '<p><center><strong>Chart for BH210-Door 3</strong><br><img src="images/DDEChartBH210Door3.gif" border="1"></center >'
-                        },
-                        {
-                            xtype: 'panel',
-                            id: 'DDEChartDP500Door3Gif',
-                            cls: 'test-results-image',
-                            hidden: true,
-                            html: '<p><center><strong>Chart for DP500-Door 3</strong><br><img src="images/DDEChartDP500Door3.gif" border="1"></center >'
+                            html: '<p><center><strong>Chart for location 4</strong><br><img src="images/DDEChartLocation4.gif" border="1"></center >'
                         },
                     ]
             },

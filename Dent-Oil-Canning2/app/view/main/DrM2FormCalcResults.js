@@ -1,8 +1,8 @@
-Ext.define('DentResistanceOilCanning.view.main.DrM1FormCalcResults', {
+Ext.define('DentResistanceOilCanning.view.main.DrM2FormCalcResults', {
     //extend: 'Ext.form.Panel',
     extend: 'Ext.panel.Panel',
-    xtype: 'dr-model1-calc-results',
-    alias: 'dr-model1-calc-results',
+    xtype: 'dr-model2-calc-results',
+    alias: 'dr-model2-calc-results',
 
     //layout: {
     //    type: 'hbox',
