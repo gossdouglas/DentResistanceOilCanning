@@ -17,20 +17,25 @@ Ext.define('DentResistanceOilCanning.view.main.DrM2Form', {
                 width: '100%',
                 bodyPadding: '5',
                 flex: 1,
+                //layout: {
+                //    type: 'hbox',
+                //    pack: 'center',
+                //    align: 'middle'
+                //},
                 items:
                     [
                         //entry fields
                         {
                             xtype: 'panel',
-                            layout: {
-                                type: 'hbox',
-                                align: 'stretch',
-                            },
                             //layout: {
                             //    type: 'hbox',
-                            //    pack: 'center',
-                            //    align: 'middle'
+                            //    align: 'stretch',
                             //},
+                            layout: {
+                                type: 'hbox',
+                                pack: 'center',
+                                align: 'middle'
+                            },
                             items:
                                 [
                                     {
@@ -182,15 +187,15 @@ Ext.define('DentResistanceOilCanning.view.main.DrM2Form', {
                         //range notes
                         {
                             xtype: 'panel',
-                            layout: {
-                                type: 'hbox',
-                                align: 'stretch',
-                            },
                             //layout: {
                             //    type: 'hbox',
-                            //    pack: 'center',
-                            //    align: 'middle'
+                            //    align: 'stretch',
                             //},
+                            layout: {
+                                type: 'hbox',
+                                pack: 'center',
+                                align: 'middle'
+                            },
                             items:
                                 [
                                     {
@@ -228,6 +233,11 @@ Ext.define('DentResistanceOilCanning.view.main.DrM2Form', {
                                         xtype: 'panel',
                                         width: '11%',
                                         html: '<center>Greater than 0</center>',
+                                    },
+                                    {
+                                        xtype: 'panel',
+                                        width: '11%',
+                                        html: '<center>-</center>',
                                     },
                                 ]
                         },

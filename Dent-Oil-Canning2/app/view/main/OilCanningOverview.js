@@ -13,27 +13,6 @@ var str2 = '<a href="OilCanningBulkInput.aspx" onclick="showOcBulkInput()"><b>Bu
     'This bulk input will allow Ford to run many inquires at one time reducing the time it takes them to analyze various thicknesses. ' +
     '<p><center><img src="images/oilcanningroof.jpg" border="1"><br>'
 
-//var str3 = 'In North America, dent resistance has been most commonly evaluated by testing panel assemblies using the Auto/Steel Partnership ' +
-//    ' procedure for quasi-static denting [1]. The dent test procedure consists of using a 25.4mm' +
-//    'spherical indenter to apply a series of incrementally increasing loads to the panel. Figure 2 shows a ' +
-//    'schematic of the data generated using the Auto/Steel Partnership procedure for evaluation of dent resistance. In the' +
-//    'development of the dent resistance model displayed on this website, FEA simulations of the denting ' +
-//    'process were used. The FEA simulations closely matched the Auto/Steel Partnership dent test procedure. ' +
-//    '<p><center><img src="images/dentresistance1.gif" border="1" ><br><small>Figure 3: Schematic of the load-deflection data generated for ' +
-//    'quasi-static dent testing [1].</small></center>'
-
-//var str4 = '<u>Procedures for evaluating dent resistance of automotive body panels</u>, Auto/Steel Partnership, Southfield, MI, January 2001. '
-
-//var str5 = '<p><center>&copy;Arcelor Mittal<br>' +
-//    'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021</center>'
-
-//var str5 = '<p>&copy;Arcelor Mittal<br>' +
-//    'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021'
-
-/**
- * This view is an example list of people.
- */
-//Ext.define('DentResistanceOilCanning.view.main.List', {
 Ext.define('DentResistanceOilCanning.view.main.OilCanningOverview', {
     extend: 'Ext.form.Panel',
     xtype: 'oil-canning-overview',

@@ -1,9 +1,9 @@
-var str5 = '<p><center>&copy;Arcelor Mittal<br>' +
-    'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021</center>'
-var str6 = '<p><center>For questions or comments, please contact<br>' +
-    'Sriram Sadagopan, ArcelorMittal R & D<br>' +
-    'Phone: (219) 399-5593, Fax: (219) 399-6562<br>' +
-    'Email: <a href="mailto:mailto:Sriram.Sadagopan@arcelormittal.com"><b>Sriram.Sadagopan@arcelormittal.com</b></a></center>'
+//var str5 = '<p><center>&copy;Arcelor Mittal<br>' +
+//    'Problems or Concerns, please contact the <a href="#"> <b>Support Team</b></a><br>Last Modified: 3 December 2021</center>'
+//var str6 = '<p><center>For questions or comments, please contact<br>' +
+//    'Sriram Sadagopan, ArcelorMittal R & D<br>' +
+//    'Phone: (219) 399-5593, Fax: (219) 399-6562<br>' +
+//    'Email: <a href="mailto:mailto:Sriram.Sadagopan@arcelormittal.com"><b>Sriram.Sadagopan@arcelormittal.com</b></a></center>'
 
 Ext.define('DentResistanceOilCanning.view.main.PageFooter', {
     extend: 'Ext.form.Panel',
