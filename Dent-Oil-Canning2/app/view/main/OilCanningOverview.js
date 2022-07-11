@@ -13,6 +13,17 @@ var str2 = '<a href="OilCanningBulkInput.aspx" onclick="showOcBulkInput()"><b>Bu
     'This bulk input will allow Ford to run many inquires at one time reducing the time it takes them to analyze various thicknesses. ' +
     '<p><center><img src="images/oilcanningroof.jpg" border="1"><br>'
 
+//var str3 = '<canvas width="500" height="500" style="width: 200px; height: 200px;"></canvas><div class="demo">' +
+//    //'<p>&#215; Angle offset and arc</p><pre>' +
+//    //'data-fgColor="#66CC66" data-angleOffset=-125 data-angleArc=250 data-rotation=anticlockwise</pre>' +
+//    '<input class="knob" data-angleOffset=-125 data-angleArc=250 data-fgColor="#66EE66" data-rotation="anticlockwise" value="35">' +
+//    '</div>'
+
+//var str3 = '<canvas width="500" height="500" style="width: 200px; height: 200px;"></canvas><div class="demo">' +
+//    //'<p>&#215; Angle offset and arc</p><pre>' +
+//    //'data-fgColor="#66CC66" data-angleOffset=-125 data-angleArc=250 data-rotation=anticlockwise</pre>' +
+//    '<input class="knob" data-angleoffset="-125" data-anglearc="250" data-fgcolor="#66EE66" data-rotation="anticlockwise" value="35" style="width: 104px; height: 66px; position: absolute; vertical-align: middle; margin-top: 66px; margin-left: -152px; border: 0px; background: none; font: bold 40px Arial; text-align: center; color: rgb(102, 238, 102); padding: 0px; appearance: none;">'
+
 Ext.define('DentResistanceOilCanning.view.main.OilCanningOverview', {
     extend: 'Ext.form.Panel',
     xtype: 'oil-canning-overview',

@@ -180,6 +180,8 @@
     <Content Include="app\model\GradeModel.js" />
     <Content Include="app\store\GradeStoreModel2.js" />
     <Content Include="app\store\GradeStoreModel1.js" />
+    <Content Include="app\view\main\OilCanningFormController.js" />
+    <Content Include="app\view\main\OilCanningForm.js" />
     <Content Include="app\view\main\DrM2FormController.js" />
     <Content Include="app\view\main\DrM2FormCalcResults.js" />
     <Content Include="app\view\main\DrM2Form.js" />

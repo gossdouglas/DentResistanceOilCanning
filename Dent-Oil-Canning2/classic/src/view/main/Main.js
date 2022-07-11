@@ -16,17 +16,20 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         'DentResistanceOilCanning.view.main.MainController',
         'DentResistanceOilCanning.view.main.DrM1FormController',
         'DentResistanceOilCanning.view.main.DrM2FormController',
+        'DentResistanceOilCanning.view.main.OilCanningFormController',
         'DentResistanceOilCanning.view.main.MainModel',
         'DentResistanceOilCanning.view.main.List',
         'DentResistanceOilCanning.view.main.PageFooter',
 
         //'DentResistanceOilCanning.view.main.DentResistanceContainer',
         'DentResistanceOilCanning.view.main.DentResistanceOverview',
+        'DentResistanceOilCanning.view.main.OilCanningOverview',
         //'DentResistanceOilCanning.view.main.DentResistancemM1',
         'DentResistanceOilCanning.view.main.DrM1Form',
         'DentResistanceOilCanning.view.main.DrM1FormCalcResults',
         'DentResistanceOilCanning.view.main.DrM2Form',
         'DentResistanceOilCanning.view.main.DrM2FormCalcResults',
+        'DentResistanceOilCanning.view.main.OilCanningForm',
 
         //'DentResistanceOilCanning.view.main.DentResistancemM2',
         //'DentResistanceOilCanning.view.main.DrM1Grid',
@@ -132,7 +135,8 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
             items: [{
                 //xtype: 'mainlist'
                 //xtype: 'dent-resistance-overview'
-                xtype: 'oil-canning-container'
+                //xtype: 'oil-canning-container'
+                xtype: 'oil-canning-overview'
             }],
         },
         //{
@@ -187,209 +191,110 @@ function showDRModel2() {
     }).show()
 }
 
-//function loadDRModel1() {
-//    //alert("yo")
-//    var win = Ext.create('Ext.window.Window', {
-//        layout: 'fit',
-//        xtype: 'form',
-//        width: '75%',
-//        height: '75%',
-//        id: 'tislotFormWindow',
-//        items: {
-//            xtype: 'dent-resistance-model1'
-//        },
-//        listeners: {
-//            //beforeshow: function (form, options) {
-//            //    //set the ETA date and time controls
-//            //    estimatedTimeArrival = record.data.EstimatedTimeArrival;
-//            //    Ext.getCmp('EtaDate').setValue(dateTimePart(estimatedTimeArrival, 1));
-//            //    Ext.getCmp('EtaTime').setValue(dateTimePart(estimatedTimeArrival, 2));
+//show the dent resistance model 2 pop up
+function showOcCalculator() {
+    var win = Ext.create('Ext.window.Window', {
+        layout: 'fit',
+        xtype: 'form',
+        width: '100%',
+        height: '100%',
+        id: 'oilCanningFormWindow',
+        items: {
+           xtype: 'oil-canning-form'
+        },
+        listeners: {
 
-//            //    //display the badge times after being converted from UTC
-//            //    badgeEnterSite = record.data.BadgeEnterSite;
-//            //    if (badgeEnterSite != '0001-01-01T00:00:00') {
-//            //        Ext.getCmp('BadgeEnterSiteDisplay').setValue(formatDate(record.data.BadgeEnterSite, 1))
-//            //    }
+        }
+    }).show()
 
-//            //    //display the badge times after being converted from UTC
-//            //    badgeExitSite = record.data.BadgeExitSite;
-//            //    if (badgeExitSite != '0001-01-01T00:00:00') {
-//            //        Ext.getCmp('BadgeExitSiteDisplay').setValue(formatDate(record.data.BadgeExitSite, 1))
-//            //    }
-
-//            //    //if there is a check in time in the database, display it and lock it for editing
-//            //    tiSlotCheckIn = record.data.TiSlotCheckIn;
-//            //    if (tiSlotCheckIn != '0001-01-01T00:00:00') {
-//            //        //convert tiSlotCheckIn from UTC in the database to local for display
-//            //        var tiSlotCheckInLocal = formatDate(tiSlotCheckIn, 1);
-//            //        Ext.getCmp('TiSlotCheckInDate').setValue(dateTimePart(tiSlotCheckInLocal, 1));
-//            //        Ext.getCmp('TiSlotCheckInTime').setValue(dateTimePart(tiSlotCheckInLocal, 2));
-//            //        Ext.getCmp('TiSlotCheckInDate').setConfig('readOnly', true);
-//            //        Ext.getCmp('TiSlotCheckInTime').setConfig('readOnly', true);
-//            //    }
-
-//            //    //set the displayed values in the remote combo boxes
-//            //    var amnsContactName = record.data.AmnsContactName;
-//            //    Ext.ComponentQuery.query('#AmnsContactNameCombo')[0].setValue(amnsContactName);
-//            //    var forCompanyRecord = record.data.ForCompany;
-//            //    Ext.ComponentQuery.query('#ForCompanyCombo')[0].setValue(forCompanyRecord);
-//            //    var vendorCarrierRecord = record.data.VendorCarrierName;
-//            //    Ext.ComponentQuery.query('#VendorCarrierCombo')[0].setValue(vendorCarrierRecord);
-//            //    var driverNameRecord = record.data.DriverName;
-//            //    Ext.ComponentQuery.query('#DriverNameCombo')[0].setValue(driverNameRecord);
-//            //    var departmentRecord = record.data.AmnsDepartment;
-//            //    Ext.ComponentQuery.query('#DepartmentCombo')[0].setValue(departmentRecord);
-//            //    //load the sub-department dropdown options based on the department identifier of the record
-//            //    Ext.getCmp('SubDepartmentCombo').getStore().load(
-//            //        {
-//            //            params:
-//            //            {
-//            //                command: 2,
-//            //                departmentIdentifier: record.data.AmnsDepartmentIdentifier
-//            //            }
-//            //        });
-//            //    var subDepartmentRecord = record.data.AmnsSubDepartment;
-//            //    Ext.ComponentQuery.query('#SubDepartmentCombo')[0].setValue(subDepartmentRecord);
-//            //}
-//        }
-//    }).show()
-//}
-
-//function resetTab1() {
-//    Ext.getCmp('dr-overview').setConfig('hidden', false);
-//    Ext.getCmp('dr-model1').setConfig('hidden', true);
-//    Ext.getCmp('dr-model2').setConfig('hidden', true);
-
-//    //alert("dent resistance tab.")
-//}
-
-//function resetTab2() {
-//    //Ext.getCmp('dr-overview').setConfig('hidden', false);
-//    //Ext.getCmp('dr-model1').setConfig('hidden', true);
-//    //Ext.getCmp('dr-model2').setConfig('hidden', true);
-//    //alert("oil canning tab.")
-//}
-
-//verify the dent resistance model 1 form
-//function verifyDrM1Form() {
-
-//    var bGood = true
-//    var dblR1 = DRM.R1.value
-//    var dblR2 = DRM.R2.value
-//    var dblMajStrain = DRM.MajStrain.value
-//    var dblMinStrain = DRM.MinStrain.value
-//    var dblThickness = DRM.Thickness.value
-
-//    if (DRM.GradeKey.value == "0") {
-
-//        bGood = false
-//        alert('Please choose a grade')
-//    }
-//    if ((dblR1.length < 1) && (dblR2.length < 1) && (dblMajStrain.length < 1) && (dblMinStrain.length < 1) && (dblThickness.length < 1)) {
-//        alert('Please enter values for R1, R2, Major Strain, Minor Strain, and Thickness')
-//    }
-//    else {
-//        if (isNaN(dblR1)) {
-
-//            bGood = false
-//            alert('Please use a numeric value for R1')
-//        } else {
-//            if (dblR1.length < 1) {
-
-//                bGood = false
-//                alert('Please enter a value for R1')
-//            } else {
-
-//                if (dblR1 < 150) {
-
-//                    alert('R1 must be at least 150mm')
-//                    bGood = false
-//                }
-//            }
-//        }
-
-//        if (isNaN(dblR2)) {
-
-//            bGood = false
-//            alert('Please use a numeric value for R2')
-//        } else {
-
-//            if (dblR2.length < 1) {
-
-//                bGood = false
-//                alert('Please enter a value for R2')
-//            } else {
-
-//                if (dblR2 < 15000) {
-
-//                    alert('R2 must be at least 15000mm')
-//                    bGood = false
-//                }
-//            }
-//        }
-
-//        if (isNaN(dblMajStrain)) {
-
-//            bGood = false
-//            alert('Please use a numeric value for Major Strain')
-//        } else {
-//            if (dblMajStrain.length < 1) {
-
-//                bGood = false
-//                alert('Please enter a value for Major Strain')
-//            } else {
-//                if ((dblMajStrain < 0) || (dblMajStrain > 2.5)) {
-
-//                    alert('The Major Strain must be between 0 and 2.5')
-//                    bGood = false
-//                }
-//            }
-//        }
-
-//        if (isNaN(dblMinStrain)) {
-
-//            bGood = false
-//            alert('Please use a numeric value for Minor Strain')
-//        } else {
-//            if (dblMinStrain.length < 1) {
-
-//                bGood = false
-//                alert('Please enter a value for Minor Strain')
-//            } else {
-//                if ((dblMinStrain < 0) || (dblMinStrain > 2.5)) {
-
-//                    alert('The Minor Strain must be between 0 and 2.5')
-//                    bGood = false
-//                }
-//            }
-//        }
-
-//        if (isNaN(dblThickness)) {
-
-//            bGood = false
-//            alert('Please use a numeric value for Thickness')
-//        } else {
-
-//            if (dblThickness.length < 1) {
-
-//                bGood = false
-//                alert('Please enter a value for Thickness')
-//            } else {
-//                if ((dblThickness < 0.60) || (dblThickness > .85)) {
-
-//                    alert('The thickness must be between 0.65 and .85')
-//                    bGood = false
-//                }
-//            }
-//        }
-//    }
-//    if (bGood) {
-
-//        DRM.submit()
-//    }
-//}
+    //var OpenWindow = window.open('OilCanning/OilCanningCalculator.html', null, 'popup=true');
+}
 
 $(document).ready(function () {
 
+    //$(function ($) {
+
+    //    //alert("yo")
+
+    //    $(".knob").knob({
+    //        change: function (value) {
+    //            console.log("change : " + value);
+    //        },
+    //        release: function (value) {
+    //            //console.log(this.$.attr('value'));
+    //            console.log("release : " + value);
+    //        },
+    //        cancel: function () {
+    //            console.log("cancel : ", this);
+    //        },
+    //        /*format : function (value) {
+    //            return value + '%';
+    //        },*/
+    //        draw: function () {
+
+    //            // "tron" case
+    //            if (this.$.data('skin') == 'tron') {
+
+    //                this.cursorExt = 0.3;
+
+    //                var a = this.arc(this.cv)  // Arc
+    //                    , pa                   // Previous arc
+    //                    , r = 1;
+
+    //                this.g.lineWidth = this.lineWidth;
+
+    //                if (this.o.displayPrevious) {
+    //                    pa = this.arc(this.v);
+    //                    this.g.beginPath();
+    //                    this.g.strokeStyle = this.pColor;
+    //                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+    //                    this.g.stroke();
+    //                }
+
+    //                this.g.beginPath();
+    //                this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+    //                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+    //                this.g.stroke();
+
+    //                this.g.lineWidth = 2;
+    //                this.g.beginPath();
+    //                this.g.strokeStyle = this.o.fgColor;
+    //                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+    //                this.g.stroke();
+
+    //                return false;
+    //            }
+    //        }
+    //    });
+
+    //    // Example of infinite knob, iPod click wheel
+    //    var v, up = 0, down = 0, i = 0
+    //        , $idir = $("div.idir")
+    //        , $ival = $("div.ival")
+    //        , incr = function () { i++; $idir.show().html("+").fadeOut(); $ival.html(i); }
+    //        , decr = function () { i--; $idir.show().html("-").fadeOut(); $ival.html(i); };
+    //    $("input.infinite").knob(
+    //        {
+    //            min: 0
+    //            , max: 20
+    //            , stopper: false
+    //            , change: function () {
+    //                if (v > this.cv) {
+    //                    if (up) {
+    //                        decr();
+    //                        up = 0;
+    //                    } else { up = 1; down = 0; }
+    //                } else {
+    //                    if (v < this.cv) {
+    //                        if (down) {
+    //                            incr();
+    //                            down = 0;
+    //                        } else { down = 1; up = 0; }
+    //                    }
+    //                }
+    //                v = this.cv;
+    //            }
+    //        });
+    //});
 
 });
