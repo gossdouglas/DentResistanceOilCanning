@@ -87,11 +87,11 @@ $(function ($) {
 //    '<input class="knob" data-angleOffset=-125 data-angleArc=250 data-fgColor="#66EE66" data-rotation="anticlockwise" value="35">' +
 //    '</div>'
 
-var str3 = '<div class="demo">' +
-    //'<p>&#215; Angle offset and arc</p><pre>' +
-    //'data-fgColor="#66CC66" data-angleOffset=-125 data-angleArc=250 data-rotation=anticlockwise</pre>' +
-    '<input class="knob" data-angleOffset=-125 data-angleArc=250 data-fgColor="#66EE66" data-rotation="anticlockwise" value="35">' +
-    '</div>'
+//var str3 = '<div class="demo">' +
+//    //'<p>&#215; Angle offset and arc</p><pre>' +
+//    //'data-fgColor="#66CC66" data-angleOffset=-125 data-angleArc=250 data-rotation=anticlockwise</pre>' +
+//    '<input class="knob" data-angleOffset=-125 data-angleArc=250 data-fgColor="#66EE66" data-rotation="anticlockwise" value="35">' +
+//    '</div>'
 
 Ext.QuickTips.init();
 
@@ -128,14 +128,36 @@ Ext.define('DentResistanceOilCanning.view.main.OilCanningForm', {
                             },
                             items:
                                 [
-                                    {
-                                        xtype: 'panel',
-                                        //width: '3%',
-                                        //id: 'GradeKey',
-                                        //name: 'GradeKey',
-                                        //bind: '{gradeKeyDrM1Combo.value}',
-                                        html: str3
-                                    },                                   
+                                    //{
+                                    //    xtype: 'panel',
+                                    //    //width: '3%',
+                                    //    //id: 'GradeKey',
+                                    //    //name: 'GradeKey',
+                                    //    //bind: '{gradeKeyDrM1Combo.value}',
+                                    //    html: str3
+                                    //},
+                                    //{
+                                    //    xtype: 'polar',
+                                    //    renderTo: document.body,
+                                    //    width: 600,
+                                    //    height: 400,
+                                    //    store: {
+                                    //        fields: ['mph', 'fuel', 'temp', 'rpm'],
+                                    //        data: [{
+                                    //            mph: 65,
+                                    //            fuel: 50,
+                                    //            temp: 150,
+                                    //            rpm: 6000
+                                    //        }]
+                                    //    },
+                                    //    series: {
+                                    //        type: 'gauge',
+                                    //        colors: ['#1F6D91', '#90BCC9'],
+                                    //        angleField: 'mph',
+                                    //        needle: true,
+                                    //        donut: 30
+                                    //    }
+                                    //},
                                 ]
                         },
                         ////range notes

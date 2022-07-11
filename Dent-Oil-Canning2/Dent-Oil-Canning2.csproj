@@ -828,6 +828,12 @@
     <Content Include="index.html" />
     <Content Include="modern\src\view\main\List.js" />
     <Content Include="modern\src\view\main\Main.js" />
+    <Content Include="OilCanning\dist\jquery.knob.min.js" />
+    <Content Include="OilCanning\excanvas.js" />
+    <Content Include="OilCanning\js\jquery.knob.js" />
+    <Content Include="OilCanning\OilCanning.js" />
+    <Content Include="OilCanning\OilCanningCalculator.html" />
+    <Content Include="OilCanning\secretplan.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Add-ons\DRFormula_COMplus_source\.vs\ProjectSettings.json" />
@@ -896,6 +902,12 @@
     <Content Include="classic\src\view\main\Main.scss" />
     <Content Include="modern\resources\Readme.md" />
     <Content Include="modern\src\view\main\List.scss" />
+    <Content Include="OilCanning\.gitignore" />
+    <Content Include="OilCanning\bower.json" />
+    <Content Include="OilCanning\knob.jquery.json" />
+    <Content Include="OilCanning\LICENSE" />
+    <Content Include="OilCanning\package.json" />
+    <Content Include="OilCanning\README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -933,6 +945,7 @@
     <Folder Include="Api\Models\db models\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="OilCanning\_New folder\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -14,7 +14,8 @@
      *      ]
      */
     "requires": [
-        "font-awesome"
+      "font-awesome",
+      "charts"
     ],
 
     /**
@@ -547,5 +548,6 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "bd7d355f-b9b9-4ead-8c96-32e22c61f567"
+  "id": "bd7d355f-b9b9-4ead-8c96-32e22c61f567"
+ 
 }

@@ -10,8 +10,13 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
     xtype: 'app-main',
 
     requires: [
-        'Ext.plugin.Viewport',
-        'Ext.window.MessageBox',
+        //'Ext.plugin.Viewport',//left over from ti-slot web?
+        //'Ext.window.MessageBox',//left over from ti-slot web?
+
+        //'Ext.chart.series.Series',
+        //'Ext.widget.polar',
+        //'Ext.chart.series.Polar',
+        //'Ext.chart.PolarChart',
 
         'DentResistanceOilCanning.view.main.MainController',
         'DentResistanceOilCanning.view.main.DrM1FormController',
@@ -193,6 +198,7 @@ function showDRModel2() {
 
 //show the dent resistance model 2 pop up
 function showOcCalculator() {
+
     var win = Ext.create('Ext.window.Window', {
         layout: 'fit',
         xtype: 'form',
@@ -207,7 +213,7 @@ function showOcCalculator() {
         }
     }).show()
 
-    //var OpenWindow = window.open('OilCanning/OilCanningCalculator.html', null, 'popup=true');
+    //var OpenWindow = window.open('OilCanning/OilCanningCalculator.html');
 }
 
 $(document).ready(function () {
