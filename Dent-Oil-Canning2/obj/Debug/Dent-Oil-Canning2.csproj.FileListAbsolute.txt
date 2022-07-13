@@ -356,3 +356,10 @@ C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\obj\De
 C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\obj\Debug\Dent-Oil-Canning2.dll
 C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\obj\Debug\Dent-Oil-Canning2.pdb
 C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\Dent-Oil-Canning2.dll.config
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\ClosedXML.dll
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\DocumentFormat.OpenXml.dll
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\ExcelNumberFormat.dll
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\ClosedXML.pdb
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\ClosedXML.xml
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\DocumentFormat.OpenXml.xml
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\ExcelNumberFormat.xml
