@@ -37,7 +37,8 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                 [
                                     //{
                                     //    xtype: 'textfield',
-                                    //    id: 'excelfile',
+                                    //    //id: 'excelfile',
+                                    //    itemId: 'excelfile',
                                     //    name: 'excelfile',
                                     //    fieldLabel: 'Directory Path',
                                     //    grow: true,
@@ -52,9 +53,9 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                     //    listeners: {
                                     //        click: function (input, val, opts) {
 
-                                    //            var excelPath = Ext.getCmp('excelfile').getSubmitValue();
-                                    //            console.clear();
-                                    //            console.log("excelPath: " + excelPath);
+                                    //            //var excelPath = Ext.getCmp('excelfile').getSubmitValue();
+                                    //            //console.clear();
+                                    //            //console.log("excelPath: " + excelPath);
                                     //            //getExcelPath();
                                     //            ExportToTable();
 
@@ -66,6 +67,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                     //        }
                                     //    }
                                     //},
+
                                     //{
                                     //    xtype: 'panel',
                                     //    html: '<table id="exceltable"></table>',
