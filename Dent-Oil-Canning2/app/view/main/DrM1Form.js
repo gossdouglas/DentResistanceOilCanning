@@ -6,7 +6,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
     border: false,
     controller: 'dr-model1-form-controller',
     scrollable: true,
-    url: 'api/DentResistanc/CalculateModelOne',
+    url: 'api/DentResistance/CalculateModelOne',
+    //url: 'api/OilCanning/LoadOilCanning',
 
     items:
         [

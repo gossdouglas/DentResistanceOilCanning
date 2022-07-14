@@ -18,24 +18,27 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         //'Ext.chart.series.Polar',
         //'Ext.chart.PolarChart',
 
-        'DentResistanceOilCanning.view.main.MainController',
-        'DentResistanceOilCanning.view.main.DrM1FormController',
-        'DentResistanceOilCanning.view.main.DrM2FormController',
-        'DentResistanceOilCanning.view.main.OilCanningFormController',
+        'DentResistanceOilCanning.view.main.MainController',         
         'DentResistanceOilCanning.view.main.MainModel',
         'DentResistanceOilCanning.view.main.List',
         'DentResistanceOilCanning.view.main.PageFooter',
 
         'DentResistanceOilCanning.view.main.DentResistanceOverview',
-        'DentResistanceOilCanning.view.main.OilCanningOverview',
+        'DentResistanceOilCanning.store.GradeStoreModel1',
         'DentResistanceOilCanning.view.main.DrM1Form',
         'DentResistanceOilCanning.view.main.DrM1FormCalcResults',
-        'DentResistanceOilCanning.view.main.DrM2Form',
-        'DentResistanceOilCanning.view.main.DrM2FormCalcResults',
-        'DentResistanceOilCanning.view.main.OilCanningForm',
+        'DentResistanceOilCanning.view.main.DrM1FormController',
 
-        'DentResistanceOilCanning.store.GradeStoreModel1',
+        'DentResistanceOilCanning.view.main.DrM2Form',
         'DentResistanceOilCanning.store.GradeStoreModel2',
+        'DentResistanceOilCanning.view.main.DrM2FormCalcResults',       
+        'DentResistanceOilCanning.view.main.DrM2FormController',
+
+        'DentResistanceOilCanning.view.main.OilCanningOverview',
+        'DentResistanceOilCanning.view.main.OilCanningForm',
+        'DentResistanceOilCanning.view.main.OcBulkInputForm',
+        'DentResistanceOilCanning.view.main.OilCanningFormController',
+        'DentResistanceOilCanning.view.main.OcBulkInputFormController', 
     ],
 
     controller: 'main',
@@ -179,6 +182,145 @@ function showOcCalculator() {
     }).show()
 
     //var OpenWindow = window.open('OilCanning/OilCanningCalculator.html');
+}
+
+function showOcBulkInput() {
+
+    var win = Ext.create('Ext.window.Window', {
+        layout: 'fit',
+        xtype: 'form',
+        width: '100%',
+        height: '100%',
+        id: 'oilCanningBulkInputFormWindow',
+        items: {
+            xtype: 'oil-canning-bulk-input-form'
+        },
+        listeners: {
+
+        }
+    }).show()
+}
+
+//function getExcelPath() {
+
+//    console.log($('#excelfile').val())
+//}
+
+
+function ExportToTable() {
+//function ExportToTable(filePath) {
+    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;
+    /*Checks whether the file is a valid excel file*/
+
+    console.clear();
+    console.log("ExportToTable Entry.")
+    //console.log(filePath.toLowerCase());
+    console.log($("#excelfile").val().toLowerCase());
+
+    if (regex.test($("#excelfile").val().toLowerCase())) {
+    //if (regex.test(filePath.toLowerCase())) {
+        var xlsxflag = false; /*Flag for checking whether excel is .xls format or .xlsx format*/
+        if ($("#excelfile").val().toLowerCase().indexOf(".xlsx") > 0) {
+        //if (filePath.toLowerCase().indexOf(".xlsx") > 0) {
+            xlsxflag = true;
+        }
+        /*Checks whether the browser supports HTML5*/
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var data = e.target.result;
+                /*Converts the excel data in to object*/
+                if (xlsxflag) {
+                    var workbook = XLSX.read(data, { type: 'binary' });
+                }
+                else {
+                    var workbook = XLS.read(data, { type: 'binary' });
+                }
+                /*Gets all the sheetnames of excel in to a variable*/
+                var sheet_name_list = workbook.SheetNames;
+                console.log("sheet_name_list: " + sheet_name_list);
+                console.log("sheet_name_list length: " + sheet_name_list.length);
+
+                var cnt = 0; /*This is used for restricting the script to consider only first sheet of excel*/
+                sheet_name_list.forEach(function (y) { /*Iterate through all sheets*/
+                    /*Convert the cell value to Json*/
+                    if (xlsxflag) {
+                        var exceljson = XLSX.utils.sheet_to_json(workbook.Sheets[y]);
+                        console.log("exceljson xlsxflag true: ");
+                        console.log(exceljson);
+                        console.log("exceljson[0]");
+                        console.log(exceljson[0]);//returns all values for 0
+                        //console.log(exceljson[0].values);//doesnpt work
+                        //console.log(exceljson[0].'FVR (mm)');//doesnpt work
+                        //console.log(Object.values(exceljson[0])[0]);//doesn't work
+                        //console.log(JSON.parse(exceljson[0]));
+                        console.log(JSON.stringify(exceljson[0]));
+                        console.log(JSON.stringify(exceljson));
+                    }
+                    else {
+                        var exceljson = XLS.utils.sheet_to_row_object_array(workbook.Sheets[y]);
+                        console.log("exceljson xlsxflag false: ");
+                        console.log(exceljson);
+                    }
+
+                    console.log("exceljson.length");
+                    console.log(exceljson.length);
+                    console.log("exceljson.length > 0 && cnt == 0:");
+                    console.log(exceljson.length > 0 && cnt == 0);
+                    if (exceljson.length > 0 && cnt == 0) {
+                        BindTable(exceljson, '#exceltable');
+                        cnt++;
+                    }
+                });
+                $('#exceltable').show();
+            }
+            if (xlsxflag) {/*If excel file is .xlsx extension than creates a Array Buffer from excel*/
+                reader.readAsArrayBuffer($("#excelfile")[0].files[0]);
+                //reader.readAsArrayBuffer(filePath[0].files[0]);
+            }
+            else {
+                reader.readAsBinaryString($("#excelfile")[0].files[0]);
+                //reader.readAsBinaryString(filePath[0].files[0]);
+            }
+        }
+        else {
+            alert("Sorry! Your browser does not support HTML5!");
+        }
+    }
+    else {
+        alert("Please upload a valid Excel file!");
+    }
+}
+
+function BindTable(jsondata, tableid) {/*Function used to convert the JSON array to Html Table*/
+    var columns = BindTableHeader(jsondata, tableid); /*Gets all the column headings of Excel*/
+    for (var i = 0; i < jsondata.length; i++) {
+        var row$ = $('<tr/>');
+        for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+            var cellValue = jsondata[i][columns[colIndex]];
+            if (cellValue == null)
+                cellValue = "";
+            row$.append($('<td/>').html(cellValue));
+        }
+        $(tableid).append(row$);
+    }
+}
+function BindTableHeader(jsondata, tableid) {/*Function used to get all column names from JSON and bind the html table header*/
+    var columnSet = [];
+    var headerTr$ = $('<tr/>');
+    for (var i = 0; i < jsondata.length; i++) {
+        var rowHash = jsondata[i];
+        for (var key in rowHash) {
+            if (rowHash.hasOwnProperty(key)) {
+                if ($.inArray(key, columnSet) == -1) {/*Adding each unique column names to a variable array*/
+                    columnSet.push(key);
+                    headerTr$.append($('<th/>').html(key));
+                }
+            }
+        }
+    }
+    $(tableid).append(headerTr$);
+    return columnSet;
 }
 
 $(document).ready(function () {

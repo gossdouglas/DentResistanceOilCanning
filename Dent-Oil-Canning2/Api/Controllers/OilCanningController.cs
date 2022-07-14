@@ -23,6 +23,7 @@ using System.Windows;
 //using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Input;
 using Dent_Oil_Canning2.Api.Models;
+using System.Web;
 
 namespace Dent_Oil_Canning2.Controllers
 {
@@ -189,6 +190,28 @@ namespace Dent_Oil_Canning2.Controllers
             {
                 return new ReturnObject<VmOilCanningReturn>() { success = false, data = oilCanningReturn, validated = true };
                // return new ReturnObject<List<Chart>>() { success = false, data = chartList, validated = true };
+            }
+        }
+
+        //[HttpPost]
+        [HttpGet]
+        public ReturnObject<VmOilCanningReturn> LoadOilCanning(HttpPostedFileBase FileUpload)
+        //public ReturnObject<VmOilCanningReturn> LoadOilCanning(object sender)
+        //public ReturnObject<VmOilCanningReturn> LoadOilCanning(object sender, EventArgs e)
+        //public ReturnObject<VmOilCanningReturn> LoadOilCanning(OilCanning model)
+        {
+            VmOilCanningReturn oilCanningReturn = new VmOilCanningReturn();
+            List<Chart> chartList = new List<Chart>();
+
+            if (chartList != null)
+            {
+                return new ReturnObject<VmOilCanningReturn>() { success = true, data = oilCanningReturn, validated = true };
+                //return new ReturnObject<List<Chart>>() { success = true, data = chartList, validated = true };
+            }
+            else
+            {
+                return new ReturnObject<VmOilCanningReturn>() { success = false, data = oilCanningReturn, validated = true };
+                // return new ReturnObject<List<Chart>>() { success = false, data = chartList, validated = true };
             }
         }
 

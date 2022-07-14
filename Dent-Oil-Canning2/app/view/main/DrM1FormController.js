@@ -22,17 +22,18 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
     //    }
     //},
 
-    //save button for a new ti-slot
+    //
     onCalculateDrM1Click: function (sender, record) {
         var form = this.getView().getForm();
         var formValues = form.getValues();
         var formFields = form.getFields();
+        console.clear();
         //console.log("record")
         //console.log(record)
         //console.log("form")
         //console.log(form)
-        console.log(formValues.GradeKey);
-        console.log(formFields);
+        //console.log(formValues.GradeKey);
+        //console.log(formFields);
 
         if (!form.isValid()) {
             //Ext.Msg.alert('Save not allowed', 'Some required fields are empty.');
@@ -48,7 +49,8 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
             // Submit the Ajax request and handle the response
             form.submit({
                 url: 'api/DentResistance/CalculateModelOne',
-                waitMsg: 'Calculating..',
+                //url: 'api/OilCanning/LoadOilCanning',
+                waitMsg: 'Uploading..',
                 clientValidation: true,
                 submitEmptyText: true,
                 success: function (frm, action) {
@@ -146,7 +148,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
         }     
     },
 
-    //save button for a new ti-slot
+    //
     onClearResultsClick: function (sender, record) {
         var form = this.getView().getForm();
 
