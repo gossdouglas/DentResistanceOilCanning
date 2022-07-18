@@ -107,8 +107,8 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
 
                                     {
                                         xtype: 'panel',
-                                        //html: '<input type="file" id="excelfile" onchange="ExportToTable()"/>',
-                                        html: '<input type="file" id="excelfile"/>',
+                                        html: '<input type="file" id="excelfile" onChange="ExportToTable()"/>',
+                                        //html: '<input type="file" id="excelfile"/>',
                                     },
                                     {
                                         xtype: 'button',

@@ -306,8 +306,8 @@ function ExportToTable() {
                     }
                 });
 
-                //console.log("post to the back end.");
-                //console.log(objExcelJson);
+                console.log("post to the back end.");
+                console.log(objExcelJson);
                 //post to the back end
                 Ext.Ajax.request({
                     url: 'api/OilCanning/CalculateBulkOilCanning',
@@ -319,17 +319,17 @@ function ExportToTable() {
 
                         //print the response from the server
                         if (resp.success) {
-                            //console.log(resp);
+                            console.log(resp);
                         }
                         //print the response from the server
                         else {
-                            //console.log(resp);
+                            console.log(resp);
                         }
                     },
                     //print the response from the server
                     failure: function (response, opts) {
                         var resp = response;
-                        //console.log(resp);
+                        console.log(resp);
                     }
                 });
             }
