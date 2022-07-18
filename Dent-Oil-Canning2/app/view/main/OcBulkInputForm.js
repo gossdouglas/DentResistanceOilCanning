@@ -107,6 +107,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
 
                                     {
                                         xtype: 'panel',
+                                        //html: '<input type="file" id="excelfile" onchange="ExportToTable()"/>',
                                         html: '<input type="file" id="excelfile"/>',
                                     },
                                     {
@@ -116,6 +117,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                         listeners: {
                                             click: function (input, val, opts) {
 
+                                                console.log("button click event.")
                                                 objExcelJson = ExportToTable();
                                             }
                                         }

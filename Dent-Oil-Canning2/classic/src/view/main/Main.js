@@ -201,21 +201,13 @@ function showOcBulkInput() {
     }).show()
 }
 
-//function getExcelPath() {
-
-//    console.log($('#excelfile').val())
-//}
-
-
 function ExportToTable() {
-    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;
     /*Checks whether the file is a valid excel file*/
-
-    //console.clear();
+    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;
+    
+    console.clear();
     //console.log("ExportToTable Entry.")
-    //console.log(filePath.toLowerCase());
     //console.log($("#excelfile"));
-    //console.log($("#excelfile2"));
     //console.log($("#excelfile").val().toLowerCase());
 
     if (regex.test($("#excelfile").val().toLowerCase())) {
@@ -226,6 +218,9 @@ function ExportToTable() {
         /*Checks whether the browser supports HTML5*/
         if (typeof (FileReader) != "undefined") {
             var reader = new FileReader();
+            //array which will hold json objects
+            var objExcelJson = [];
+
             reader.onload = function (e) {
                 var data = e.target.result;
                 /*Converts the excel data in to object*/
@@ -237,26 +232,25 @@ function ExportToTable() {
                 }
                 /*Gets all the sheetnames of excel in to a variable*/
                 var sheet_name_list = workbook.SheetNames;
+
                 //console.log("sheet_name_list: " + sheet_name_list);
                 //console.log("sheet_name_list length: " + sheet_name_list.length);
 
-                var cnt = 0; /*This is used for restricting the script to consider only first sheet of excel*/
+                var sheetNumber = 0; /*This is used for restricting the script to consider only first sheet of excel*/
                 sheet_name_list.forEach(function (y) { /*Iterate through all sheets*/
+
+                    //break out of the forEach loop if not on the first sheet of the workbook
+                    //console.log("sheetNumber: " + sheetNumber);
+                    if (sheetNumber != 0) {
+                        return false;
+                    }
+
                     /*Convert the cell value to Json*/
                     if (xlsxflag) {
+                        //convert the contents of an excel sheet into an object
                         var exceljson = XLSX.utils.sheet_to_json(workbook.Sheets[y]);
-                        //var tmpKey;
-                        var objExcelJson = [];
-                        //var tmpObject = new Object();
+                        //object which will hold a single line of excel data in json format
                         var tmpObject;
-
-                        //console.log("exceljson xlsxflag true: ");
-                        //console.log("exceljson.length");
-                        //console.log(exceljson.length);
-                        //console.log(Object.keys(exceljson[0])[1]);
-                        //console.log(exceljson);
-                        //console.log(Object.values(exceljson[0])[0]);
-                        //console.log(exceljson[0]);//returns all values for 0
 
                         $(exceljson).each(function (index) {
 
@@ -277,57 +271,66 @@ function ExportToTable() {
                             objExcelJson.push(tmpObject);                           
                         });
 
-                        //exceljson isn't truly a json. convert the exceljson object to a json.  
-                        //var strExcelJson = JSON.stringify(exceljson);
-                        //convert strExcelJson to a javascript object
-                        //var objExcelJson = JSON.parse(strExcelJson);
-
-                        //console.log("strExcelJson");
-                        //console.log(strExcelJson);
-                        console.log("objExcelJson");
-                        console.log(objExcelJson);
-
-                        //return objExcelJson;
+                        sheetNumber++;
+                        //console.log("objExcelJson xlsxflag");
+                        //console.log(objExcelJson);
                     }
                     else {
+                        //convert the contents of an excel sheet into an object
                         var exceljson = XLS.utils.sheet_to_row_object_array(workbook.Sheets[y]);
-                        //console.log("exceljson xlsxflag false: ");
-                        //console.log("exceljson.length");
-                        //console.log(exceljson.length);
+                        //object which will hold a single line of excel data in json format
+                        var tmpObject;
 
-                        //exceljson isn't truly a json. convert the exceljson object to a json.  
-                        //var strExcelJson = JSON.stringify(exceljson);
-                        //convert strExcelJson to a javascript object
-                        //var objExcelJson = JSON.parse(strExcelJson);
+                        $(exceljson).each(function (index) {
 
-                        //console.log(strExcelJson);
-                        console.log(objExcelJson);
+                            tmpObject = {
 
-                        return objExcelJson;
+                                ocvar: "",
+                                peakld: "",
+                                fvr: Object.values(exceljson[index])[0],
+                                svr: Object.values(exceljson[index])[1],
+                                gaugeini: Object.values(exceljson[index])[2],
+                                span: Object.values(exceljson[index])[3],
+                                emaj: Object.values(exceljson[index])[4],
+                                emin: Object.values(exceljson[index])[5],
+                                DDQ: "",
+                                BH210: ""
+                            };
+
+                            objExcelJson.push(tmpObject);
+                        });
+
+                        sheetNumber++;
+                        //console.log("objExcelJson non xlsxflag");
+                        //console.log(objExcelJson);
                     }
+                });
 
-                    //post badge
-                    Ext.Ajax.request({
-                        url: 'api/OilCanning/CalculateBulkOilCanning',
-                        method: 'POST',
-                        jsonData: JSON.stringify(objExcelJson),
-                        async: false,
-                        success: function (response, opts) {
-                            var resp = Ext.decode(response.responseText);
+                //console.log("post to the back end.");
+                //console.log(objExcelJson);
+                //post to the back end
+                Ext.Ajax.request({
+                    url: 'api/OilCanning/CalculateBulkOilCanning',
+                    method: 'POST',
+                    jsonData: JSON.stringify(objExcelJson),
+                    async: false,
+                    success: function (response, opts) {
+                        var resp = Ext.decode(response.responseText);
 
-                            //if badge creation was successful, return the ti-slot id
-                            if (resp.success) {
-                                rtndBadgeId = resp.data.BadgeId;
-                            }
-                            //if badge creation wasn't successful, return -1
-                            else {
-                                rtndBadgeId = -1;
-                            }
-                        },
-                        failure: function (response, opts) {
-                            var resp = response;
+                        //print the response from the server
+                        if (resp.success) {
+                            //console.log(resp);
                         }
-                    });
+                        //print the response from the server
+                        else {
+                            //console.log(resp);
+                        }
+                    },
+                    //print the response from the server
+                    failure: function (response, opts) {
+                        var resp = response;
+                        //console.log(resp);
+                    }
                 });
             }
             if (xlsxflag) {/*If excel file is .xlsx extension than creates a Array Buffer from excel*/

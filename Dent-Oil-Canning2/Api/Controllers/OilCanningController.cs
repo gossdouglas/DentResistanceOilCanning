@@ -68,21 +68,7 @@ namespace Dent_Oil_Canning2.Controllers
             double num10 = num8 * Math.Sqrt(Math.Pow(x1, 2.0) + Math.Pow(x2, 2.0) + num9 * x1 * x2);
             double num11 = x4 * 4.236321106 - 28.68952216 + x5 * 9.637663376 + x3 * 149.0650957 + num10 * 100.0 * -2.694921243 + Math.Pow(x4, 2.0) * -0.927863682 + Math.Pow(x5, 2.0) * -1.783005598 + Math.Pow(x3, 2.0) * 130.2316872 + Math.Pow(num10 * 100.0, 2.0) * -2.233762661 + x4 * x5 * 0.071358337 + x4 * x3 * -0.229851852 + x5 * x3 * -5.062709231 + x4 * (num10 * 100.0) * -0.1787746 + x5 * (num10 * 100.0) * 0.103470248 + x3 * (num10 * 100.0) * 44.96068783;
             BH210 = num11;
-            //if (this.SteelGrade.SelectedIndex == 0)
-            //{
-            //    if (num6 > 0.0)
-            //    {
-            //        this.SteelGradeTextBox.Text = string.Format("{0:f2}", (object)num6) + " (N)";
-            //        this.SteelGradeGauge.CurrentValue = Conversions.ToDouble(string.Format("{0:f2}", (object)num6));
-            //        this.steelgradeselected = (object)"ddq";
-            //    }
-            //}
-            //else if (this.SteelGrade.SelectedIndex == 1 && num11 > 0.0)
-            //{
-            //    this.SteelGradeTextBox.Text = string.Format("{0:f3}", (object)num11) + " (N)";
-            //    this.SteelGradeGauge.CurrentValue = Conversions.ToDouble(string.Format("{0:f3}", (object)num11));
-            //    this.steelgradeselected = (object)"bh120";
-            //}
+
             double num12 = x3 - double.Parse("0.7");
             double num13 = double.Parse("10000.0") / fvr - double.Parse("2.0");
             double num14 = double.Parse("10000.0") / svr - double.Parse("2.0");
@@ -192,18 +178,14 @@ namespace Dent_Oil_Canning2.Controllers
         public ReturnObject<List<VmOilCanningReturn>> CalculateBulkOilCanning(List<OilCanning> model)
         {
             List<VmOilCanningReturn> oilCanningReturnList = new List<VmOilCanningReturn>();
-            VmOilCanningReturn oilCanningReturn = new VmOilCanningReturn();
-            //List<Chart> chartList = new List<Chart>();
 
+            //for each oil canning calculation...
             foreach (OilCanning oc in model)
             {
-                //SelectListItem temp = new SelectListItem
-                //{
-                //    Text = cs.ConfinedSpaceID.ToString(),
-                //    Value = cs.ConfinedSpaceID.ToString()
-                //};
-                //myConfinedSpaceFormIDs.Add(temp);
-                //}
+                //create a new VmOilCanningReturn object
+                VmOilCanningReturn oilCanningReturn = new VmOilCanningReturn();
+                //create a new list of chart objects
+                List<Chart> chartList = new List<Chart>();
 
                 double ocvar = oc.ocvar;
                 double peakld = oc.peakld;
@@ -242,21 +224,7 @@ namespace Dent_Oil_Canning2.Controllers
                 double num10 = num8 * Math.Sqrt(Math.Pow(x1, 2.0) + Math.Pow(x2, 2.0) + num9 * x1 * x2);
                 double num11 = x4 * 4.236321106 - 28.68952216 + x5 * 9.637663376 + x3 * 149.0650957 + num10 * 100.0 * -2.694921243 + Math.Pow(x4, 2.0) * -0.927863682 + Math.Pow(x5, 2.0) * -1.783005598 + Math.Pow(x3, 2.0) * 130.2316872 + Math.Pow(num10 * 100.0, 2.0) * -2.233762661 + x4 * x5 * 0.071358337 + x4 * x3 * -0.229851852 + x5 * x3 * -5.062709231 + x4 * (num10 * 100.0) * -0.1787746 + x5 * (num10 * 100.0) * 0.103470248 + x3 * (num10 * 100.0) * 44.96068783;
                 BH210 = num11;
-                //if (this.SteelGrade.SelectedIndex == 0)
-                //{
-                //    if (num6 > 0.0)
-                //    {
-                //        this.SteelGradeTextBox.Text = string.Format("{0:f2}", (object)num6) + " (N)";
-                //        this.SteelGradeGauge.CurrentValue = Conversions.ToDouble(string.Format("{0:f2}", (object)num6));
-                //        this.steelgradeselected = (object)"ddq";
-                //    }
-                //}
-                //else if (this.SteelGrade.SelectedIndex == 1 && num11 > 0.0)
-                //{
-                //    this.SteelGradeTextBox.Text = string.Format("{0:f3}", (object)num11) + " (N)";
-                //    this.SteelGradeGauge.CurrentValue = Conversions.ToDouble(string.Format("{0:f3}", (object)num11));
-                //    this.steelgradeselected = (object)"bh120";
-                //}
+
                 double num12 = x3 - double.Parse("0.7");
                 double num13 = double.Parse("10000.0") / fvr - double.Parse("2.0");
                 double num14 = double.Parse("10000.0") / svr - double.Parse("2.0");
@@ -332,8 +300,7 @@ namespace Dent_Oil_Canning2.Controllers
                     string str1 = numArray6[index3].ToString();
                     string str2 = Conversions.ToString(numArray7[index3]);
                     if ((double)numArray7[index3] > 0.0)
-                        //oilCanningReturn.chartList.Add(new Chart(Conversions.ToDouble(str1), Conversions.ToDouble(str2)));
-                        //chartList.Add(new Chart(Conversions.ToDouble(str1), Conversions.ToDouble(str2)));
+                        chartList.Add(new Chart(Conversions.ToDouble(str1), Conversions.ToDouble(str2)));
                     if ((double)numArray7[index3] < 400.0)
                         checked { ++index3; }
                     else
@@ -341,51 +308,30 @@ namespace Dent_Oil_Canning2.Controllers
                 }
                 while (index3 <= 201);
                 ocvar = numArray3[1] + num17 * (2.0 * numArray4[1]);
-                //return oilCanning;
 
-                //oilCanningReturn.chartList = chartList;
+                //set this oil canning return's chartList object to chartList
+                oilCanningReturn.chartList = chartList;
                 oc.ocvar = ocvar;
                 oc.peakld = peakld;
                 oc.BH210 = BH210;
                 oc.DDQ = DDQ;
+                //set this oil canning return's oil canning object to oc
                 oilCanningReturn.oilcanning = oc;
+
+                //add oilCanningReturn to oilCanningReturnList
                 oilCanningReturnList.Add(oilCanningReturn);
+
             }
 
             if (oilCanningReturnList != null)
             {
                 return new ReturnObject<List<VmOilCanningReturn>>() { success = true, data = oilCanningReturnList, validated = true };
-                //return new ReturnObject<List<Chart>>() { success = true, data = chartList, validated = true };
             }
             else
             {
-                return new ReturnObject<List<VmOilCanningReturn>>() { success = false, data = oilCanningReturnList, validated = true };
-                // return new ReturnObject<List<Chart>>() { success = false, data = chartList, validated = true };
-            }
-
-            //return new ReturnObject<VmOilCanningReturn>() { success = true, data = oilCanningReturn, validated = true };
-        }
-
-        //[HttpPost]
-        [HttpGet]
-        public ReturnObject<VmOilCanningReturn> LoadOilCanning(HttpPostedFileBase FileUpload)
-        //public ReturnObject<VmOilCanningReturn> LoadOilCanning(object sender)
-        //public ReturnObject<VmOilCanningReturn> LoadOilCanning(object sender, EventArgs e)
-        //public ReturnObject<VmOilCanningReturn> LoadOilCanning(OilCanning model)
-        {
-            VmOilCanningReturn oilCanningReturn = new VmOilCanningReturn();
-            List<Chart> chartList = new List<Chart>();
-
-            if (chartList != null)
-            {
-                return new ReturnObject<VmOilCanningReturn>() { success = true, data = oilCanningReturn, validated = true };
-                //return new ReturnObject<List<Chart>>() { success = true, data = chartList, validated = true };
-            }
-            else
-            {
-                return new ReturnObject<VmOilCanningReturn>() { success = false, data = oilCanningReturn, validated = true };
-                // return new ReturnObject<List<Chart>>() { success = false, data = chartList, validated = true };
+                return new ReturnObject<List<VmOilCanningReturn>>() { success = true, data = oilCanningReturnList, validated = true };
             }
         }
+
     }
 }
