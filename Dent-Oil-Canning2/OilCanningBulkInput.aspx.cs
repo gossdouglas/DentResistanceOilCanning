@@ -663,12 +663,20 @@ namespace Dent_Oil_Canning2
                     }
                     ref double local1 = ref this.ocvar;
                     ref double local2 = ref this.peakld;
+
                     //double fvr = num2;
                     //double svr = num3;
                     //double gaugeini = num4;
                     //double span = num5;
                     //double emaj = num6;
                     //double emin = num7;
+                    double fvr = 3000;
+                    double svr = 3000;
+                    double gaugeini = .6;
+                    double span = 320;
+                    double emaj = 0;
+                    double emin = 0;
+
                     double num8 = Conversions.ToDouble(this.ddq);
                     ref double local3 = ref num8;
                     double num9 = Conversions.ToDouble(this.bh210);
@@ -677,7 +685,7 @@ namespace Dent_Oil_Canning2
                     ref double local6 = ref this.loadMax;
                     ref double local7 = ref this.deflactionMin;
                     ref double local8 = ref this.deflactionMax;
-                    //this.CalculateOilCanning(ref local1, ref local2, fvr, svr, gaugeini, span, emaj, emin, ref local3, ref local4, ref local5, ref local6, ref local7, ref local8);
+                    this.CalculateOilCanning(ref local1, ref local2, fvr, svr, gaugeini, span, emaj, emin, ref local3, ref local4, ref local5, ref local6, ref local7, ref local8);
                     this.bh210 = (object)num9;
                     this.ddq = (object)num8;
                     string str = string.Empty;

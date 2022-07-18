@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractorPermitTracking", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "allpax_service_record", "..\..\..\..\..\Code\Service-Record-Final-MAY21\allpax_service_record.csproj", "{3213007B-7EC8-4EBC-8A4B-7E25A8A1B302}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMNS.FrontGate.Kiosk", "..\FrontGate\AMNS.FrontGate.Kiosk\AMNS.FrontGate.Kiosk.csproj", "{0BD46BC6-1249-488F-9F83-CF2E5776D87C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,22 @@ Global
 		{3213007B-7EC8-4EBC-8A4B-7E25A8A1B302}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3213007B-7EC8-4EBC-8A4B-7E25A8A1B302}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
 		{3213007B-7EC8-4EBC-8A4B-7E25A8A1B302}.UAT|Any CPU.Build.0 = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Dev Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Dev Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Dev Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Dev Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Local Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Local Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Local Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Local Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Production|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Production|Any CPU.Build.0 = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD46BC6-1249-488F-9F83-CF2E5776D87C}.UAT|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

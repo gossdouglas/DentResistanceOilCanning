@@ -1,4 +1,5 @@
 Ext.QuickTips.init();
+objExcelJson = new Object();
 
 Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
     extend: 'Ext.form.Panel',
@@ -38,7 +39,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                     //{
                                     //    xtype: 'textfield',
                                     //    //id: 'excelfile',
-                                    //    itemId: 'excelfile',
+                                    //    inputId: 'excelfile',
                                     //    name: 'excelfile',
                                     //    fieldLabel: 'Directory Path',
                                     //    grow: true,
@@ -69,52 +70,56 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                     //},
 
                                     //{
-                                    //    xtype: 'panel',
-                                    //    html: '<table id="exceltable"></table>',
+                                    //    //xtype: 'filefield',
+                                    //    xtype: 'fileuploadfield',
+                                    //    //id: 'excelfile',
+                                    //    inputId: 'excelfile2',
+                                    //    name: 'photo',
+                                    //    fieldLabel: 'File:',
+                                    //    labelWidth: 50,
+                                    //    msgTarget: 'side',
+                                    //    allowBlank: false,
+                                    //    anchor: '100%',
+                                    //    buttonText: 'Select an Excel File ...',
+                                    //    grow: true,
+                                    //    //listeners: {
+                                    //    //    change: function (input, val, opts) {
+
+                                    //    //        ExportToTable();
+
+                                    //    //        //console.clear();
+                                    //    //        //console.log(this);
+                                    //    //        //console.log(input);
+                                    //    //        //console.log(val);
+                                    //    //        //console.log(opts);
+                                    //    //    },
+                                    //    //    //click: 'onLoadOcBulkInputClick'
+                                    //    //    //change: function (input, val, opts) {
+
+                                    //    //    //    console.clear();
+                                    //    //    //    console.log(this);
+                                    //    //    //    console.log(input);
+                                    //    //    //    console.log(val);
+                                    //    //    //    console.log(opts);
+                                    //    //    //}
+                                    //    //}
                                     //},
 
                                     {
                                         xtype: 'panel',
-                                        html: '<input type="file" id="excelfile"/><input type="button" id="viewfile" value="Export To Table" onclick="ExportToTable()"/><br/><br/><table id="exceltable"></table>',
-                                        //html: '<input type="file" id="excelfile"/>',
+                                        html: '<input type="file" id="excelfile"/>',
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        text: "Load Excel",
+                                        width: '10%',
                                         listeners: {
-                                            //click: 'onLoadOcBulkInputClick'
-                                            //change: function (input, val, opts) {
+                                            click: function (input, val, opts) {
 
-                                            //    console.clear();
-                                            //    console.log(this);
-                                            //    console.log(input);
-                                            //    console.log(val);
-                                            //    console.log(opts);
-                                            //}
+                                                objExcelJson = ExportToTable();
+                                            }
                                         }
                                     },
-
-                                   //{
-                                   //     //xtype: 'filefield',
-                                   //     xtype: 'fileuploadfield',
-                                   //     //id: 'excelfile',
-                                   //     inputId: 'excelfile',
-                                   //     name: 'photo',
-                                   //     fieldLabel: 'File:',
-                                   //     labelWidth: 50,
-                                   //     msgTarget: 'side',
-                                   //     allowBlank: false,
-                                   //     anchor: '100%',
-                                   //     buttonText: 'Select an Excel File ...',
-                                   //     grow: true,
-                                   //     listeners: {
-                                   //         //click: 'onLoadOcBulkInputClick'
-                                   //         change: function (input, val, opts) {
-
-                                   //             console.clear();
-                                   //             console.log(this);
-                                   //             console.log(input);
-                                   //             console.log(val);
-                                   //             console.log(opts);
-                                   //         }
-                                   //     }
-                                   // },
                                 ],
                         },                      
                     ]

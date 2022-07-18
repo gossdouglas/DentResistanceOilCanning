@@ -208,20 +208,19 @@ function showOcBulkInput() {
 
 
 function ExportToTable() {
-//function ExportToTable(filePath) {
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;
     /*Checks whether the file is a valid excel file*/
 
-    console.clear();
-    console.log("ExportToTable Entry.")
+    //console.clear();
+    //console.log("ExportToTable Entry.")
     //console.log(filePath.toLowerCase());
-    console.log($("#excelfile").val().toLowerCase());
+    //console.log($("#excelfile"));
+    //console.log($("#excelfile2"));
+    //console.log($("#excelfile").val().toLowerCase());
 
     if (regex.test($("#excelfile").val().toLowerCase())) {
-    //if (regex.test(filePath.toLowerCase())) {
         var xlsxflag = false; /*Flag for checking whether excel is .xls format or .xlsx format*/
         if ($("#excelfile").val().toLowerCase().indexOf(".xlsx") > 0) {
-        //if (filePath.toLowerCase().indexOf(".xlsx") > 0) {
             xlsxflag = true;
         }
         /*Checks whether the browser supports HTML5*/
@@ -238,49 +237,104 @@ function ExportToTable() {
                 }
                 /*Gets all the sheetnames of excel in to a variable*/
                 var sheet_name_list = workbook.SheetNames;
-                console.log("sheet_name_list: " + sheet_name_list);
-                console.log("sheet_name_list length: " + sheet_name_list.length);
+                //console.log("sheet_name_list: " + sheet_name_list);
+                //console.log("sheet_name_list length: " + sheet_name_list.length);
 
                 var cnt = 0; /*This is used for restricting the script to consider only first sheet of excel*/
                 sheet_name_list.forEach(function (y) { /*Iterate through all sheets*/
                     /*Convert the cell value to Json*/
                     if (xlsxflag) {
                         var exceljson = XLSX.utils.sheet_to_json(workbook.Sheets[y]);
-                        console.log("exceljson xlsxflag true: ");
-                        console.log(exceljson);
-                        console.log("exceljson[0]");
-                        console.log(exceljson[0]);//returns all values for 0
-                        //console.log(exceljson[0].values);//doesnpt work
-                        //console.log(exceljson[0].'FVR (mm)');//doesnpt work
-                        //console.log(Object.values(exceljson[0])[0]);//doesn't work
-                        //console.log(JSON.parse(exceljson[0]));
-                        console.log(JSON.stringify(exceljson[0]));
-                        console.log(JSON.stringify(exceljson));
+                        //var tmpKey;
+                        var objExcelJson = [];
+                        //var tmpObject = new Object();
+                        var tmpObject;
+
+                        //console.log("exceljson xlsxflag true: ");
+                        //console.log("exceljson.length");
+                        //console.log(exceljson.length);
+                        //console.log(Object.keys(exceljson[0])[1]);
+                        //console.log(exceljson);
+                        //console.log(Object.values(exceljson[0])[0]);
+                        //console.log(exceljson[0]);//returns all values for 0
+
+                        $(exceljson).each(function (index) {
+
+                            tmpObject = {
+
+                                ocvar: "",
+                                peakld: "",
+                                fvr: Object.values(exceljson[index])[0],
+                                svr: Object.values(exceljson[index])[1],
+                                gaugeini: Object.values(exceljson[index])[2],
+                                span: Object.values(exceljson[index])[3],
+                                emaj: Object.values(exceljson[index])[4],
+                                emin: Object.values(exceljson[index])[5],
+                                DDQ: "",
+                                BH210: ""
+                            };
+
+                            objExcelJson.push(tmpObject);                           
+                        });
+
+                        //exceljson isn't truly a json. convert the exceljson object to a json.  
+                        //var strExcelJson = JSON.stringify(exceljson);
+                        //convert strExcelJson to a javascript object
+                        //var objExcelJson = JSON.parse(strExcelJson);
+
+                        //console.log("strExcelJson");
+                        //console.log(strExcelJson);
+                        console.log("objExcelJson");
+                        console.log(objExcelJson);
+
+                        //return objExcelJson;
                     }
                     else {
                         var exceljson = XLS.utils.sheet_to_row_object_array(workbook.Sheets[y]);
-                        console.log("exceljson xlsxflag false: ");
-                        console.log(exceljson);
+                        //console.log("exceljson xlsxflag false: ");
+                        //console.log("exceljson.length");
+                        //console.log(exceljson.length);
+
+                        //exceljson isn't truly a json. convert the exceljson object to a json.  
+                        //var strExcelJson = JSON.stringify(exceljson);
+                        //convert strExcelJson to a javascript object
+                        //var objExcelJson = JSON.parse(strExcelJson);
+
+                        //console.log(strExcelJson);
+                        console.log(objExcelJson);
+
+                        return objExcelJson;
                     }
 
-                    console.log("exceljson.length");
-                    console.log(exceljson.length);
-                    console.log("exceljson.length > 0 && cnt == 0:");
-                    console.log(exceljson.length > 0 && cnt == 0);
-                    if (exceljson.length > 0 && cnt == 0) {
-                        BindTable(exceljson, '#exceltable');
-                        cnt++;
-                    }
+                    //post badge
+                    Ext.Ajax.request({
+                        url: 'api/OilCanning/CalculateBulkOilCanning',
+                        method: 'POST',
+                        jsonData: JSON.stringify(objExcelJson),
+                        async: false,
+                        success: function (response, opts) {
+                            var resp = Ext.decode(response.responseText);
+
+                            //if badge creation was successful, return the ti-slot id
+                            if (resp.success) {
+                                rtndBadgeId = resp.data.BadgeId;
+                            }
+                            //if badge creation wasn't successful, return -1
+                            else {
+                                rtndBadgeId = -1;
+                            }
+                        },
+                        failure: function (response, opts) {
+                            var resp = response;
+                        }
+                    });
                 });
-                $('#exceltable').show();
             }
             if (xlsxflag) {/*If excel file is .xlsx extension than creates a Array Buffer from excel*/
                 reader.readAsArrayBuffer($("#excelfile")[0].files[0]);
-                //reader.readAsArrayBuffer(filePath[0].files[0]);
             }
             else {
                 reader.readAsBinaryString($("#excelfile")[0].files[0]);
-                //reader.readAsBinaryString(filePath[0].files[0]);
             }
         }
         else {
@@ -290,37 +344,6 @@ function ExportToTable() {
     else {
         alert("Please upload a valid Excel file!");
     }
-}
-
-function BindTable(jsondata, tableid) {/*Function used to convert the JSON array to Html Table*/
-    var columns = BindTableHeader(jsondata, tableid); /*Gets all the column headings of Excel*/
-    for (var i = 0; i < jsondata.length; i++) {
-        var row$ = $('<tr/>');
-        for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-            var cellValue = jsondata[i][columns[colIndex]];
-            if (cellValue == null)
-                cellValue = "";
-            row$.append($('<td/>').html(cellValue));
-        }
-        $(tableid).append(row$);
-    }
-}
-function BindTableHeader(jsondata, tableid) {/*Function used to get all column names from JSON and bind the html table header*/
-    var columnSet = [];
-    var headerTr$ = $('<tr/>');
-    for (var i = 0; i < jsondata.length; i++) {
-        var rowHash = jsondata[i];
-        for (var key in rowHash) {
-            if (rowHash.hasOwnProperty(key)) {
-                if ($.inArray(key, columnSet) == -1) {/*Adding each unique column names to a variable array*/
-                    columnSet.push(key);
-                    headerTr$.append($('<th/>').html(key));
-                }
-            }
-        }
-    }
-    $(tableid).append(headerTr$);
-    return columnSet;
 }
 
 $(document).ready(function () {
