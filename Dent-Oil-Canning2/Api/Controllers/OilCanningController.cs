@@ -179,7 +179,7 @@ namespace Dent_Oil_Canning2.Controllers
         {
             List<VmOilCanningReturn> oilCanningReturnList = new List<VmOilCanningReturn>();
 
-            //for each oil canning calculation...
+            //for each posted oil canning calculation...
             foreach (OilCanning oc in model)
             {
                 //create a new VmOilCanningReturn object

@@ -363,3 +363,4 @@ C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\Cl
 C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\ClosedXML.xml
 C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\DocumentFormat.OpenXml.xml
 C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\ExcelNumberFormat.xml
+C:\Users\gosstony\source\repos\DentResistanceOilCanning\Dent-Oil-Canning2\bin\Microsoft.Data.Tools.Components.dll

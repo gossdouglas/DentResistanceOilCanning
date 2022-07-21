@@ -1,6 +1,5 @@
 ﻿Ext.define('DentResistanceOilCanning.model.CalculationDentReistanceModel', {
     extend: 'Ext.data.Model',
-    //idProperty: 'GradeModelId',
     idProperty: 'GradeKey',
     fields: [
 
