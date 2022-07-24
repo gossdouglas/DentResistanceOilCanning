@@ -6,10 +6,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
     xtype: 'oil-canning-bulk-input-form',
     border: false,
     controller: 'oil-canning-bulk-input-form-controller',
-    //controller: 'dr-model1-form-controller',
     scrollable: true,
-    //url: 'api/OilCanning/LoadOilCanning',
-    //url: 'api/DentResistance/CalculateModelOne',
 
     items:
         [
@@ -39,20 +36,29 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                     {
                                         xtype: 'panel',
                                         html: '<input type="file" id="excelfile" onChange="ExportToTable()"/>',
-                                    },
-                                    
-                                    //{
-                                    //    xtype: 'button',
-                                    //    text: "Load Excel",
-                                    //    width: '10%',
-                                    //    listeners: {
-                                    //        click: function (input, val, opts) {
+                                    },                                  
+                                    {
+                                        xtype: 'button',
+                                        text: "Load Excel",
+                                        width: '10%',
+                                        listeners: {
+                                            click: function (input, val, opts) {
 
-                                    //            console.log("button click event.")
-                                    //            objExcelJson = ExportToTable();
-                                    //        }
-                                    //    }
-                                    //},
+                                                ExportToTable();
+                                            }
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        text: "Clear Results",
+                                        width: '10%',
+                                        listeners: {
+                                            click: function (input, val, opts) {
+
+                                                ExportToTable();
+                                            }
+                                        }
+                                    },
                                 ],
                         },                      
                     ]

@@ -175,26 +175,29 @@ namespace Dent_Oil_Canning2.Controllers
         }
 
         [HttpPost]
-        public ReturnObject<List<VmOilCanningReturn>> CalculateBulkOilCanning(List<OilCanning> model)
+        public ReturnObject<List<VmBulkOilCanningReturn>> CalculateBulkOilCanning(List<OilCanning> model)
         {
-            List<VmOilCanningReturn> oilCanningReturnList = new List<VmOilCanningReturn>();
+            List<VmBulkOilCanningReturn> oilCanningReturnList = new List<VmBulkOilCanningReturn>();
 
             //for each posted oil canning calculation...
             foreach (OilCanning oc in model)
             {
                 //create a new VmOilCanningReturn object
-                VmOilCanningReturn oilCanningReturn = new VmOilCanningReturn();
+                VmBulkOilCanningReturn oilCanningReturn = new VmBulkOilCanningReturn();
+
                 //create a new list of chart objects
                 List<Chart> chartList = new List<Chart>();
 
                 double ocvar = oc.ocvar;
                 double peakld = oc.peakld;
+
                 double fvr = oc.fvr;
                 double svr = oc.svr;
                 double gaugeini = oc.gaugeini;
                 double span = oc.span;
                 double emaj = oc.emaj;
                 double emin = oc.emin;
+
                 double DDQ = oc.DDQ;
                 double BH210 = oc.BH210;
 
@@ -310,26 +313,39 @@ namespace Dent_Oil_Canning2.Controllers
                 ocvar = numArray3[1] + num17 * (2.0 * numArray4[1]);
 
                 //set this oil canning return's chartList object to chartList
-                oilCanningReturn.chartList = chartList;
+                //oilCanningReturn.chartList = chartList;
                 oc.ocvar = ocvar;
                 oc.peakld = peakld;
                 oc.BH210 = BH210;
                 oc.DDQ = DDQ;
-                //set this oil canning return's oil canning object to oc
-                oilCanningReturn.oilcanning = oc;
+                
+                oilCanningReturn.ocvar = ocvar;
+                oilCanningReturn.peakld = Math.Round(peakld, 1);
+
+                oilCanningReturn.fvr = oc.fvr;
+                oilCanningReturn.svr = oc.svr;
+                oilCanningReturn.gaugeini = oc.gaugeini;
+                oilCanningReturn.span = oc.span;
+                oilCanningReturn.emaj = oc.emaj;
+                oilCanningReturn.emin = oc.emin;
+
+                oilCanningReturn.BH210 = Math.Round(BH210, 1);
+                oilCanningReturn.DDQ = Math.Round(DDQ, 1);
+                //deflections are set to zero for now because I don't understand how they are calculated
+                oilCanningReturn.Deflection90 = 0.0;
+                oilCanningReturn.Deflection100 = 0.0;
 
                 //add oilCanningReturn to oilCanningReturnList
                 oilCanningReturnList.Add(oilCanningReturn);
-
             }
 
             if (oilCanningReturnList != null)
             {
-                return new ReturnObject<List<VmOilCanningReturn>>() { success = true, data = oilCanningReturnList, validated = true };
+                return new ReturnObject<List<VmBulkOilCanningReturn>>() { success = true, data = oilCanningReturnList, validated = true };
             }
             else
             {
-                return new ReturnObject<List<VmOilCanningReturn>>() { success = true, data = oilCanningReturnList, validated = true };
+                return new ReturnObject<List<VmBulkOilCanningReturn>>() { success = false, data = oilCanningReturnList, validated = true };
             }
         }
 

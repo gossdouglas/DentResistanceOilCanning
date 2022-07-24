@@ -13,6 +13,8 @@
         { name: 'emin', type: 'string' },
         { name: 'DDQ', type: 'string' },
         { name: 'BH210', type: 'string' },
+        { name: 'Deflection90', type: 'string' },
+        { name: 'Deflection100', type: 'string' },
 
         //{ name: 'chartList', type: 'auto' },
     ]

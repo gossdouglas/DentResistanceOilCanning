@@ -555,12 +555,13 @@ function ExportToTable() {
 
                         //print the response from the server
                         if (resp.success) {
-                            //console.log("resp");
-                            //console.log(resp);
-                            //console.log("resp.data");
-                            //console.log(resp.data);
+                            console.log("resp");
+                            console.log(resp);
+                            console.log("resp.data");
+                            console.log(resp.data);
 
-                            //store.add(resp.data);                           
+                            store.removeAll();
+                            store.add(resp.data);                           
                         }
                         //print the response from the server
                         else {

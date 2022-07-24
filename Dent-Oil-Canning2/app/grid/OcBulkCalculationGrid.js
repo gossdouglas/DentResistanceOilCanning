@@ -67,8 +67,8 @@ Ext.define('DentResistanceOilCanning.grid.OcBulkCalculationGrid', {
         { text: 'Oil Canning Load (N)', dataIndex: 'peakld', autoSizeColumn: true, minWidth: 100 },
         { text: 'Dentload DDQ (N)', dataIndex: 'DDQ', autoSizeColumn: true, minWidth: 100 },
         { text: 'Dentload BH210 (N)', dataIndex: 'BH210', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Deflection @ 90N (mm)', dataIndex: '', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Deflection @ 100N (mm)', dataIndex: '', autoSizeColumn: true, minWidth: 100 },
+        { text: 'Deflection @ 90N (mm)', dataIndex: 'Deflection90', autoSizeColumn: true, minWidth: 100 },
+        { text: 'Deflection @ 100N (mm)', dataIndex: 'Deflection100', autoSizeColumn: true, minWidth: 100 },
         //{ text: 'Chart List', dataIndex: 'chartList', autoSizeColumn: true, minWidth: 100 },
 
     ],
