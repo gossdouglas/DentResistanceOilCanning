@@ -272,7 +272,7 @@ function ExportToTable() {
                                 BH210: ""
                             };
 
-                            objExcelJson.push(tmpObject);                           
+                            objExcelJson.push(tmpObject);
                         });
 
                         sheetNumber++;
@@ -311,238 +311,7 @@ function ExportToTable() {
                 });
 
                 console.log("post to the back end.");
-                console.log(objExcelJson);
-
-                var store = Ext.data.StoreManager.lookup('OcBulkCalculationStore');
-                //console.log("store:");
-                //console.log(store);
-
-                //var jSource = { "success": true, "result": { "count": 2, "records": [{ "name": "User1", "cuid": "U1" }, { "name": "User2", "cuid": "U2" }] } };
-                //var jSource = {
-                //    "chartList": [
-                //        {
-                //            "Deflection": 0.05,
-                //            "Load": 5.858886
-                //        },
-                //        {
-                //            "Deflection": 0.1,
-                //            "Load": 11.69829
-                //        },
-                //        {
-                //            "Deflection": 0.15,
-                //            "Load": 17.51823
-                //        },
-                //        {
-                //            "Deflection": 0.2,
-                //            "Load": 23.31868
-                //        },
-                //        {
-                //            "Deflection": 0.25,
-                //            "Load": 29.09966
-                //        },
-                //        {
-                //            "Deflection": 0.3,
-                //            "Load": 34.86115
-                //        },
-                //        {
-                //            "Deflection": 0.35,
-                //            "Load": 40.60317
-                //        },
-                //        {
-                //            "Deflection": 0.4,
-                //            "Load": 46.32571
-                //        },
-                //        {
-                //            "Deflection": 0.45,
-                //            "Load": 52.02878
-                //        },
-                //        {
-                //            "Deflection": 0.5,
-                //            "Load": 57.71236
-                //        },
-                //        {
-                //            "Deflection": 0.55,
-                //            "Load": 63.37648
-                //        },
-                //        {
-                //            "Deflection": 0.6,
-                //            "Load": 69.02111
-                //        },
-                //        {
-                //            "Deflection": 0.65,
-                //            "Load": 74.64626
-                //        },
-                //        {
-                //            "Deflection": 0.7,
-                //            "Load": 80.25194
-                //        },
-                //        {
-                //            "Deflection": 0.75,
-                //            "Load": 85.83813
-                //        },
-                //        {
-                //            "Deflection": 0.8,
-                //            "Load": 91.40485
-                //        },
-                //        {
-                //            "Deflection": 0.85,
-                //            "Load": 96.95942
-                //        },
-                //        {
-                //            "Deflection": 0.9,
-                //            "Load": 102.7582
-                //        },
-                //        {
-                //            "Deflection": 0.95,
-                //            "Load": 108.9285
-                //        },
-                //        {
-                //            "Deflection": 1,
-                //            "Load": 115.4701
-                //        },
-                //        {
-                //            "Deflection": 1.05,
-                //            "Load": 122.3831
-                //        },
-                //        {
-                //            "Deflection": 1.1,
-                //            "Load": 129.6675
-                //        },
-                //        {
-                //            "Deflection": 1.15,
-                //            "Load": 137.3233
-                //        },
-                //        {
-                //            "Deflection": 1.2,
-                //            "Load": 145.3506
-                //        },
-                //        {
-                //            "Deflection": 1.25,
-                //            "Load": 153.7492
-                //        },
-                //        {
-                //            "Deflection": 1.3,
-                //            "Load": 162.5192
-                //        },
-                //        {
-                //            "Deflection": 1.35,
-                //            "Load": 171.6606
-                //        },
-                //        {
-                //            "Deflection": 1.4,
-                //            "Load": 181.1734
-                //        },
-                //        {
-                //            "Deflection": 1.45,
-                //            "Load": 191.0576
-                //        },
-                //        {
-                //            "Deflection": 1.5,
-                //            "Load": 201.3132
-                //        },
-                //        {
-                //            "Deflection": 1.55,
-                //            "Load": 211.9402
-                //        },
-                //        {
-                //            "Deflection": 1.6,
-                //            "Load": 222.9385
-                //        },
-                //        {
-                //            "Deflection": 1.65,
-                //            "Load": 234.3083
-                //        },
-                //        {
-                //            "Deflection": 1.7,
-                //            "Load": 246.0495
-                //        },
-                //        {
-                //            "Deflection": 1.75,
-                //            "Load": 258.162
-                //        },
-                //        {
-                //            "Deflection": 1.8,
-                //            "Load": 270.6461
-                //        },
-                //        {
-                //            "Deflection": 1.85,
-                //            "Load": 283.5014
-                //        },
-                //        {
-                //            "Deflection": 1.9,
-                //            "Load": 296.7281
-                //        },
-                //        {
-                //            "Deflection": 1.95,
-                //            "Load": 310.3263
-                //        },
-                //        {
-                //            "Deflection": 2,
-                //            "Load": 324.2959
-                //        },
-                //        {
-                //            "Deflection": 2.05,
-                //            "Load": 340.8991
-                //        },
-                //        {
-                //            "Deflection": 2.1,
-                //            "Load": 362.128
-                //        },
-                //        {
-                //            "Deflection": 2.15,
-                //            "Load": 387.577
-                //        },
-                //        {
-                //            "Deflection": 2.2,
-                //            "Load": 416.8406
-                //        }
-                //    ],
-                //    "oilcanning": {
-                //        "ocvar": 110.82545441083748,
-                //        "peakld": 95.8802851252182,
-                //        "fvr": 6000,
-                //        "svr": 6000,
-                //        "gaugeini": 0.6,
-                //        "span": 150,
-                //        "emaj": 0,
-                //        "emin": 0,
-                //        "DDQ": 48.08364365713332,
-                //        "BH210": 118.13171419733334
-                //    },
-                //    "ocvar": "",
-                //    "peakld": "",
-                //    "fvr": "",
-                //    "svr": "",
-                //    "gaugeini": "",
-                //    "span": "",
-                //    "emaj": "",
-                //    "emin": "",
-                //    "DDQ": "",
-                //    "BH210": "",
-                //    "id": "VmOilCanningReturnModel-1"
-                //}
-
-                //var jSource = {
-                //    "ocvar": "",
-                //    "peakld": "",
-                //    "fvr": "6000",
-                //    "svr": "6000",
-                //    "gaugeini": "0.6",
-                //    "span": "150",
-                //    "emaj": "0",
-                //    "emin": "0",
-                //    "DDQ": "",
-                //    "BH210": ""
-                //}
-
-                //store.add(jSource);
-                //store.add(jSource.oilcanning);
-
-                //store.loadData(resp.data);
-                //store.reload(resp.data);
-                //store.load(function (records, operation, success) {
-                //    console.log('loaded records');
-                //});
+                console.log(objExcelJson);         
 
                 //post to the back end
                 Ext.Ajax.request({
@@ -555,12 +324,24 @@ function ExportToTable() {
 
                         //print the response from the server
                         if (resp.success) {
-                            console.log("resp");
-                            console.log(resp);
+                            //console.log("resp");
+                            //console.log(resp);
                             console.log("resp.data");
                             console.log(resp.data);
 
+                            //if the ocvar calculation is greater than zero, no oil canning is present so 
+                            //replace the numerical value of peakld with a string for display
+                            $(resp.data).each(function (index) {
+                                if (resp.data[index].ocvar > 0) {
+                                    resp.data[index].peakld = 'No oil canning < 400 (N)';
+                                }
+                            });
+
+                            //link up to the bulk oil canning store
+                            var store = Ext.data.StoreManager.lookup('OcBulkCalculationStore');
+                            //clear that store of past data
                             store.removeAll();
+                            //load that store with current data
                             store.add(resp.data);                           
                         }
                         //print the response from the server

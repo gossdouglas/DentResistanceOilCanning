@@ -178,6 +178,7 @@ namespace Dent_Oil_Canning2.Controllers
         public ReturnObject<List<VmBulkOilCanningReturn>> CalculateBulkOilCanning(List<OilCanning> model)
         {
             List<VmBulkOilCanningReturn> oilCanningReturnList = new List<VmBulkOilCanningReturn>();
+            int excelRowId = 1;
 
             //for each posted oil canning calculation...
             foreach (OilCanning oc in model)
@@ -318,7 +319,8 @@ namespace Dent_Oil_Canning2.Controllers
                 oc.peakld = peakld;
                 oc.BH210 = BH210;
                 oc.DDQ = DDQ;
-                
+
+                oilCanningReturn.excelRowId = excelRowId;
                 oilCanningReturn.ocvar = ocvar;
                 oilCanningReturn.peakld = Math.Round(peakld, 1);
 
@@ -337,6 +339,7 @@ namespace Dent_Oil_Canning2.Controllers
 
                 //add oilCanningReturn to oilCanningReturnList
                 oilCanningReturnList.Add(oilCanningReturn);
+                excelRowId++;
             }
 
             if (oilCanningReturnList != null)

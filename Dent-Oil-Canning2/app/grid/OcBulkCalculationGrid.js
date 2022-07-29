@@ -1,4 +1,7 @@
-﻿//Ext.define('TiSlots.view.main.List', {
+﻿
+var inputFieldStyle = 'background-color: gray';
+
+//Ext.define('TiSlots.view.main.List', {
 Ext.define('DentResistanceOilCanning.grid.OcBulkCalculationGrid', {
     extend: 'Ext.grid.Panel',
     //xtype: 'mainlist',
@@ -47,7 +50,8 @@ Ext.define('DentResistanceOilCanning.grid.OcBulkCalculationGrid', {
     //        hidden: true,
     //    },
     //],
-    title: 'Results',
+    title: 'The columns of the source Excel sheet must be of the form shown below',
+    titleAlign: 'center',
     store: {
         //type: 'tislots',
         //store is found by alias
@@ -56,19 +60,20 @@ Ext.define('DentResistanceOilCanning.grid.OcBulkCalculationGrid', {
     },
     plugins: 'gridfilters',
 
+    
     columns: [
-        { text: 'Id', dataIndex: 'TiSlotId', hidden: false },
-        { text: 'FVR (mm)', dataIndex: 'fvr' },
-        { text: 'SVR (mm)', dataIndex: 'svr', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Thickness', dataIndex: 'gaugeini', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Span (mm)', dataIndex: 'span', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Major Stretch (%)', dataIndex: 'emaj', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Minor Stretch (%)', dataIndex: 'emin', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Oil Canning Load (N)', dataIndex: 'peakld', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Dentload DDQ (N)', dataIndex: 'DDQ', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Dentload BH210 (N)', dataIndex: 'BH210', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Deflection @ 90N (mm)', dataIndex: 'Deflection90', autoSizeColumn: true, minWidth: 100 },
-        { text: 'Deflection @ 100N (mm)', dataIndex: 'Deflection100', autoSizeColumn: true, minWidth: 100 },
+        { text: 'Excel <br> Row', dataIndex: 'excelRowId', autoSizeColumn: true, maxWidth: 100, align: 'center' },
+        { text: 'FVR <br> 3000 to 12000 mm <br> Input Value', dataIndex: 'fvr', align: 'center', style: 'background-color: "gray"'},
+        { text: 'SVR <br> 3000 to 15000 mm <br> Input Value', dataIndex: 'svr', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Thickness <br> 0.55 to 0.85 mm <br> Input Value', dataIndex: 'gaugeini', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Span <br> 150 to 525 mm <br> Input Value', dataIndex: 'span', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Major Stretch <br> 0 to 2% <br> Input Value', dataIndex: 'emaj', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Minor Stretch <br> 0 to 2% <br> Input Value', dataIndex: 'emin', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Oil Canning Load (N) <br>-<br> Output Value', dataIndex: 'peakld', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Dentload DDQ (N) <br>-<br> Output Value', dataIndex: 'DDQ', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Dentload BH210 (N) <br>-<br> Output Value', dataIndex: 'BH210', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Deflection @ 90N (mm) <br>-<br> Output Value', dataIndex: 'Deflection90', autoSizeColumn: true, minWidth: 100, align: 'center' },
+        { text: 'Deflection @ 100N (mm) <br>-<br> Output Value', dataIndex: 'Deflection100', autoSizeColumn: true, minWidth: 100, align: 'center' },
         //{ text: 'Chart List', dataIndex: 'chartList', autoSizeColumn: true, minWidth: 100 },
 
     ],

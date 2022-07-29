@@ -8,7 +8,7 @@ namespace Dent_Oil_Canning2.Api.Models
 {
     public class VmBulkOilCanningReturn
     {
-        //public OilCanning oilcanning { get; set; }
+        public int excelRowId { get; set; }
 
         public double ocvar { get; set; }
         public double peakld { get; set; }

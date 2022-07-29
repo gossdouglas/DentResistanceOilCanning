@@ -35,12 +35,14 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                 [
                                     {
                                         xtype: 'panel',
-                                        html: '<input type="file" id="excelfile" onChange="ExportToTable()"/>',
+                                        html: '<input type="file" id="excelfile" onChange=""/>',
                                     },                                  
                                     {
                                         xtype: 'button',
                                         text: "Load Excel",
                                         width: '10%',
+                                        //margin: top, right, bottom, left
+                                        margin: '0 1 0 1',
                                         listeners: {
                                             click: function (input, val, opts) {
 
@@ -52,10 +54,13 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                         xtype: 'button',
                                         text: "Clear Results",
                                         width: '10%',
+                                        //margin: top, right, bottom, left
+                                        margin: '0 1 0 1',
                                         listeners: {
                                             click: function (input, val, opts) {
 
-                                                ExportToTable();
+                                                var store = Ext.data.StoreManager.lookup('OcBulkCalculationStore');
+                                                store.removeAll();
                                             }
                                         }
                                     },
@@ -67,7 +72,6 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
             {
                 xtype: 'panel',
                 id: 'DrM1FormResultsPanel',
-                //title: 'Results',
                 titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
