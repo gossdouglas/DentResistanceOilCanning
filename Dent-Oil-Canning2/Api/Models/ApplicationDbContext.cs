@@ -1,5 +1,4 @@
-﻿using Dent_Oil_Canning2.Models.db_models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 

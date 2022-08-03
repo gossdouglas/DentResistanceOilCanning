@@ -67,11 +67,6 @@
     <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.DRFormula, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>bin\Interop.DRFormula.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -85,6 +80,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -160,6 +156,73 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\DRFormula\Calculations.cs" />
+    <Compile Include="Api\DRFormula\Formula.cs" />
+    <Compile Include="Api\DRFormula\modGetDataFromDB.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\AdoEvents.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\ADORecordSetHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\AffectEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\AssemblyInfo.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\BookmarkEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\CursorLocationEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\CursorTypeEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\PersistFormatEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\PositionEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.ADO\StringParameterType.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\AdoFactoryManager.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\AdoNetHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\AssemblyInfo.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\BOFActionEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\ConnectionContainer.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\ConnectionContainers.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\DatabaseType.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\DbConnectionHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\DbProviderFactories.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\DBTrace.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\DBUtils.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\EditModeEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\EngineHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\EOFActionEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\FastSerializer.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\FieldAttributeEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\FieldHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\FieldsHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\IConnectionContainers.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\IdentityColumnsManager.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\LockTypeEnum.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\ParametersHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\RecordSetHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\TransactionManager.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\ValidatingEvent.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.RDO\AssemblyInfo.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.RDO\LockTypeConstants.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.RDO\obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.RDO\RDOEngineHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.RDO\RDOEnvironmentHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.RDO\RdoEvents.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.DB.RDO\RDORecordSetHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\ArraysHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\AssemblyHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\AssemblyInfo.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\CollectionHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\DateTimeHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\ErrorHandlingHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\InteractionHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\IOHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\MemoryHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\RegistryHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\StringsHelper.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\WeakDictionary.cs" />
+    <Compile Include="Api\DRFormula\UpgradeHelpers.Utils\XArrayHelper.cs" />
     <Compile Include="Api\Models\VmBulkOilCanningReturn.cs" />
     <Compile Include="Api\Models\VmOilCanningReturn.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -200,6 +263,10 @@
     <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\index.html" />
     <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\js\jquery.knob.js" />
     <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\secretplan.jpg" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.ADO\UpgradeHelpers.DB.ADO.csproj" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\UpgradeHelpers.DB.Essentials.csproj" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.RDO\UpgradeHelpers.DB.RDO.csproj" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.Utils\UpgradeHelpers.Utils.csproj" />
     <Content Include="app.js" />
     <Content Include="app\Application.js" />
     <Content Include="app\grid\OcBulkCalculationGrid.js" />
@@ -940,6 +1007,18 @@
     <Content Include="OilCanning\LICENSE" />
     <Content Include="OilCanning\package.json" />
     <Content Include="OilCanning\README.md" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.ADO\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.ADO\obj\x86\Debug\UpgradeHelpers.DB.ADO.csproj.AssemblyReference.cache" />
+    <None Include="Api\DRFormula\UpgradeHelpers.DB.ADO\packages.config" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.Utils\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.Utils\obj\x86\Debug\UpgradeHelpers.Utils.csproj.AssemblyReference.cache" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\obj\x86\Debug\UpgradeHelpers.DB.Essentials.csproj.AssemblyReference.cache" />
+    <None Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\packages.config" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.RDO\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Api\DRFormula\UpgradeHelpers.DB.RDO\obj\x86\Debug\UpgradeHelpers.DB.RDO.csproj.AssemblyReference.cache" />
+    <None Include="Api\DRFormula\UpgradeHelpers.DB.RDO\packages.config" />
+    <None Include="Api\DRFormula\UpgradeHelpers.Utils\packages.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -974,6 +1053,14 @@
     <Content Include="Views\dentResistanceModel\_formEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Api\DRFormula\UpgradeHelpers.DB.ADO\bin\Debug\" />
+    <Folder Include="Api\DRFormula\UpgradeHelpers.DB.ADO\obj\x86\Debug\TempPE\" />
+    <Folder Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\bin\Debug\" />
+    <Folder Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\obj\x86\Debug\TempPE\" />
+    <Folder Include="Api\DRFormula\UpgradeHelpers.DB.RDO\bin\Debug\" />
+    <Folder Include="Api\DRFormula\UpgradeHelpers.DB.RDO\obj\x86\Debug\TempPE\" />
+    <Folder Include="Api\DRFormula\UpgradeHelpers.Utils\bin\Debug\" />
+    <Folder Include="Api\DRFormula\UpgradeHelpers.Utils\obj\x86\Debug\TempPE\" />
     <Folder Include="Api\Models\db models\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
