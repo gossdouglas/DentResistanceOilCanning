@@ -2,7 +2,6 @@
     extend: 'Ext.data.Model',
     //idProperty: 'GradeKey',
     fields: [
-
         { name: 'excelRowId', type: 'int' },
 
         { name: 'ocvar', type: 'string' },
@@ -19,7 +18,5 @@
         { name: 'BH210', type: 'string' },
         { name: 'Deflection90', type: 'string' },
         { name: 'Deflection100', type: 'string' },
-
-        //{ name: 'chartList', type: 'auto' },
     ]
 })

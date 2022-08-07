@@ -7,6 +7,7 @@ namespace Dent_Oil_Canning2.Models
 {
     public class OilCanning
     {
+        public int excelRowId { get; set; }
         public double ocvar { get; set; }
         public double peakld { get; set; }
         public double fvr { get; set; }

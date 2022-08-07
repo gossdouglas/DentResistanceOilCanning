@@ -2,6 +2,11 @@ using Microsoft.VisualBasic;
 using System;
 using UpgradeHelpers.DB.ADO;
 using UpgradeHelpers.Helpers;
+using Dent_Oil_Canning2.Models;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace DRFormula
 {
@@ -24,6 +29,8 @@ namespace DRFormula
 
 		public bool Calculate(int GradeKey, double R1, double R2, double Thickness, double MajorStrain, double MinorStrain)
 		{
+			List<dr_Grades> rsGradeList = new List<dr_Grades>();
+
 			// This is the main function that will be used from the
 			// Web interface.  It will get the values of the formula
 			// from the database, calculate each formula using the

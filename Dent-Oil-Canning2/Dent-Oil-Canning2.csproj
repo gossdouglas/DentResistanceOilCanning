@@ -269,12 +269,15 @@
     <Content Include="Api\DRFormula\UpgradeHelpers.Utils\UpgradeHelpers.Utils.csproj" />
     <Content Include="app.js" />
     <Content Include="app\Application.js" />
+    <Content Include="app\grid\OcBulkErrorGrid.js" />
     <Content Include="app\grid\OcBulkCalculationGrid.js" />
+    <Content Include="app\model\VmOilCanningErrorModel.js" />
     <Content Include="app\model\VmOilCanningReturnModel.js" />
     <Content Include="app\model\CalculationDentReistanceModel.js" />
     <Content Include="app\model\GradeModel.js" />
     <Content Include="app\store\GradeStoreModel2.js" />
     <Content Include="app\store\GradeStoreModel1.js" />
+    <Content Include="app\store\OcBulkErrorStore.js" />
     <Content Include="app\store\OcBulkCalculationStore.js" />
     <Content Include="app\view\main\OcBulkCalculationController.js" />
     <Content Include="app\view\main\OcBulkInputForm.js" />

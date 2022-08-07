@@ -50,7 +50,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1FormController', {
             form.submit({
                 url: 'api/DentResistance/CalculateModelOne',
                 //url: 'api/OilCanning/LoadOilCanning',
-                waitMsg: 'Uploading..',
+                waitMsg: 'Calculating..',
                 clientValidation: true,
                 submitEmptyText: true,
                 success: function (frm, action) {

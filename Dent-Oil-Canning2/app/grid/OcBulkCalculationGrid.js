@@ -50,7 +50,7 @@ Ext.define('DentResistanceOilCanning.grid.OcBulkCalculationGrid', {
     //        hidden: true,
     //    },
     //],
-    title: 'The columns of the source Excel sheet must be of the form shown below',
+    title: 'The columns of the source Excel sheet must be arranged and of the range shown below',
     titleAlign: 'center',
     store: {
         //type: 'tislots',

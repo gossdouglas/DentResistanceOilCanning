@@ -178,16 +178,34 @@ namespace Dent_Oil_Canning2.Controllers
         public ReturnObject<List<VmBulkOilCanningReturn>> CalculateBulkOilCanning(List<OilCanning> model)
         {
             List<VmBulkOilCanningReturn> oilCanningReturnList = new List<VmBulkOilCanningReturn>();
-            int excelRowId = 1;
+            //int excelRowId = 1;
 
             //for each posted oil canning calculation...
             foreach (OilCanning oc in model)
             {
                 //create a new VmOilCanningReturn object
                 VmBulkOilCanningReturn oilCanningReturn = new VmBulkOilCanningReturn();
-
                 //create a new list of chart objects
                 List<Chart> chartList = new List<Chart>();
+
+                //valid ranges for oil canning inputs
+                double fvrMin = 3000;
+                double fvrMax = 12000;
+
+                double svrMin = 3000;
+                double svrMax = 15000;
+
+                double gaugeiniMin = .55;
+                double gaugeiniMax = .85;
+
+                double spanMin = 150;
+                double spanMax = 525;
+
+                double emajMin = 0;
+                double emajMax = 2;
+
+                double eminMin = 0;
+                double eminMax = 2;
 
                 double ocvar = oc.ocvar;
                 double peakld = oc.peakld;
@@ -320,16 +338,24 @@ namespace Dent_Oil_Canning2.Controllers
                 oc.BH210 = BH210;
                 oc.DDQ = DDQ;
 
-                oilCanningReturn.excelRowId = excelRowId;
+                //oilCanningReturn.excelRowId = excelRowId;
+                oilCanningReturn.excelRowId = oc.excelRowId;
                 oilCanningReturn.ocvar = ocvar;
                 oilCanningReturn.peakld = Math.Round(peakld, 1);
 
-                oilCanningReturn.fvr = oc.fvr;
-                oilCanningReturn.svr = oc.svr;
-                oilCanningReturn.gaugeini = oc.gaugeini;
-                oilCanningReturn.span = oc.span;
-                oilCanningReturn.emaj = oc.emaj;
-                oilCanningReturn.emin = oc.emin;
+                oilCanningReturn.fvr = IsOilCanningRangeValid(fvrMin, fvrMax, oc.fvr);
+                oilCanningReturn.svr = IsOilCanningRangeValid(svrMin, svrMax, oc.svr);
+                oilCanningReturn.gaugeini = IsOilCanningRangeValid(gaugeiniMin, gaugeiniMax, oc.gaugeini);
+                oilCanningReturn.span = IsOilCanningRangeValid(spanMin, spanMax, oc.span);
+                oilCanningReturn.emaj = IsOilCanningRangeValid(emajMin, emajMax, oc.emaj);
+                oilCanningReturn.emin = IsOilCanningRangeValid(eminMin, eminMax, oc.emin);
+
+                //oilCanningReturn.fvr = oc.fvr;
+                //oilCanningReturn.svr = oc.svr;
+                //oilCanningReturn.gaugeini = oc.gaugeini;
+                //oilCanningReturn.span = oc.span;
+                //oilCanningReturn.emaj = oc.emaj;
+                //oilCanningReturn.emin = oc.emin;
 
                 oilCanningReturn.BH210 = Math.Round(BH210, 1);
                 oilCanningReturn.DDQ = Math.Round(DDQ, 1);
@@ -339,7 +365,8 @@ namespace Dent_Oil_Canning2.Controllers
 
                 //add oilCanningReturn to oilCanningReturnList
                 oilCanningReturnList.Add(oilCanningReturn);
-                excelRowId++;
+                //increment the excel row id by 1
+                //excelRowId++;
             }
 
             if (oilCanningReturnList != null)
@@ -349,6 +376,18 @@ namespace Dent_Oil_Canning2.Controllers
             else
             {
                 return new ReturnObject<List<VmBulkOilCanningReturn>>() { success = false, data = oilCanningReturnList, validated = true };
+            }
+        }
+
+        public double IsOilCanningRangeValid (double minValue, double maxValue, double evaluatedValue)
+        {
+            if (evaluatedValue >= minValue && evaluatedValue <= maxValue)
+            {
+                return evaluatedValue;
+            }
+            else
+            {
+                return double.NaN;
             }
         }
 

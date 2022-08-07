@@ -24,8 +24,10 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         'DentResistanceOilCanning.view.main.PageFooter',
 
         'DentResistanceOilCanning.grid.OcBulkCalculationGrid',
+        'DentResistanceOilCanning.grid.OcBulkErrorGrid',
         'DentResistanceOilCanning.view.main.OcBulkCalculationController',
         'DentResistanceOilCanning.store.OcBulkCalculationStore',
+        'DentResistanceOilCanning.store.OcBulkErrorStore',
 
         'DentResistanceOilCanning.view.main.DentResistanceOverview',
         'DentResistanceOilCanning.store.GradeStoreModel1',
@@ -205,6 +207,10 @@ function showOcBulkInput() {
     }).show()
 }
 
+//holds whether an excel row contains data that is out of range
+var excelRowAllValid;
+var objExcelErrors = [];
+
 function ExportToTable() {
     /*Checks whether the file is a valid excel file*/
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;
@@ -224,6 +230,22 @@ function ExportToTable() {
             var reader = new FileReader();
             //array which will hold json objects
             var objExcelJson = [];
+            //clear the excel errors array
+            objExcelErrors.length = 0;
+            var excelRowId = 1;
+
+            var fvrMin = 3000;
+            var fvrMax = 12000;
+            var svrMin = 3000;
+            var svrMax = 15000;
+            var gaugeiniMin = .55;
+            var gaugeiniMax = .85;
+            var spanMin = 150;
+            var spanMax = 525;
+            var emajMin = 0;
+            var emajMax = 2;
+            var eminMin = 0;
+            var eminMax = 2;
 
             reader.onload = function (e) {
                 var data = e.target.result;
@@ -249,30 +271,45 @@ function ExportToTable() {
                         return false;
                     }
 
-                    /*Convert the cell value to Json*/
+                    //Convert the cell value to Json
                     if (xlsxflag) {
                         //convert the contents of an excel sheet into an object
                         var exceljson = XLSX.utils.sheet_to_json(workbook.Sheets[y]);
                         //object which will hold a single line of excel data in json format
                         var tmpObject;
 
+                        //for each excel file row...
                         $(exceljson).each(function (index) {
 
-                            tmpObject = {
+                            console.log("**************************");
+                            //console.log("Processing row " + excelRowNumber + " of the uploaded Excel file...");
+                            //set that the values in this excel row are within range
+                            excelRowAllValid = true;
 
+                            //create a tmpObject
+                            tmpObject = {
+                                excelRowId: excelRowId,
                                 ocvar: "",
                                 peakld: "",
-                                fvr: Object.values(exceljson[index])[0],
-                                svr: Object.values(exceljson[index])[1],
-                                gaugeini: Object.values(exceljson[index])[2],
-                                span: Object.values(exceljson[index])[3],
-                                emaj: Object.values(exceljson[index])[4],
-                                emin: Object.values(exceljson[index])[5],
+                                fvr: validateBulkOilCanningExcelRow(fvrMin, fvrMax, Object.values(exceljson[index])[0], "FVR", excelRowId),
+                                svr: validateBulkOilCanningExcelRow(svrMin, svrMax, Object.values(exceljson[index])[1], "SVR", excelRowId),
+                                gaugeini: validateBulkOilCanningExcelRow(gaugeiniMin, gaugeiniMax, Object.values(exceljson[index])[2], "GAUGEINI", excelRowId),
+                                span: validateBulkOilCanningExcelRow(spanMin, spanMax, Object.values(exceljson[index])[3], "SPAN", excelRowId),
+                                emaj: validateBulkOilCanningExcelRow(emajMin, emajMax, Object.values(exceljson[index])[4], "EMAJ", excelRowId),
+                                emin: validateBulkOilCanningExcelRow(eminMin, eminMax, Object.values(exceljson[index])[5], "EMIN", excelRowId),
                                 DDQ: "",
                                 BH210: ""
                             };
 
-                            objExcelJson.push(tmpObject);
+                            //validate that the values of this excel row are within range
+                            //validateBulkOilCanningExcelRow(tmpObject);
+
+                            //push tmpObject to objExcelJson
+                            if (excelRowAllValid) {
+                                objExcelJson.push(tmpObject);
+                            }
+                            //increment the excel row number
+                            excelRowId++;
                         });
 
                         sheetNumber++;
@@ -311,7 +348,9 @@ function ExportToTable() {
                 });
 
                 console.log("post to the back end.");
-                console.log(objExcelJson);         
+                console.log(objExcelJson);
+                console.log("objExcelErrors");
+                console.log(objExcelErrors);
 
                 //post to the back end
                 Ext.Ajax.request({
@@ -342,7 +381,14 @@ function ExportToTable() {
                             //clear that store of past data
                             store.removeAll();
                             //load that store with current data
-                            store.add(resp.data);                           
+                            store.add(resp.data);
+
+                            //link up to the bulk oil canning store
+                            var store = Ext.data.StoreManager.lookup('OcBulkErrorStore');
+                            //clear that store of past data
+                            store.removeAll();
+                            //load that store with current data
+                            store.add(objExcelErrors);
                         }
                         //print the response from the server
                         else {
@@ -369,6 +415,35 @@ function ExportToTable() {
     }
     else {
         alert("Please upload a valid Excel file!");
+    }
+}
+
+function validateBulkOilCanningExcelRow(minValue, maxValue, evaluatedValue, evaluatedName, excelRowId) {
+
+    var strErrorText;
+
+    if (evaluatedValue >= minValue && evaluatedValue <= maxValue) {
+
+        //console.log("Row " + excelRowId + " of the uploaded Excel file...");
+        //console.log(evaluatedName + " with a value of " + evaluatedValue + " is within " + minValue + " and " + maxValue)
+        return evaluatedValue;
+    }
+    else {
+
+        console.log("Row " + excelRowId + " of the uploaded Excel file...");
+        console.log(evaluatedName + " with a value of " + evaluatedValue + " is not within " + minValue + " and " + maxValue);
+
+        strErrorText = evaluatedName + " with a value of " + evaluatedValue + " is not within " + minValue + " and " + maxValue;
+        excelRowAllValid = false;
+
+        tmpObject = {
+            excelRowId: excelRowId,
+            errorText: strErrorText,
+        };
+
+        objExcelErrors.push(tmpObject);
+
+        return evaluatedValue;
     }
 }
 

@@ -116,7 +116,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                         regex: /^(1500[0-9]|150[1-9][0-9]|15[1-9][0-9]{2}|1[6-9][0-9]{3}|[2-9][0-9]{4}|1[0-4][0-9]{4}|150000)$/i,
                                         msgTarget: 'side', // location of the error message
                                         invalidText: 'R1 must be a value between 15000 and 15000',
-                                        value: 150000
+                                        value: 15000
                                     },
                                     {
                                         xtype: 'textfield',

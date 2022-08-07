@@ -21,8 +21,7 @@ namespace Dent_Oil_Canning2.Controllers
         public ReturnObject<CalculationDentReistance> CalculateModelOne(CalculationDentReistance model)
         {
             bool bCalculated;
-            //DRFormula.Formula objDRCalc = new DRFormula.Formula();
-            DRFormula.Formula objDRCalc = new DRFormula.Formula();
+            Formula objDRCalc = new Formula();
 
             bCalculated = objDRCalc.Calculate(model.GradeKey, model.R1, model.R2, model.Thickness, model.MajorStrain, model.MinorStrain);
 
@@ -122,7 +121,7 @@ namespace Dent_Oil_Canning2.Controllers
         }
 
         //[HttpPost]
-        //public ReturnObject<CalculationDentReistance> CalculateModelOne(CalculationDentReistance model)
+        //public ReturnObject<CalculationDentReistance> CalculateModelOnex(CalculationDentReistance model)
         //{
         //    List<dr_Grades> rsGradeList = new List<dr_Grades>();
         //    List<dr_Formulas> rsFormulaList = new List<dr_Formulas>();
@@ -154,11 +153,11 @@ namespace Dent_Oil_Canning2.Controllers
         //        dblNormalAnisotropy = (double)dr1[4];
         //        dblConstant = (double)dr1[5];
         //        dblEffectiveStretch =
-        //            ((1 + dblNormalAnisotropy) / Math.Sqrt(1 + 2 * dblNormalAnisotropy)) * 
+        //            ((1 + dblNormalAnisotropy) / Math.Sqrt(1 + 2 * dblNormalAnisotropy)) *
         //            Math.Sqrt(
         //                (Math.Pow(model.MajorStrain / 100, 2)) + (Math.Pow(model.MinorStrain / 100, 2)) +
         //            //((model.MajorStrain / 100) ^ 2) + ((model.MinorStrain / 100) ^ 2) + 
-        //            (2 * dblNormalAnisotropy / (1 + dblNormalAnisotropy)) * (model.MajorStrain / 100) * 
+        //            (2 * dblNormalAnisotropy / (1 + dblNormalAnisotropy)) * (model.MajorStrain / 100) *
         //            (model.MinorStrain / 100));
 
         //        //grade.grade_key = (int)dr1[0];

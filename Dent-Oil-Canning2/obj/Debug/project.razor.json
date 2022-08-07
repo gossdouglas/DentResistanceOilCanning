@@ -1,0 +1,19 @@
+{
+  "FilePath": "c:\\Users\\gosstony\\source\\repos\\DentResistanceOilCanning\\Dent-Oil-Canning2\\Dent-Oil-Canning2.csproj",
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 703
+  },
+  "RootNamespace": null,
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}
