@@ -122,127 +122,132 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
             //},
 
             ////////////////////////////////////
+            //testing vertical separation
             {
-                flex: 1,
-                //title: 'yo',
-                //html: 'ho',
+                flex: 2,
+                title: 'yo',
+                html: 'ho',
+                width: '100%',
+                xtype: 'panel', 
+                
+                //xtype: 'panel',
+                //title: 'Bulk Oil Canning Calculation',
+                //titleAlign: 'center',
+                //height: '100%',
                 //width: '100%',
-                //xtype: 'panel',               
+                //bodyPadding: '5',
+                //items:
+                //    [
+                //        //entry fields
+                //        {
+                //            xtype: 'panel',
+                //            layout: {
+                //                type: 'hbox',
+                //                align: 'stretch',
+                //            },
+                //            //layout: {
+                //            //    type: 'hbox',
+                //            //    pack: 'center',
+                //            //    align: 'middle'
+                //            //},
+                //            items:
+                //                [
+                //                    {
+                //                        xtype: 'panel',
+                //                        html: '<input type="file" id="excelfile" onChange=""/>',
+                //                    },
+                //                    {
+                //                        xtype: 'button',
+                //                        text: "Load Excel",
+                //                        width: '10%',
+                //                        //margin: top, right, bottom, left
+                //                        margin: '0 1 0 1',
+                //                        listeners: {
+                //                            click: function (input, val, opts) {
+                //                                ExportToTable();
+                //                            }
+                //                        }
+                //                    },
+                //                    {
+                //                        xtype: 'button',
+                //                        text: "Clear Results",
+                //                        width: '10%',
+                //                        //margin: top, right, bottom, left
+                //                        margin: '0 1 0 1',
+                //                        listeners: {
+                //                            click: function (input, val, opts) {
+                //                                var store = Ext.data.StoreManager.lookup('OcBulkCalculationStore');
+                //                                store.removeAll();
+                //                                var store = Ext.data.StoreManager.lookup('OcBulkErrorStore');
+                //                                store.removeAll();
+                //                            }
+                //                        }
+                //                    },
+                //                ],
+                //        },
+                //    ]
+            },
+            {
+                flex: 5,
+                title: 'yo',
+                html: 'ho',
+                width: '100%',
                 xtype: 'panel',
-                title: 'Bulk Oil Canning Calculation',
-                titleAlign: 'center',
                 height: '100%',
-                width: '100%',
-                bodyPadding: '5',
-                items:
-                    [
-                        //entry fields
-                        {
-                            xtype: 'panel',
-                            layout: {
-                                type: 'hbox',
-                                align: 'stretch',
-                            },
-                            //layout: {
-                            //    type: 'hbox',
-                            //    pack: 'center',
-                            //    align: 'middle'
-                            //},
-                            items:
-                                [
-                                    {
-                                        xtype: 'panel',
-                                        html: '<input type="file" id="excelfile" onChange=""/>',
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        text: "Load Excel",
-                                        width: '10%',
-                                        //margin: top, right, bottom, left
-                                        margin: '0 1 0 1',
-                                        listeners: {
-                                            click: function (input, val, opts) {
-                                                ExportToTable();
-                                            }
-                                        }
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        text: "Clear Results",
-                                        width: '10%',
-                                        //margin: top, right, bottom, left
-                                        margin: '0 1 0 1',
-                                        listeners: {
-                                            click: function (input, val, opts) {
-                                                var store = Ext.data.StoreManager.lookup('OcBulkCalculationStore');
-                                                store.removeAll();
-                                                var store = Ext.data.StoreManager.lookup('OcBulkErrorStore');
-                                                store.removeAll();
-                                            }
-                                        }
-                                    },
-                                ],
-                        },
-                    ]
+
+                //xtype: 'panel',
+                //titleAlign: 'center',
+                //width: '100%',
+                //bodyPadding: '5',
+                //flex: 2,
+                //scrollable: true,
+                //items:
+                //    [
+                //        {
+                //            xtype: 'OcBulkCalculationGrid',
+                //        },
+                //    ]
             },
             {
-                flex: 8,
-                //title: 'yo',
-                //html: 'ho',
-                //width: '100%',
-                //xtype: 'panel',
-                //height: '100%',
-                xtype: 'panel',
-                titleAlign: 'center',
+                flex: 3,
+                title: 'yo',
+                html: 'ho',
                 width: '100%',
-                bodyPadding: '5',
-                flex: 2,
-                scrollable: true,
-                items:
-                    [
-                        {
-                            xtype: 'OcBulkCalculationGrid',
-                        },
-                    ]
+                xtype: 'panel',
+                height: '100%',
+
+                //xtype: 'panel',
+                //titleAlign: 'center',
+                //width: '100%',
+                //bodyPadding: '5',
+                //flex: 2,
+                //scrollable: true,
+                //items:
+                //    [
+                //        {
+                //            xtype: 'OcBulkErrorGrid',
+                //        },
+                //    ]
             },
             {
                 flex: 2,
-                //title: 'yo',
+                title: 'yo',
                 //html: 'ho',
-                //width: '100%',
-                //xtype: 'panel',
-                //height: '100%',
-                xtype: 'panel',
-                titleAlign: 'center',
                 width: '100%',
-                bodyPadding: '5',
-                flex: 2,
-                scrollable: true,
-                items:
-                    [
-                        {
-                            xtype: 'OcBulkErrorGrid',
-                        },
-                    ]
-            },
-            {
-                flex: 1,
-                //title: 'yo',
-                //html: 'ho',
-                //width: '100%',
                 //xtype: 'panel',
-                //height: '100%',
-                xtype: 'panel',
-                width: '100%',
-                bodyPadding: '5',
-                //flex: 9,
-                items:
-                    [
-                        {
-                            xtype: 'page-footer',
-                            width: '100%',
-                        },
-                    ]
+                xtype: 'page-footer',
+                height: '100%',
+
+                //xtype: 'panel',
+                //width: '100%',
+                //bodyPadding: '5',
+                //items:
+                //    [
+                //        {
+                //            xtype: 'page-footer',
+                //            width: '100%',
+                //        },
+                //    ]
             },
         ],
 });
