@@ -10,41 +10,35 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
     xtype: 'app-main',
 
     requires: [
-        //'Ext.plugin.Viewport',//left over from ti-slot web?
-        //'Ext.window.MessageBox',//left over from ti-slot web?
-
-        //'Ext.chart.series.Series',
-        //'Ext.widget.polar',
-        //'Ext.chart.series.Polar',
-        //'Ext.chart.PolarChart',
 
         'DentResistanceOilCanning.view.main.MainController',         
         'DentResistanceOilCanning.view.main.MainModel',
         
         'DentResistanceOilCanning.view.main.PageFooter',
-
-        'DentResistanceOilCanning.grid.OcBulkCalculationGrid',
-        'DentResistanceOilCanning.grid.OcBulkErrorGrid',
-        'DentResistanceOilCanning.view.main.OcBulkCalculationController',
-        'DentResistanceOilCanning.store.OcBulkCalculationStore',
-        'DentResistanceOilCanning.store.OcBulkErrorStore',
-
+        
+        //dent resistance model 1
         'DentResistanceOilCanning.view.main.DentResistanceOverview',
         'DentResistanceOilCanning.store.GradeStoreModel1',
         'DentResistanceOilCanning.view.main.DrM1Form',
         'DentResistanceOilCanning.view.main.DrM1FormCalcResults',
         'DentResistanceOilCanning.view.main.DrM1FormController',
-
+        //dent resistance model 2
         'DentResistanceOilCanning.view.main.DrM2Form',
         'DentResistanceOilCanning.store.GradeStoreModel2',
         'DentResistanceOilCanning.view.main.DrM2FormCalcResults',       
         'DentResistanceOilCanning.view.main.DrM2FormController',
-
+        //oil canning calculator
         'DentResistanceOilCanning.view.main.OilCanningOverview',
         'DentResistanceOilCanning.view.main.OilCanningForm',
         'DentResistanceOilCanning.view.main.OcBulkInputForm',
         'DentResistanceOilCanning.view.main.OilCanningFormController',
-        'DentResistanceOilCanning.view.main.OcBulkInputFormController', 
+        'DentResistanceOilCanning.view.main.OcBulkInputFormController',
+        //bulk oil canning calculator
+        'DentResistanceOilCanning.grid.OcBulkCalculationGrid',
+        'DentResistanceOilCanning.grid.OcBulkErrorGrid',
+        'DentResistanceOilCanning.view.main.OcBulkCalculationController',
+        'DentResistanceOilCanning.store.OcBulkCalculationStore',
+        'DentResistanceOilCanning.store.OcBulkErrorStore',
     ],
 
     controller: 'main',
@@ -190,6 +184,7 @@ function showOcCalculator() {
     //var OpenWindow = window.open('OilCanning/OilCanningCalculator.html');
 }
 
+//show the bulk oil canning pop up
 function showOcBulkInput() {
 
     var win = Ext.create('Ext.window.Window', {
@@ -207,6 +202,7 @@ function showOcBulkInput() {
     }).show()
 }
 
+//ExportToTable variables
 //holds whether an excel row contains data that is out of range
 var excelRowAllValid;
 var objExcelErrors = [];
@@ -324,21 +320,35 @@ function ExportToTable() {
 
                         $(exceljson).each(function (index) {
 
-                            tmpObject = {
+                            console.log("**************************");
+                            //console.log("Processing row " + excelRowNumber + " of the uploaded Excel file...");
+                            //set that the values in this excel row are within range
+                            excelRowAllValid = true;
 
+                            //create a tmpObject
+                            tmpObject = {
+                                excelRowId: excelRowId,
                                 ocvar: "",
                                 peakld: "",
-                                fvr: Object.values(exceljson[index])[0],
-                                svr: Object.values(exceljson[index])[1],
-                                gaugeini: Object.values(exceljson[index])[2],
-                                span: Object.values(exceljson[index])[3],
-                                emaj: Object.values(exceljson[index])[4],
-                                emin: Object.values(exceljson[index])[5],
+                                fvr: validateBulkOilCanningExcelRow(fvrMin, fvrMax, Object.values(exceljson[index])[0], "FVR", excelRowId),
+                                svr: validateBulkOilCanningExcelRow(svrMin, svrMax, Object.values(exceljson[index])[1], "SVR", excelRowId),
+                                gaugeini: validateBulkOilCanningExcelRow(gaugeiniMin, gaugeiniMax, Object.values(exceljson[index])[2], "GAUGEINI", excelRowId),
+                                span: validateBulkOilCanningExcelRow(spanMin, spanMax, Object.values(exceljson[index])[3], "SPAN", excelRowId),
+                                emaj: validateBulkOilCanningExcelRow(emajMin, emajMax, Object.values(exceljson[index])[4], "EMAJ", excelRowId),
+                                emin: validateBulkOilCanningExcelRow(eminMin, eminMax, Object.values(exceljson[index])[5], "EMIN", excelRowId),
                                 DDQ: "",
                                 BH210: ""
                             };
 
-                            objExcelJson.push(tmpObject);
+                            //validate that the values of this excel row are within range
+                            //validateBulkOilCanningExcelRow(tmpObject);
+
+                            //push tmpObject to objExcelJson
+                            if (excelRowAllValid) {
+                                objExcelJson.push(tmpObject);
+                            }
+                            //increment the excel row number
+                            excelRowId++;
                         });
 
                         sheetNumber++;
@@ -347,10 +357,10 @@ function ExportToTable() {
                     }
                 });
 
-                console.log("post to the back end.");
-                console.log(objExcelJson);
-                console.log("objExcelErrors");
-                console.log(objExcelErrors);
+                //console.log("post to the back end.");
+                //console.log(objExcelJson);
+                //console.log("objExcelErrors");
+                //console.log(objExcelErrors);
 
                 //post to the back end
                 Ext.Ajax.request({
@@ -365,8 +375,8 @@ function ExportToTable() {
                         if (resp.success) {
                             //console.log("resp");
                             //console.log(resp);
-                            console.log("resp.data");
-                            console.log(resp.data);
+                            //console.log("resp.data");
+                            //console.log(resp.data);
 
                             //if the ocvar calculation is greater than zero, no oil canning is present so 
                             //replace the numerical value of peakld with a string for display
@@ -383,7 +393,7 @@ function ExportToTable() {
                             //load that store with current data
                             store.add(resp.data);
 
-                            //link up to the bulk oil canning store
+                            //link up to the bulk oil canning error store
                             var store = Ext.data.StoreManager.lookup('OcBulkErrorStore');
                             //clear that store of past data
                             store.removeAll();
@@ -418,20 +428,24 @@ function ExportToTable() {
     }
 }
 
+//validate an Excel value
 function validateBulkOilCanningExcelRow(minValue, maxValue, evaluatedValue, evaluatedName, excelRowId) {
 
+    //holds a description of the range error
     var strErrorText;
 
+    //if the value is within range, simply return the value
     if (evaluatedValue >= minValue && evaluatedValue <= maxValue) {
 
         //console.log("Row " + excelRowId + " of the uploaded Excel file...");
         //console.log(evaluatedName + " with a value of " + evaluatedValue + " is within " + minValue + " and " + maxValue)
         return evaluatedValue;
     }
+    //if the value is not within range, build a description of the error along with the Excel row id
     else {
 
-        console.log("Row " + excelRowId + " of the uploaded Excel file...");
-        console.log(evaluatedName + " with a value of " + evaluatedValue + " is not within " + minValue + " and " + maxValue);
+        //console.log("Row " + excelRowId + " of the uploaded Excel file...");
+        //console.log(evaluatedName + " with a value of " + evaluatedValue + " is not within " + minValue + " and " + maxValue);
 
         strErrorText = evaluatedName + " with a value of " + evaluatedValue + " is not within " + minValue + " and " + maxValue;
         excelRowAllValid = false;

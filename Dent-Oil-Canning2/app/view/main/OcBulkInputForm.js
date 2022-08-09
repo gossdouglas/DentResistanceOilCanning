@@ -68,6 +68,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                                     {
                                         xtype: 'button',
                                         text: "Export",
+                                        disabled: true,
                                         width: '10%',
                                         //margin: top, right, bottom, left
                                         margin: '0 1 0 1',
