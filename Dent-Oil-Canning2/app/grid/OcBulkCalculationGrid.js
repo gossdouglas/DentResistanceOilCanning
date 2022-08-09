@@ -8,7 +8,7 @@
     requires: [
         'DentResistanceOilCanning.store.OcBulkCalculationStore',
     ],
-    title: 'The columns of the source Excel sheet must be arranged and of the range shown below',
+    title: 'The columns of the source Excel sheet must be arranged in the order and of the range shown below',
     titleAlign: 'center',
     store: {
         type: 'oc-bulk-calculation-store',

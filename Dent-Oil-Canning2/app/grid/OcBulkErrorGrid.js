@@ -6,7 +6,7 @@
     requires: [
         'DentResistanceOilCanning.store.OcBulkErrorStore'
     ],   
-    title: 'Un-processed due to range errors in the source Excel file',
+    title: 'Un-processed Excel rows due to range errors in the source Excel file',
     titleAlign: 'center',
     columnLines: true,
     store: {
