@@ -237,7 +237,7 @@ Ext.define('DentResistanceOilCanning.view.main.DrM2Form', {
                                     {
                                         xtype: 'panel',
                                         width: '11%',
-                                        html: '<center>-</center>',
+                                        html: '<center>Output Value</center>',
                                     },
                                 ]
                         },

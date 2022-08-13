@@ -7,7 +7,6 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
     controller: 'dr-model1-form-controller',
     scrollable: true,
     url: 'api/DentResistance/CalculateModelOne',
-    //url: 'api/OilCanning/LoadOilCanning',
 
     items:
         [
@@ -189,10 +188,6 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                         //range notes
                         {
                             xtype: 'panel',
-                            //layout: {
-                            //    type: 'hbox',
-                            //    align: 'stretch',
-                            //},
                             layout: {
                                 type: 'hbox',
                                 pack: 'center',
@@ -233,18 +228,21 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
                                     {
                                         xtype: 'panel',
                                         width: '11%',
+                                        html: '<center>Constant Value</center>',
                                     },
                                     {
                                         xtype: 'panel',
                                         width: '11%',
+                                        html: '<center>Output Value</center>',
                                     },
                                     {
                                         xtype: 'panel',
                                         width: '11%',
+                                        html: '<center>Output Value</center>',
                                     },
                                 ]
                         },
-                        //calculate button
+                        //command buttons
                         {
                             xtype: 'panel',
                             //layout: {
@@ -378,8 +376,6 @@ Ext.define('DentResistanceOilCanning.view.main.DrM1Form', {
             {
                 xtype: 'panel',
                 id: 'DrM1FormTestResultsPanel',
-                //title: 'Correlation with Test Data',
-                //titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
                 flex: 5,

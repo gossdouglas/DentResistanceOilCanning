@@ -158,19 +158,19 @@ namespace Dent_Oil_Canning2.Controllers
             oilCanningReturn.chartList = chartList;
             model.ocvar = ocvar;
             model.peakld = peakld;
-            model.BH210 = BH210;
-            model.DDQ = DDQ;
+            //model.BH210 = BH210;
+            //model.DDQ = DDQ;
+            model.BH210 = Math.Round(BH210, 3);
+            model.DDQ = Math.Round(DDQ, 2);
             oilCanningReturn.oilcanning = model;
 
             if (chartList != null)
             {
                 return new ReturnObject<VmOilCanningReturn>() { success = true, data = oilCanningReturn, validated = true };
-                //return new ReturnObject<List<Chart>>() { success = true, data = chartList, validated = true };
             }
             else
             {
                 return new ReturnObject<VmOilCanningReturn>() { success = false, data = oilCanningReturn, validated = true };
-               // return new ReturnObject<List<Chart>>() { success = false, data = chartList, validated = true };
             }
         }
 

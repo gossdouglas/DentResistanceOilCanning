@@ -49,7 +49,6 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
     tabBarHeaderPosition: 1,
     titleRotation: 0,
     tabRotation: 0,
-
     header: {
         layout: {
             align: 'stretchmax'
@@ -60,7 +59,6 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         },
         iconCls: 'fa-th-list'
     },
-
     tabBar: {
         flex: 1,
         layout: {
@@ -68,7 +66,6 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
             overflowHandler: 'none'
         }
     },
-
     responsiveConfig: {
         tall: {
             headerPosition: 'top'
@@ -77,7 +74,6 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
             headerPosition: 'left'
         }
     },
-
     defaults: {
         bodyPadding: 20,
         tabConfig: {
@@ -94,6 +90,8 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
             }
         }
     },
+
+    activeTab: 0,
 
     items: [
         {
@@ -174,7 +172,7 @@ function showOcCalculator() {
         height: '100%',
         id: 'oilCanningFormWindow',
         items: {
-           //xtype: 'oil-canning-form'
+           xtype: 'oil-canning-form'
         },
         listeners: {
 

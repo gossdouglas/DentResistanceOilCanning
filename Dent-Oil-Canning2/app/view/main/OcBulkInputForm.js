@@ -88,7 +88,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                 titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
-                flex: 5,
+                flex: 8,
                 scrollable: true,
                 items:
                     [
@@ -104,7 +104,7 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                 titleAlign: 'center',
                 width: '100%',
                 bodyPadding: '5',
-                flex: 2,
+                flex: 3,
                 scrollable: true,
                 items:
                     [
@@ -113,19 +113,19 @@ Ext.define('DentResistanceOilCanning.view.main.OcBulkInputForm', {
                         },
                     ]
             },
-            //page footer
-            {
-                xtype: 'panel',
-                width: '100%',
-                bodyPadding: '5',
-                items:
-                    [
-                        {
-                            xtype: 'page-footer',
-                            width: '100%',
-                        },
-                    ]
-            },
+            ////page footer
+            //{
+            //    xtype: 'panel',
+            //    width: '100%',
+            //    bodyPadding: '5',
+            //    items:
+            //        [
+            //            {
+            //                xtype: 'page-footer',
+            //                width: '100%',
+            //            },
+            //        ]
+            //},
         ],
 });
 

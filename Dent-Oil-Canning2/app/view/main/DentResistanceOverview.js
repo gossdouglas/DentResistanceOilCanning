@@ -101,7 +101,7 @@ Ext.define('DentResistanceOilCanning.view.main.DentResistanceOverview', {
                                                 },
                                                 //{
                                                 //    xtype: 'image',
-                                                //    src: 'images/dentresistance2.gif',
+                                                //    src: '/images/dentresistance2.gif',
                                                 //},
                                             ]
                                     },
