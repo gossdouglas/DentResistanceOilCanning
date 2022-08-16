@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UpgradeLog>
+  <Settings>
+    <Setting Name="LogFile" Value="DRFormula.log" />
+    <Setting Name="GenerateInterfacesForClasses" Value="FALSE" />
+    <Setting Name="ProjectName" Value="DRFormula" />
+    <Setting Name="OutputName" Value="DRFormula.csproj" />
+    <Setting Name="OutputDir" Value="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\PreProcessInfo\" />
+    <Setting Name="ProjectPath" Value="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\DRFormula.vbp" />
+    <Setting Name="MigrateProjectTo" Value="Library" />
+  </Settings>
+  <File OldPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\Calculations.cls" NewPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\PreProcessInfo\Calculations.cs" FileType="Class Module" Upgraded="True" />
+  <File OldPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\Formula.cls" NewPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\PreProcessInfo\Formula.cs" FileType="Class Module" Upgraded="True" />
+  <File OldPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\modGetDataFromDB.bas" NewPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\PreProcessInfo\modGetDataFromDB.cs" FileType="Module" Upgraded="True" />
+</UpgradeLog>
+

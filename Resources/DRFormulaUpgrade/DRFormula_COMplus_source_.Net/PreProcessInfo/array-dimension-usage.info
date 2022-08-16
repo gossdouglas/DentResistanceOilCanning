@@ -1,0 +1,1 @@
+[segment [list* "DRFormula.Calculations.mstrOperators" [segment [:dimlist [:dimrange 0 25] 1] [:dimlist [:undetrange] 1]]] [list* "DRFormula.Calculations.mdblOperands" [segment [:dimlist [:dimrange 0 50] 1] [:dimlist [:undetrange] 1]]]]

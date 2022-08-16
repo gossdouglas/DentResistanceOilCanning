@@ -1,0 +1,93 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRFormula", "DRFormula.csproj", "{4F9578F2-7363-4A29-843D-EEFABFE156B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpgradeHelpers.DB.ADO", "..\UpgradeSupport\UpgradeHelpers.DB.ADO\UpgradeHelpers.DB.ADO.csproj", "{99220D3D-4722-432C-9681-ADFFF2065D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpgradeHelpers.DB.Essentials", "..\UpgradeSupport\UpgradeHelpers.DB.Essentials\UpgradeHelpers.DB.Essentials.csproj", "{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpgradeHelpers.Utils", "..\UpgradeSupport\UpgradeHelpers.Utils\UpgradeHelpers.Utils.csproj", "{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpgradeHelpers.DB.RDO", "..\UpgradeSupport\UpgradeHelpers.DB.RDO\UpgradeHelpers.DB.RDO.csproj", "{9FF437EF-EB4E-45A2-8F18-29E05C93917E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DRFormula.csproj", "DRFormula.csproj", "{D4E537A3-08CA-4413-9600-13CD99AE6FB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpgradeSupport", "UpgradeSupport", "{DDEABA22-459C-4E62-B038-CDB1FDF456DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpgradeHelpers.DB.ADO", "UpgradeHelpers.DB.ADO", "{AA44EB5B-7E84-4680-8250-3409179A50D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpgradeHelpers.DB.Essentials", "UpgradeHelpers.DB.Essentials", "{9FF69BC7-62A6-4D3D-97BE-CF0C2F7A10B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpgradeHelpers.Utils", "UpgradeHelpers.Utils", "{F4C261C7-1548-4F59-9A46-28C42D52C7B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpgradeHelpers.DB.RDO", "UpgradeHelpers.DB.RDO", "{8F904312-0A02-4716-9667-414839AC4454}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Debug|x86.ActiveCfg = Debug|x86
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Debug|x86.Build.0 = Debug|x86
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Release|Mixed Platforms.Build.0 = Release|x86
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Release|x86.ActiveCfg = Release|x86
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5}.Release|x86.Build.0 = Release|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Debug|x86.ActiveCfg = Debug|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Debug|x86.Build.0 = Debug|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Release|Mixed Platforms.Build.0 = Release|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Release|x86.ActiveCfg = Release|x86
+		{99220D3D-4722-432C-9681-ADFFF2065D68}.Release|x86.Build.0 = Release|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Debug|x86.ActiveCfg = Debug|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Debug|x86.Build.0 = Debug|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Release|x86.ActiveCfg = Release|x86
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E}.Release|x86.Build.0 = Release|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Debug|x86.ActiveCfg = Debug|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Debug|x86.Build.0 = Debug|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Release|x86.ActiveCfg = Release|x86
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F}.Release|x86.Build.0 = Release|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Debug|x86.ActiveCfg = Debug|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Debug|x86.Build.0 = Debug|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Release|x86.ActiveCfg = Release|x86
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4F9578F2-7363-4A29-843D-EEFABFE156B5} = {D4E537A3-08CA-4413-9600-13CD99AE6FB0}
+		{99220D3D-4722-432C-9681-ADFFF2065D68} = {AA44EB5B-7E84-4680-8250-3409179A50D7}
+		{B5D4A0EE-0D52-4EE8-829D-48DAF1E56B8E} = {9FF69BC7-62A6-4D3D-97BE-CF0C2F7A10B1}
+		{1A91E8F9-BEFF-4B66-98DF-4BFEE15FA39F} = {F4C261C7-1548-4F59-9A46-28C42D52C7B5}
+		{9FF437EF-EB4E-45A2-8F18-29E05C93917E} = {8F904312-0A02-4716-9667-414839AC4454}
+		{AA44EB5B-7E84-4680-8250-3409179A50D7} = {DDEABA22-459C-4E62-B038-CDB1FDF456DF}
+		{9FF69BC7-62A6-4D3D-97BE-CF0C2F7A10B1} = {DDEABA22-459C-4E62-B038-CDB1FDF456DF}
+		{F4C261C7-1548-4F59-9A46-28C42D52C7B5} = {DDEABA22-459C-4E62-B038-CDB1FDF456DF}
+		{8F904312-0A02-4716-9667-414839AC4454} = {DDEABA22-459C-4E62-B038-CDB1FDF456DF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4715ABEC-EB6B-454D-9D33-052BFC793D24}
+	EndGlobalSection
+EndGlobal

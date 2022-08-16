@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UpgradeLog>
+  <Settings>
+    <Setting Name="LogFile" Value="DRFormula.log" />
+    <Setting Name="GenerateInterfacesForClasses" Value="FALSE" />
+    <Setting Name="ProjectName" Value="DRFormula" />
+    <Setting Name="OutputName" Value="DRFormula.csproj" />
+    <Setting Name="OutputDir" Value="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\Upgraded\" />
+    <Setting Name="ProjectPath" Value="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\DRFormula.vbp" />
+    <Setting Name="MigrateProjectTo" Value="Library" />
+  </Settings>
+  <File OldPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\Calculations.cls" NewPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\Upgraded\Calculations.cs" FileType="Class Module" Upgraded="True">
+    <Section Name="Simple">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="Compound">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="2">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="Validate">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+  </File>
+  <File OldPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\Formula.cls" NewPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\Upgraded\Formula.cs" FileType="Class Module" Upgraded="True">
+    <Section Name="Calculate">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="CalculateM2">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="CalculateOilCanning">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="CalculateInitialStiffness">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="RunCalculations">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="SetEPS3andActualT">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="ActualR1">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="ActualR2">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="Class_Initialize">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+  </File>
+  <File OldPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source\modGetDataFromDB.bas" NewPath="C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\Upgraded\modGetDataFromDB.cs" FileType="Module" Upgraded="True">
+    <Section Name="GetDataFromDB">
+      <Issue Type="Runtime" Number="2081" ObjectName="Information.Err" ObjectType="ErrObject" PME="Number" Qty="1">Err.Number has a new behavior.</Issue>
+    </Section>
+    <Section Name="GetDATAwUP">
+      <Issue Type="ToDo" Number="7010" ObjectName="conn" ObjectType="ADODB.Connection" PME="Open" Qty="1">The connection string must be verified to fullfill the .NET data provider connection string requirements.</Issue>
+    </Section>
+  </File>
+</UpgradeLog>
+

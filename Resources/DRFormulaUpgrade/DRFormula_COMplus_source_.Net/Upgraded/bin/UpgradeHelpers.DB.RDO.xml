@@ -1,0 +1,781 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UpgradeHelpers.DB.RDO</name>
+    </assembly>
+    <members>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.RowStatusChangedEventHandler">
+            <summary>
+            Delegate to handle the RowStatusChangedEvent.
+            </summary>
+            <param name="sender">The object whic rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.WillUpdateRowsEventHandler">
+            <summary>
+            Delegate to handle the WillUpdateRowsEvent.
+            </summary>
+            <param name="sender">The object whic rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.RowCurrencyChangeEventHandler">
+            <summary>
+            Delegate to handle the RowCurrencyChangeEvent.
+            </summary>
+            <param name="sender">The object which rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.WillDissociateEventHandler">
+            <summary>
+            Delegate to handle the WillDissociateEvent.
+            </summary>
+            <param name="sender">The object whic rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.WillAssociateEventHandler">
+            <summary>
+            Delegate to handle the WillAssociateEvent.
+            </summary>
+            <param name="sender">The object whic rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.DissociateEventHandler">
+            <summary>
+            Delegate to handle the DissociateEvent.
+            </summary>
+            <param name="sender">The object whic rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.AssociateEventHandler">
+            <summary>
+            Delegate to handle the AssociateEvent.
+            </summary>
+            <param name="sender">The object whic rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.WillDissociateEventArgs">
+            <summary>
+            Arguments for the WillDissociateEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.Events.WillDissociateEventArgs.#ctor(System.Boolean)">
+            <summary>
+            Creates a new WillDissociateEventArgs instance.
+            </summary>
+            <param name="cancel">Determines if the event is cancelled</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.Events.WillDissociateEventArgs.Cancel">
+            <summary>
+            Gets and set the cancel flag.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.WillAssociateEventArgs">
+            <summary>
+            Arguments for the WillAssociateEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.Events.WillAssociateEventArgs.#ctor(System.Data.Common.DbConnection,System.Boolean)">
+            <summary>
+            Creates a new WillDissociateEventArgs instance.
+            </summary>
+            <param name="connection">The connection to be associated</param>
+            <param name="cancel">Determines if the event is cancelled</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.Events.WillAssociateEventArgs.Connection">
+            <summary>
+            Gets the connection instance.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.Events.WillUpdateRowsEventArgs">
+            <summary>
+            Arguments for the WillUpdateRowsEvent.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.Events.WillUpdateRowsEventArgs.Returncode">
+            <summary>
+            Gets the return code.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.Events.WillUpdateRowsEventArgs.#ctor(System.Int32)">
+            <summary>
+            Creates a new WillUpdateRowsEventArgs instance.
+            </summary>
+            <param name="returncode">The return code of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.LockTypeConstants">
+            <summary>
+            Defines the type of concurrence to be used by the recordset.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.LockTypeConstants.rdConcurReadOnly">
+            <summary>
+            Read Only
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.LockTypeConstants.rdConcurLock">
+            <summary>
+            Lock
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.LockTypeConstants.rdConcurRowVer">
+            <summary>
+            By Row
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.LockTypeConstants.rdConcurValues">
+            <summary>
+            By Value
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.LockTypeConstants.rdConcurBatch">
+            <summary>
+            Batch
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.RDOEngineHelper">
+            <summary>
+            This class represents the rdoEngine class.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDOEngineHelper._timeout">
+            <summary>
+            timeout value
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDOEngineHelper.Instance(System.Data.Common.DbProviderFactory)">
+            <summary>
+            This returns the default instance of the Engine as exposed by RDO.
+            </summary>
+            <param name="factory">This is the Provider factory used internally to create the necesary ADO .Net internal objects.</param>
+            <returns>A new instance of the rdoEngine object.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDOEngineHelper.#ctor(System.Data.Common.DbProviderFactory)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="factory">This is the Provider factory used internally to create the necesary ADO .Net internal objects.</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDOEngineHelper.DefaultLoginTimeOut">
+            <summary>
+            Gets and sets the default login time out.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDOEngineHelper.CreateEnvironment(System.String)">
+            <summary>
+            Creates a new Environment instance as exposed by RDO.
+            </summary>
+            <param name="name">The name of the new environment instance.</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDOEngineHelper.Environments">
+            <summary>
+            Gets the list of evironments contained on this engine instance.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper">
+            <summary>
+            This class represents the rdoEnvironment semantic meaning holding a collection of connections.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper._loginTimeOut">
+            <summary>
+            Timeout value.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper._name">
+            <summary>
+            Name value for the environment.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper.#ctor">
+            <summary>
+            Creates a new environment.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper.#ctor(System.Data.Common.DbProviderFactory)">
+            <summary>
+            Creates a new environment.
+            </summary>
+            <param name="factory">Represents the provider factory to be used to create the ADO .Net.</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper.Name">
+            <summary>
+            Gets and sets the name of the environment.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper.LoginTimeOut">
+            <summary>
+            Gets and sets the login time out.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDOEnvironmentHelper.OpenConnection(System.String)">
+            <summary>
+            Opens a new database connection.
+            </summary>
+            <param name="connectionString">This is the connection to be used to connect to the database.</param>
+            <returns>A new open connection.</returns>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.RDORecordSetHelper">
+            <summary>
+            This class has the same functionality than the recordset exposed by the RDO library.
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.RDO.RDORecordSetHelper.RowStatusChanged">
+            <summary>
+            Row Status Changed event
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.RDO.RDORecordSetHelper.WillUpdateRows">
+            <summary>
+            Will Update Rows event
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.RDO.RDORecordSetHelper.RowCurrencyChange">
+            <summary>
+            Row Currency Change event
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.RDO.RDORecordSetHelper.WillDissociate">
+            <summary>
+            Will Dissociate event
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.RDO.RDORecordSetHelper.WillAssociate">
+            <summary>
+            Will Associate event
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Dissociate">
+            <summary>
+            Dissociate event
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Associate">
+            <summary>
+            Associate event
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDORecordSetHelper.HasAutoincrementCols">
+            <summary>
+            has auto increment columns
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDORecordSetHelper.DbvRow">
+            <summary>
+            New Datarow view when adding to a sorted or filtered collection
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDORecordSetHelper._firstEof">
+            <summary>
+            is first End Of File?
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDORecordSetHelper.autoIncrementCol">
+            <summary>
+            auto increment column name
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.#ctor(System.String)">
+            <summary>
+            Constructs a new RDORecordSetHelper instance using the specified factory.
+            </summary>
+            <param name="factoryname">The name used to identify the factory to be used to create all the necesary ADO .Net objects.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.#ctor">
+            <summary>
+            creates a new recordset helper.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.#ctor(System.Data.Common.DbProviderFactory)">
+            <summary>
+            Creates a new RecordsetHelper using the provided DBProviderFactory.
+            </summary>
+            <param name="factory">DBProviderFactory instance to be used by internal variable.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.IsCachingAdapter">
+            <summary>
+            Return true if the recordsethelper is caching the adapters
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.ActiveConnection">
+            <summary>
+            Gets and Set the connection to be used to interact with the database.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.AbsolutePosition">
+            <summary>
+            Gets and Set the position of the current record on the recordset instance.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.UsingView">
+            <summary>
+            Property used to determine if the data needs to be get from a dataview or the table directly
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.PercentPosition">
+            <summary>
+            Gets and Set the percentage of the current position of the total of records retrieved.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.LockType">
+            <summary>
+            Gets and Set the lock type to be used by the recordset.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Bookmark">
+            <summary>
+            Bookmark a Data Row
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CurrentRecordSet">
+            <summary>
+            Pointer to current recordset data table
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CurrentRow">
+            <summary>
+            Gets a DataRow with the information of the current record on the RecordsetHelper.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.FactoryName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Requery">
+            <summary>
+            Updates the data in a Recordset object by re-executing the query on which the object is based.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Find(System.String)">
+            <summary>
+            Looks in all records for a field that matches the “criteria”. 
+            </summary>
+            <param name="criteria">A String used to locate the record. It is like the WHERE clause in an SQL statement, but without the word WHERE.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.findBookmarkIndex(System.Data.DataRow)">
+            <summary>
+            Finds the index in the RecordsetHelper for the “value”.
+            </summary>
+            <param name="value">The DataRow to look for.</param>
+            <returns>The index number if is found, otherwise -1.</returns>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CanMovePrevious">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.BOF">
+            <summary>
+            Gets a bool value indicating if the current record is the last one in the RecordsetHelper object.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CanMoveNext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.getSource">
+            <summary>
+            Gets Command Source query string
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Name">
+            <summary>
+            Gets the first 256 characters of the sql statement used to open the recordset.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.GetConnection(System.String)">
+            <summary>
+            Returns the ActiveConnection object if it has been initialized otherwise creates a new DBConnection object.
+            </summary>
+            <param name="connectionString">The connection string to be used by the connection.</param>
+            <returns>A DBConnection containing with the connection string set. </returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.FixAutoincrementColumns(System.Data.DataTable)">
+            <summary>
+            Sets the primary key to a DataTable object.
+            </summary>
+            <param name="dataTable">The DataTable that holds the currently loaded data.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.getCommandType(System.String,System.Collections.Generic.List{System.Data.Common.DbParameter}@)">
+            <summary>
+            Infers the command type from an SQL string getting the schema metadata from the database.
+            </summary>
+            <param name="sqlCommand">The sql string to be analyzed.</param>
+            <param name="parameters">List of DbParameters</param>
+            <returns>The command type</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Validate">
+            <summary>
+            Verifies if the ADORecordset object have been open.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Open">
+            <summary>
+            Opens the recordset.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CreateCommand(System.String,System.Data.CommandType,System.Collections.Generic.List{System.Data.Common.DbParameter})">
+            <summary>
+            Creates a DBCommand object using de provided parameters.
+            </summary>
+            <param name="commandText">A string containing the SQL query.</param>
+            <param name="commandType">The desire type for the command.</param>
+            <param name="parameters">A list with the parameters to be included on the DBCommand object.</param>
+            <returns>A new DBCommand object.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CreateUpdateCommand(System.Data.Common.DbDataAdapter,System.Data.Common.DbCommandBuilder)">
+            <summary>
+            Creates the update command for the database update operations of the recordset
+            </summary>
+            <param name="adapter">The data adapter that will contain the update command</param>
+            <param name="cmdBuilder">The command builder to get the update command from.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CreateDeleteCommandFromMetaData">
+            <summary>
+            Creates a delete command using the information contained in the RecordsetHelper.    
+            </summary>
+            <returns>A DBCommand object containing a delete command.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CreateUpdateCommandFromMetaData">
+            <summary>
+            Creates an update command using the information contained in the RecordsetHelper.
+            </summary>
+            <returns>A DBCommand object containing an update command.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CreateInsertCommandFromMetaData">
+            <summary>
+            Creates an insert command using the information contained in the RecordsetHelper.
+            </summary>
+            <returns>A DBCommand object containing an insert command.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CompleteInsertCommand(System.Data.Common.DbDataAdapter)">
+            <summary>
+            Assigns the InsertCommand to the adaptar parameter
+            </summary>
+            <param name="adapter">DbDataAdapter</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MsInsertCommandCompletion(System.Data.Common.DbDataAdapter,System.String,System.String)">
+            <summary>
+            SqlServer Identity value for last insert execution.
+            </summary>
+            <param name="adapter">DbDataAdapter to set</param>
+            <param name="identityInfo">Name of Identity field</param>
+            <param name="extraCommandText">used to set the query to get the identity value</param>
+            <returns>returns the entire query in the adapter</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.RecordSetHelper_RowUpdatedOleDb(System.Object,System.Data.OleDb.OleDbRowUpdatedEventArgs)">
+            <summary>
+            OleDb Row Updated event
+            </summary>
+            <param name="sender">object</param>
+            <param name="e">Row updated event args</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CreateAdapter(System.Data.Common.DbConnection,System.Boolean)">
+            <summary>
+            Using connection parameter creates a Database Data Adapter
+            </summary>
+            <param name="connection">DbConnection parameter</param>
+            <param name="updating">if updating creates all internal query strings</param>
+            <returns></returns>
+        </member>
+        <member name="F:UpgradeHelpers.DB.RDO.RDORecordSetHelper.operationFinished">
+            <summary>
+            operation finished state
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OpenRecordset(System.Boolean)">
+            <summary>
+            Opens the RecordsetHelper and requeries according to the value of “requery” parameter.
+            </summary>
+            <param name="requery">Indicates if a requery most be done.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Open(System.Boolean)">
+            <summary>
+            Opens the RecordsetHelper and requeries according to the value of “requery” parameter.
+            </summary>
+            <param name="requery">Indicates if a requery most be done.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Open(System.String,System.Data.Common.DbConnection,UpgradeHelpers.DB.RDO.LockTypeConstants,System.String)">
+            <summary>
+            Creates a new RDORecordSetHelper and opens it.
+            </summary>
+            <param name="SQLstr">The sql statement used to populate the recordset.</param>
+            <param name="connection">The connection used to interact with the database.</param>
+            <param name="locktype">The lock type used by the recordset.</param>
+            <param name="factoryName">The name used to identify the factory to be used to create all the necesary ADO .Net objects.</param>
+            <returns>A new opened recordset.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Open(System.String,System.Data.Common.DbConnection,System.String)">
+            <summary>
+            Creates a new RDORecordSetHelper and opens it.
+            </summary>
+            <param name="SQLstr">The sql statement used to populate the recordset.</param>
+            <param name="connection">The connection used to interact with the database.</param>
+            <param name="factoryName">The name used to identify the factory to be used to create all the necesary ADO .Net objects.</param>
+            <returns>A new opened recordset.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Open(System.Data.Common.DbCommand,UpgradeHelpers.DB.RDO.LockTypeConstants,System.String)">
+            <summary>
+             Creates a new RDORecordSetHelper and opens it.
+            </summary>
+            <param name="command">The sql statement used to populate the recordset.</param>
+            <param name="locktype">The lock type used by the recordset.</param>
+            <param name="factoryName">The name used to identify the factory to be used to create all the necesary ADO .Net objects.</param>
+            <returns>A new opened recordset.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Open(System.Data.Common.DbCommand,System.String)">
+            <summary>
+             Creates a new RDORecordSetHelper and opens it.
+            </summary>
+            <param name="command">The sql statement used to populate the recordset.</param>
+            <param name="factoryName">The name used to identify the factory to be used to create all the necesary ADO .Net objects.</param>
+            <returns>A new opened recordset.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.doAddNew">
+            <summary>
+            Executes the atomic addNew Operation creating the new row and setting the newRow flag.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.AddNew">
+            <summary>
+            Creates a new record on the recordset.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Edit">
+            <summary>
+            Sets the recordset on edition mode.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Delete">
+            <summary>
+            Deletes the current record of the recordset.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.ConnectionString">
+            <summary>
+            Gets or sets the connection string being use by this RecordsetHelper object.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CreateInstance">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OperationFinished">
+            <summary>
+            operation finished state
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.IsDefaultSerializationInProgress">
+            <summary>
+            has auto increment columns
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.FirstEof">
+            <summary>
+            is first End Of File?
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Filtered">
+            <summary>
+            is filtered?
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CachingAdapter">
+            <summary>
+            Get and set of caching adapter
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.AssignDefaultValues(System.Data.DataRow)">
+            <summary>
+            Sets default values to a fields to avoid insert null in the DB when the field does not accept it.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.UpdateWithNoEvents(System.Data.DataRow)">
+            <summary>
+            Saves any changes made to the DataRow recieved as parameter.
+            </summary>
+            <param name="theRow">The row to be save on the Database.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Update">
+            <summary>
+            Saves the changes done to the current record on the recordset.
+            </summary>
+            <remarks>If the recordset is not batch enabled this method saves the changes on the database.</remarks>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.BatchUpdate">
+            <summary>
+            Saves a batch of changes to the database.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Cancel">
+            <summary>
+            Cancels execution of any pending process.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.CancelUpdate">
+            <summary>
+            Cancels the changes done to the current recordset.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Close">
+            <summary>
+            Releses the resources used by the recordset.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.isBatchEnabled">
+            <summary>
+            Determines if the recordset is batch enabled.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.GetClipString(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Returns a delimited string for 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <param name="columnDelimiter">Expression used to separate the columns.</param>
+            <param name="rowDelimiter">Expression used to separate the rows.</param>
+            <param name="nullExpr">Expression used to replace nulls.</param>
+            <returns>A delimited string containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.GetClipString(System.Int32,System.String,System.String)">
+            <summary>
+            Returns a delimited string for 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <param name="columnDelimiter">Expression used to separate the columns.</param>
+            <param name="rowDelimiter">Expression used to separate the rows.</param>
+            <returns>A delimited string containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.GetClipString(System.Int32,System.String)">
+            <summary>
+            Returns a delimited string for 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <param name="columnDelimiter">Expression used to separate the columns.</param>
+            <returns>A delimited string containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.GetClipString(System.Int32)">
+            <summary>
+            Returns a delimited string for 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <returns>A delimited string containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.GetRows(System.Int32)">
+            <summary>
+            Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <returns>A delimited string containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MoreResults">
+            <summary>
+                Returns a new recordset according to the compound statement on the current recordset
+            </summary>
+            <returns>boolean true if there are more resultsets</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MoveAfterFilter">
+            <summary>
+            Performs the move action after setting a filter
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MoveAction">
+            <summary>
+            Used to handle the common move call.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.Move(System.Int32)">
+            <summary>
+            Moves the current record pointer 'n' number of records.
+            </summary>
+            <param name="records">The number of records to move the record pointer.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MoveFirst">
+            <summary>
+            Moves the record pointer to the first record.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MoveLast">
+            <summary>
+            Moves the record pointer to the last record.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MoveNext">
+            <summary>
+            Moves the record pointer to the next record.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.MovePrevious">
+            <summary>
+            Moves the record pointer to the previous record.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.DoMove(UpgradeHelpers.DB.RDO.RDORecordSetHelper.MoveAction)">
+            <summary>
+            Actually executes the move method.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.BasicMove(System.Int32)">
+            <summary>
+            Moves between the rows of the current recordset.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.RDORecordSetHelper_RowChanging(System.Object,System.Data.DataRowChangeEventArgs)">
+            <summary>
+            Method to trigger the row status changed event when an update happens.
+            </summary>
+            <param name="sender">The event sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OnRowStatusChanged">
+            <summary>
+            Fires event RowStatusChanged.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OnRowCurrencyChange">
+            <summary>
+            Fires event RowCurrencyChange.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OnWillUpdateRows(System.Int32@)">
+            <summary>
+            Fires event WillUpdateRows.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OnAssociate">
+            <summary>
+            Fires event Associate.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OnDissociate">
+            <summary>
+            Fires event Dissociate.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OnWillAssociate(System.Data.Common.DbConnection,System.Boolean@)">
+            <summary>
+            Fires event WillAssociate.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.RDO.RDORecordSetHelper.OnWillDissociate(System.Boolean@)">
+            <summary>
+            Fires event WillDissociate.
+            </summary>
+        </member>
+    </members>
+</doc>

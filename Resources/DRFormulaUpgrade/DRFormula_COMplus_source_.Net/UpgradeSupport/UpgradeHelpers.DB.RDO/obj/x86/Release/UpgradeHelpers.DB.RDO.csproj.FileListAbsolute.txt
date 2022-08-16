@@ -1,0 +1,12 @@
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\bin\Release\UpgradeHelpers.DB.RDO.dll
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\bin\Release\UpgradeHelpers.DB.RDO.pdb
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\bin\Release\UpgradeHelpers.DB.Essentials.dll
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\bin\Release\UpgradeHelpers.Utils.dll
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\bin\Release\UpgradeHelpers.DB.Essentials.pdb
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\bin\Release\UpgradeHelpers.Utils.pdb
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\bin\Release\UpgradeHelpers.Utils.xml
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\obj\x86\Release\UpgradeHelpers.DB.RDO.csproj.AssemblyReference.cache
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\obj\x86\Release\UpgradeHelpers.DB.RDO.csproj.CoreCompileInputs.cache
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\obj\x86\Release\UpgradeHelpers.DB.RDO.csproj.CopyComplete
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\obj\x86\Release\UpgradeHelpers.DB.RDO.dll
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.DB.RDO\obj\x86\Release\UpgradeHelpers.DB.RDO.pdb

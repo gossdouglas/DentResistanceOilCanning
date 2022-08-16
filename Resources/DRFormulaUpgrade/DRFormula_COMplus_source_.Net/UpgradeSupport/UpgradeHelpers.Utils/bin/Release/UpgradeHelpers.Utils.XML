@@ -1,0 +1,1365 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UpgradeHelpers.Utils</name>
+    </assembly>
+    <members>
+        <member name="T:UpgradeHelpers.Helpers.ArraysHelper">
+            <summary>
+            The ArraysHelper contains functionality for some array operations, such as:
+            initialization, casting, and redimension.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a one-dimensional array.
+            </summary>
+            <typeparam name="TE">The type of the elements of the array like 'string' for instance.</typeparam>
+            <param name="length">The length of the new array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new one-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a one-dimensional array.
+            </summary>
+            <typeparam name="TE">The type of the elements of the array like 'string' for instance.</typeparam>
+            <param name="length">The length of the new array.</param>
+            <param name="lowerBound">The lower bound for the new array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new one-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32,System.Object[],System.Boolean,System.Int32)">
+            <summary>
+            Initializes a one-dimensional array.
+            </summary>
+            <typeparam name="TE">The type of the elements of the array like 'string' for instance.</typeparam>
+            <param name="length">The length of the new array.</param>
+            <param name="constructorParams">The list of values to be sent to
+            the constructor of the item type of the array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new one-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32,System.Int32,System.Object[],System.Boolean,System.Int32)">
+            <summary>
+            Initializes a one-dimensional array.
+            </summary>
+            <typeparam name="TE">The type of the elements of the array like 'string' for instance.</typeparam>
+            <param name="length">The length of the new array.</param>
+            <param name="lowerBound">The lower bound for the new array.</param>
+            <param name="constructorParams">The list of values to be sent to
+            the constructor of the item type of the array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new one-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32,System.Object,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a one-dimensional array.
+            </summary>
+            <typeparam name="TE">The type of the elements of the array like 'string' for instance.</typeparam>
+            <param name="length">The length of the new array.</param>
+            <param name="initValue">An initial value to set to each element.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new one-dimensional array with its values initialized to initValue.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32,System.Int32,System.Object,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a one-dimensional array.
+            </summary>
+            <typeparam name="TE">The type of the elements of the array like 'string' for instance.</typeparam>
+            <param name="length">The length of the new array.</param>
+            <param name="lowerBound">The lower bound for the new array.</param>
+            <param name="initValue">An initial value to set to each element.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new one-dimensional array with its values initialized to initValue.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32[],System.Boolean,System.Int32)">
+            <summary>
+            Initializes a multi-dimensional array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions in the form 'string[,,]'.</typeparam>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new multi-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32[],System.Int32[],System.Boolean,System.Int32)">
+            <summary>
+            Initializes a multi-dimensional array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions in the form 'string[,,]'.</typeparam>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="lowerBounds">The lower bounds to use for each dimension.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new multi-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32[],System.Object[],System.Boolean,System.Int32)">
+            <summary>
+            Initializes a multi-dimensional array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions in the form 'string[,,]'.</typeparam>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="constructorParams">The list of values to be sent to
+            the constructor of the item type of the array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new multi-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32[],System.Int32[],System.Object[],System.Boolean,System.Int32)">
+            <summary>
+            Initializes a multi-dimensional array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions in the form 'string[,,]'.</typeparam>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="lowerBounds">The lower bounds to use for each dimension.</param>
+            <param name="constructorParams">The list of values to be sent to
+            the constructor of the item type of the array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new multi-dimensional array with its values initialized to a default value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32[],System.Object,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a multi-dimensional array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions in the form 'string[,,]'.</typeparam>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="initValue">The init value to use for each element in the array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new multi-dimensional array with its values initialized with initValue.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitializeArray``1(System.Int32[],System.Int32[],System.Object,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a multi-dimensional array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions in the form 'string[,,]'.</typeparam>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="lowerBounds">The lower bounds to use for each dimension.</param>
+            <param name="initValue">The init value to use for each element in the array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new multi-dimensional array with its values initialized with initValue.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InternalInitializeArray(System.Int32[],System.Int32[],System.Type,System.Object,System.Boolean,System.Int32)">
+            <summary>
+            Internal method to initialize a multi-dimensional array.
+            </summary>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="lowerBounds">The lower bounds to use for each dimension.</param>
+            <param name="itemType">The type to create the array.</param>
+            <param name="value">The init value to use for each element in the array.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>A new multi-dimensional array with its values initialized with initValue.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.RedimPreserve``1(``0,System.Int32[],System.Boolean,System.Int32)">
+            <summary>
+            Executes a RedimPreserve over an array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions, for instance 'string[,,,]'.</typeparam>
+            <param name="arraySource">The source array.</param>
+            <param name="lengths">The length of the new dimensions.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>The new array with the elements of the old one.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.RedimPreserve``1(``0,System.Int32[],System.Int32[],System.Boolean,System.Int32)">
+            <summary>
+            Executes a RedimPreserve over an array.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions, for instance 'string[,,,]'.</typeparam>
+            <param name="arraySource">The source array.</param>
+            <param name="lengths">The length of the new dimensions.</param>
+            <param name="lowerBounds">The lower bound of the new dimensions.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>The new array with the elements of the old one.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.FillsOneDimensionArray(System.Array,System.Array,UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider,System.Boolean,System.Int32)">
+            <summary>
+            Fills the one-dimension targetArray with either matching cell values from
+            sourceArray or with a initial value.
+            </summary>
+            <param name="sourceArray">The array object containing the values to copy.</param>
+            <param name="targetArray">The new array where to copy the values.</param>
+            <param name="valueProvider">a <c>InitialValueProvider</c> object used to get
+            the default values for the new cells.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.FillsMultiDimensionalArray(System.Array,System.Array,UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider,System.Boolean,System.Int32)">
+            <summary>
+            Fills the n-dimension targetArray with either matching cell values from
+            sourceArray or with a initial value.
+            </summary>
+            <param name="sourceArray">The array object containing the values to copy.</param>
+            <param name="targetArray">The new array where to copy the values.</param>
+            <param name="valueProvider">a <c>InitialValueProvider</c> object used to get
+            the default values for the new cells.</param>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.DeepConvertAll``2(System.Object,System.Converter{``0,``1})">
+            <summary>
+            Maps a multidimensional array to an array of with the same structure, converting the internal data, even to expressions with different inner types.
+            </summary>
+            <typeparam name="TInput">The type of the original array elements.</typeparam>
+            <typeparam name="TOutput">The type of the target array elements.</typeparam>
+            <param array="originalStruct">The source array to convert.</param>
+            <param converter="converter">The convertion function to change each of the elements.</param>
+            <returns>A new array, resulting from mapping all the elements of the original array with the 'convert' function.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.CharArrayToString(System.Object)">
+            <summary>
+            Converts a char[], or a deeper array containing char[] in the bottom, to a string or a equivalent array containing strings in the bottom.
+            </summary>
+            <param array="originalStruct">The source array to convert.</param>
+            <returns>The resulting string or array of strings.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.CastArray``1(System.Array)">
+            <summary>
+            Casts an array from one type to another.
+            </summary>
+            <typeparam name="TA">The type of the array including the dimensions in the form 'string[,,]'.</typeparam>
+            <param name="srcArray">The source array to cast.</param>
+            <returns>A new array with the correct new target type.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.CalculateIndexes(System.Int32[]@,System.Int32,System.Int32[],System.Int32[])">
+            <summary>
+            Calculate the indexes of the next element to copy.
+            </summary>
+            <param name="indexes">The list of the indexes in the different dimensions for
+            the element to copy.</param>
+            <param name="pos">The current position within the list of indexes.</param>
+            <param name="lBounds">The list of lower bounds to use as limit.</param>
+            <param name="uBounds">The list of upper bounds to use as limit.</param>
+            <returns>The current position or -1 if the operation failed which means
+            there is no next element to copy.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.RunRedimPreserveVerifications(System.Object,System.Type,System.Int32[],System.Int32[])">
+            <summary>
+            Run some basic verifications on the parameters sent to RedimPreserve function.
+            </summary>
+            <param name="arrayPrototype">The source array to verify.</param>
+            <param name="arrayType">The type of the source array.</param>
+            <param name="lengths">The length of the dimensions.</param>
+            <param name="lowerBounds">The lower bound of each dimension.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.GetFirstDimensionsSize(System.Array)">
+            <summary>
+            Gets the size for the first dimension for an array.
+            </summary>
+            <param name="array">The array to process.</param>
+            <returns>The size of the first dimension of the array.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.GetLastDimensionSize(System.Array)">
+            <summary>
+            Gets the size for the last dimension for an array.
+            </summary>
+            <param name="array">The array to process.</param>
+            <returns>The size of the last dimension of the array.</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider">
+            <summary>
+            The InitialValueProvider provides an initial value from several methods.
+            Used for initialization of element types of arrays.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider.InitialValueMethod">
+            <summary>
+            The Enumeration of the different kind of methods of initialization.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider._elementType">
+            <summary>
+            The Type of array's elements.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider._constructorParams">
+            <summary>
+            The list of values to be sent to the constructor used in the method CreateInstanceValueType.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider._initialized">
+            <summary>
+            Indicates if provider was already initialized.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider._initializeMethod">
+            <summary>
+            The InitializeMethod for the current provider.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider._constructor">
+            <summary>
+            The Constructor method if constructor is gotten from elementType.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider._method">
+            <summary>
+            Some Method used for initialization of the elementType, like "CreateInstance".
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider.#ctor(System.Type,System.Object[])">
+            <summary>
+            Constructor for IniatialValueProvider.
+            </summary>
+            <param name="elementType">The type of the array's elements.</param>
+            <param name="constructorParams">The list of values to be sent to the constructor of
+            the item type of the array.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider.GetInitialValue(System.Boolean,System.Int32)">
+            <summary>
+            Gets the value of initialization according to the InitialValueMethod of this provider.
+            </summary>
+            <param name="bFixedLengthString">Optional bolean flag that indicates if the current array type is fixed length string (original vb6 code) -
+            its default value is false, because it will be generated in upgraded code when current array type used to be a fixed length string.</param>
+            <param name="iFixedLengthStringSize">Optional integer value that indicates what is the fixed length string size, used in conjunction with previous (bFixedLengthString) parameter.</param>
+            <returns>The value of initialization.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.InitialValueProvider.Initialize">
+            <summary>
+            Initialize this provider to be able to gets the intialization value.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.DeepCopy(System.Object)">
+            <summary>
+            Makes a deep copy of an array.
+            </summary>
+            <param name="objectToCopy">Array to copy.</param>
+            <returns>A deep copy of the array.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ArraysHelper.CopyStringToCharArray(System.Char[],System.String)">
+            <summary>
+            Copies a string to a character array
+            </summary>
+            <param name="destinationArray"></param>
+            <param name="sourceValue"></param>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.AssemblyHelper">
+            <summary>
+            The AssemblyHelper obtains the information of Assemblies.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.AssemblyHelper.GetTitle">
+            <summary>
+            Gets the title of the currently executing assembly.
+            </summary>
+            <param name="assbly">The length of the new array.</param>
+            <returns>The assembly title.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.AssemblyHelper.GetTitle(System.Reflection.Assembly)">
+            <summary>
+            Gets the title (based on the AssemblyTitle attribute) of the current executing assembly.
+            If no AssemblyTitle attribute is found then the Filename (without extension) is used
+            <param name="assbly">The length of the new array.</param>
+            </summary>
+            <returns>The assembly title if the assembly is loaded correctly, otherwise an exception
+            such as FileNotFoundException if a dependency is not found</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.CollectionHelper">
+            <summary>
+            The CollectionHelper contains a specific functionality to support VB6.Collection using
+            System.Collections.Specialized.OrderedDictionary .Net native class.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.CollectionHelper.GetIndex(System.Collections.Specialized.OrderedDictionary,System.Object)">
+            <summary>
+            Searchs an element in Dictionary via a key and returns the index of the element.
+            </summary>
+            <param name="dict">Dictionary where to search the element.
+            </param>
+            <param name="key">Key of the element being searched.</param>
+            <returns>Returns the index of the found element or -1 if element is not found.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.CollectionHelper.GetItem(System.Collections.Specialized.OrderedDictionary,System.Object)">
+            <summary>
+            Used when the collection access cannot be resolved in static analysis and requires a runtime check to determine the internal type of the key.
+            If it is an integer the element will be located by position, otherwise by key.
+            </summary>
+            <param name="keyOrPosition">The key or position to locate the desired element </param>
+            <returns>Returns the desired element.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.CollectionHelper.RemoveItem(System.Collections.Specialized.OrderedDictionary,System.Object)">
+            <summary>
+            Used when the collection removal cannot be resolved in static analysis and requires a runtime check to determine the internal type of the key.
+            If it is an integer the element will be located by position, otherwise by key.
+            </summary>
+            <param name="keyOrPosition">The key or position to locate the desired element </param>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.DateTimeHelper">
+            <summary>
+            The DateTimeHelper provides util functionality for Date and Time operations.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.DateTimeHelper.Vb6MinValue">
+            <summary>
+            The minimal value for a Visual Basic 6 Date, which is 1899/12/30.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.DateTimeHelper.DatePart(System.String,System.Object,Microsoft.VisualBasic.FirstDayOfWeek,Microsoft.VisualBasic.FirstWeekOfYear)">
+            <summary>
+            Implementation of DatePart where DateValue is an object, in some cases this function is
+            expected to return null which is not done by Microsoft.VisualBasic.DateAndTime.DatePart.
+            </summary>
+            <param name="interval">DateInterval String expression representing
+            the part of the date/time value you want to return.
+            </param>
+            <param name="dateValue">Date value that you want to evaluate.</param>
+            <param name="dayOfWeek">A value chosen from the FirstDayOfWeek enumeration that specifies
+            the first day of the week. If not specified, FirstDayOfWeek.Sunday is used.</param>
+            <param name="weekOfYear">A value chosen from the FirstWeekOfYear enumeration that specifies
+            the first week of the year. If not specified, FirstWeekOfYear.Jan1 is used.</param>
+            <returns>Returns an Integer value containing the specified component of a given Date value
+            or null if DateValue is null.</returns>
+        </member>
+        <member name="P:UpgradeHelpers.Helpers.DateTimeHelper.Time">
+            <summary>
+            Implementation of function Time from Visual Basic 6. This function returns only the Time part
+            of a System.DateTime.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.DateTimeHelper.ToString(System.DateTime)">
+            <summary>
+            Converts a DateTime to a String according to the format in Visual Basic 6.
+            </summary>
+            <param name="dateTime">The DateTime value to be converted to string.</param>
+            <returns>The DateTime value converted to string.</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.ErrorHandlingHelper">
+            <summary>
+            The ErrorHandlingHelper provides util functionality for Error Handling support. Specially the VB6
+            Resume Next handling.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextStatDelegate">
+            <summary>
+            Delegate for each Resume Next stat sent to the ResumeNext method.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextExprDelegate">
+            <summary>
+            Delegate for each Resume Next expression sent to the ResumeNextExpr method.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNext(UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextStatDelegate[])">
+            <summary>
+            Simulates the VB6 ResumeNext statement executing each statement inside a try/catch block,
+            avoiding the throwing of exceptions.
+            </summary>
+            <param name="stats">A list of ResumeNextDelegate containing a list of statements to be executed in a try/catch block.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNext(System.Exception@,UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextStatDelegate[])">
+            <summary>
+            Simulates the VB6 ResumeNext statement executing each statement inside a try/catch block,
+            avoiding the throwing of exceptions.
+            </summary>
+            <param name="ex">An Exception if any is thrown executing the statements or null if not.</param>
+            <param name="stats">A list of ResumeNextDelegate containing a list of statements to be executed in a try/catch block.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextExpr``1(UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextExprDelegate)">
+            <summary>
+            Executes an expression inside a try/catch block to avoid throwing of exception. This expression is being
+            executed inside a ResumeNext statement, for instance a condition of if, while, for, etc.
+            </summary>
+            <typeparam name="T">The type of the class being created</typeparam>
+            <param name="expr">The expression to be executed in a try/catch block.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextExpr``1(System.Exception@,UpgradeHelpers.Helpers.ErrorHandlingHelper.ResumeNextExprDelegate)">
+            <summary>
+            Executes an expression inside a try/catch block to avoid throwing of exception. This expression is being
+            executed inside a ResumeNext statement, for instance a condition of if, while, for, etc.
+            </summary>
+            <typeparam name="T">The type of the class being created</typeparam>
+            <param name="ex">An Exception if any is thrown executing the expression or null if not.</param>
+            <param name="expr">The expression to be executed in a try/catch block.</param>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.InteractionHelper.RegisterWindowsVBSettings">
+            <summary>
+            Key location in Windows registry to save values.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.InteractionHelper.GetEnvironmentVariableByIndex(System.Int32)">
+            <summary>
+            Obtains the name and value of an environment variable based on a list of environment variables ordered alphabetically.
+            </summary>
+            <param name="position">The zero-based position of the variable within the list of environment variables.</param>
+            <returns>The name and value of the variables, separated by an equal sign (=).  If no value is found, returns an empty string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.InteractionHelper.SaveSettingRegistryKey(System.String,System.String,System.String,System.String)">
+            <summary>
+            Saves an application entry in the Windows registry.
+            </summary>
+            <param name="appName">String that contains the name of the application or project.</param>
+            <param name="section">String that contains the name of the section to save the key.</param>
+            <param name="key">String that contains the name of the key to be saved.</param>
+            <param name="setting">String that contains the value to assign the key.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.InteractionHelper.GetSettingRegistryKey(System.String,System.String,System.String,System.String)">
+            <summary>
+            Obtains the value (setting) from the registry through key.
+            </summary>
+            <param name="appName">String that contains the name of the application or project.</param>
+            <param name="section">String that contains the name of the section where the key is located.</param>
+            <param name="key">String that contains the name of the key to be returned.</param>
+            <param name="sDefault">Optional. String that contains the value to return based on the key.</param>
+            <returns>The setting value from an a</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.IOHelper">
+            <summary>
+            The IOHelper is an utility that provides funcationality related to Input/Output operations.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.IOHelper.ToFileAttributes(Microsoft.VisualBasic.FileAttribute)">
+            <summary>
+            Converts a <see cref="T:Microsoft.VisualBasic.FileAttribute" /> to a <see cref="T:System.IO.FileAttributes" />.
+            </summary>
+            <returns>A <see cref="T:System.IO.FileAttributes" /> that contains the converted file attribute.</returns>
+            <param name="vbFileAttribute">A <see cref="T:Microsoft.VisualBasic.FileAttribute" /> that represents the file attribute to convert from.</param>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.MemoryHelper">
+            <summary>
+            The MemoryHelper class has utility methods that handle memory-related issues, such as releasing and cleaning up memory.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.MemoryHelper.ComObjectsWithClose">
+            <summary>
+            List of strings with COM Objects that are needed to invoke Close method in ReleaseAndCleanObject.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.ReleaseMemory">
+            <summary>
+            Function to call the Garbage Collector and reclaim any available memory.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.ReleaseAndCleanObject(System.Object)">
+            <summary>
+            Function to release the memory bound to an object, it is expected that the
+            parameter is bound to a COM Object which memory wants to be reclaimed.
+            </summary>
+            <param name="obj">A .NET object representing a COM Object.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.ReleaseAndCleanObject``1(System.Object,System.Object)">
+            <summary>
+            Function to release the memory bound to an object, it is expected that the
+            parameter is bound to a COM Object which memory wants to be reclaimed.
+            </summary>
+            <param name="obj">A .NET object representing a COM Object.</param>
+            <param name="value">Value being assigned to the obj after releasing.</param>
+            <returns>The value to be assigned to the obj.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.ReleaseAndCleanObject(System.Object,System.Object)">
+            <summary>
+            Function to release the memory bound to an object, it is expected that the
+            parameter is bound to a COM Object which memory wants to be reclaimed.
+            </summary>
+            <param name="obj">A .NET object representing a COM Object.</param>
+            <param name="value">Value being assigned to the obj after releasing.</param>
+            <returns>The value to be assigned to the obj.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.StructureToByteArray(System.Object)">
+            <summary>
+            In VB6, it was possible to copy variables using API functions like hMemCpy or
+            statements like LSET.
+            This helper function is used to provide a mechanism to easily turn an structure into
+            an array of bytes that can then be easily manipulated
+            </summary>
+            <param name="obj">The structure that will be copied to an array of bytes</param>
+            <returns>An array of bytes containing a copy of the information hold by a struct</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.ByteArrayToStructure``1(System.Byte[],``0@)">
+            <summary>
+            This overload calls ByteArrayToStructure assuming an startIndex of 0
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="bytearray"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.ByteArrayToStructure``1(System.Byte[],System.Int32,``0@)">
+            <summary>
+            In VB6, it was possible to copy variables using API functions like hMemCpy or
+            statements like LSET.
+            This helper function is used to provide a mechanism to easily take an array
+            of bytes and put that information inside an struct.
+            </summary>
+            <param name="bytearray">The array containing the information</param>
+            <param name="startIndex">This index established the place where to start copying data from this array to the structure</param>
+            <param name="obj">The target structure</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.MemoryHelper.CopyMemory``2(``0@,``1)">
+            <summary>
+            Copies data from one struct to another.
+            This will be an exact copy of bytes.
+            Users must be aware that reference types
+            might still be pointing to the same memory areas.
+            Source and Destination might have different struct types
+            </summary>
+            <typeparam name="T2">Destination Struct Type</typeparam>
+            <typeparam name="T1">Source Struct Type</typeparam>
+            <param name="dest">Destination Struct</param>
+            <param name="source">Source Struct</param>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.RegistryHelper">
+            <summary>
+            The RegistryHelper is an utility that provides functionality related to registry operations.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.RegistryHelper.RegWriteValue(System.String,System.Object,System.String)">
+            <summary>
+            Writes a value to the registry key-value name provided
+            </summary>
+            <param name="keyValue">String with the key and value name.</param>
+            <param name="value">String with the data value to write.</param>
+            <param name="type">String with the type of the data value.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.RegistryHelper.RegDeleteValue(System.String)">
+            <summary>
+            Deletes the value from the registry key-value name provided
+            </summary>
+            <param name="keyValue">String with the key and value name to delete.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.RegistryHelper.RegReadDataValue(System.String)">
+            <summary>
+            Obtains the data value from the registry key-value name provided
+            </summary>
+            <param name="keyValue">String with the key and value name to read.</param>
+            <returns>An object with the data of the value from <i>keyValue</i> registry.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.RegistryHelper.GetRegistryKey(System.String,System.Boolean)">
+            <summary>
+            Changes short base key name representation to a long base key name representation.
+            </summary>
+            <param name="keyName">String with a registry key name.</param>
+            <returns>A string with a valid base key name from <i>keyName</i> registry.</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.StringsHelper">
+            <summary>
+            The StringsHelper is an utility that provides funcationality related to string operations.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VBAStringsFormatLimit">
+            <summary>
+            VBA Format function truncates strings to 255 characters. For information please refer to the following link:
+            https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/format-function-visual-basic-for-applications
+            PS, the doc actually says the limit is 257 but in practice is actually 255
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum">
+            <summary>
+            VbStrConv Enum used for the runtime implementation of StringsHelper.StrConv.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbFromUnicode">
+            <summary>
+            From Unicode
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbHiragana">
+            <summary>
+            Hiragana
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbKatakana">
+            <summary>
+            Katakana
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbLowerCase">
+            <summary>
+            Lower case
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbNarrow">
+            <summary>
+            Narrow
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbProperCase">
+            <summary>
+            ProperCase
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbUnicode">
+            <summary>
+            Unicode
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbUpperCase">
+            <summary>
+            Upper case
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum.VbWide">
+            <summary>
+            Wide char
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.StrConv(System.String,UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum)">
+            <summary>
+            Runtime implementation for VBA.Strings.StrConv
+            note:
+                If Conversion == vbUnicode then the string returned will be encoded using
+                System.Text.Encoding.Default, otherwise the encoding System.Text.Encoding.Unicode
+                will be used.
+            </summary>
+            <param name="str">Byte array representing an string.</param>
+            <param name="conversion">The type of the conversion to execute.</param>
+            <returns>The converted string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.StrConv(System.String,UpgradeHelpers.Helpers.StringsHelper.VbStrConvEnum,System.Int32,System.Boolean)">
+            <summary>
+            Runtime implementation for VBA.Strings.StrConv
+            note:
+                If Conversion == vbUnicode then the string returned will be encoded using
+                System.Text.Encoding.Default, otherwise the encoding System.Text.Encoding.Unicode
+                will be used.
+            </summary>
+            <param name="str">Byte array representing an string.</param>
+            <param name="conversion">The type of the conversion to execute.</param>
+            <param name="localeId">The LocaleID to use in the conversion.</param>
+            <returns>The converted string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.ByteArrayToString(System.Byte[])">
+            <summary>
+            Converts a byte array to a string.
+            </summary>
+            <param name="array">Byte array to be converted.</param>
+            <returns>The string converted in Unicode encoding.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.GetFixedLengthString(System.String,System.Int32)">
+            <summary>
+            Obtains exactly the indicated amount of characters from the start of the string
+            (and add spaces to the right if needed to complete the amount of characters).
+            </summary>
+            <param name="str">String from which characters are to be extracted.</param>
+            <param name="nChars">The amount of characters to get.</param>
+            <returns>A string of <i>nChars</i> characters of length from <i>str</i>.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Left(System.String,System.Int32)">
+            <summary>
+            Obtains the indicated amount of characters from the start of the string.
+            </summary>
+            <param name="str">String from which characters are to be extracted.</param>
+            <param name="nChars">The amount of characters to get.</param>
+            <returns>A string with the first <i>nChars</i> characters from <i>str</i>.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.LeftB(System.String,System.Int32)">
+            <summary>
+            Obtains the indicated amount of bytes from the start of the string intepreted as Encoding.Unicode (UTF-16).
+            </summary>
+            <param name="str">String from which bytes are to be extracted.</param>
+            <param name="nBytes">The amount of bytes to get.</param>
+            <returns>A string with the first <i>nBytes</i> bytes from <i>str</i>.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.LeftB(System.String,System.Int32,System.Text.Encoding)">
+            <summary>
+            Gets the first nBytes of str interpreted as the respective encoding.
+            </summary>
+            <param name="str">The string to the bytes from</param>
+            <param name="nBytes">The number of bytes to get</param>
+            <param name="encoding">The encoding that the string will be interpreted as</param>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Right(System.String,System.Int32)">
+            <summary>
+            Obtains the indicated amount of characters from the end of the string.
+            </summary>
+            <param name="str">String from which characters are to be extracted.</param>
+            <param name="nChars">The amount of characters to get.</param>
+            <returns>A string with the last <i>nChars</i> characters from <i>str</i>.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.RightB(System.String,System.Int32)">
+            <summary>
+            Obtains the indicated amount of bytes from the end of the string interpreted as Unicode (UTF-16)
+            </summary>
+            <param name="str">String from which bytes are to be extracted.</param>
+            <param name="nChars">The amount of bytes to get.</param>
+            <returns>A string with the last <i>bytes</i> bytes from <i>str</i> intepreted as the Unicode (UTF-16).</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.RightB(System.String,System.Int32,System.Text.Encoding)">
+            <summary>
+            Obtains the indicated amount of bytes from the end of the string interpreted as the respective encoding.
+            </summary>
+            <param name="str">String from which bytes are to be extracted.</param>
+            <param name="nChars">The amount of bytes to get.</param>
+            <param name="encoding">The encoding to interpret the string.</param>
+            <returns>A string with the last <i>bytes</i> bytes from <i>str</i> intepreted as the given encoding.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.MathMin(System.Int32,System.Int32)">
+            <summary>
+            Uses the library Math.Min avoiding a negative result.
+            </summary>
+            <param name="Value1"></param>
+            <param name="Value2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Mid(System.String,System.Int32,System.Int32)">
+            <summary>
+            Function that simulates the behavior of the VB6 Mid function.
+            </summary>
+            <param name="text">Test to apply the Mid</param>
+            <param name="start">Position where it starts (1 Based)</param>
+            <param name="length">Amount of characters that will return</param>
+            <returns>The sub string requested</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Mid(System.String,System.Int32)">
+            <summary>
+            Function that simulates the behavior of the VB6 Mid function.
+            </summary>
+            <param name="text">Test to apply the Mid</param>
+            <param name="start">Position where it starts (1 Based)</param>
+            <returns>The sub string requested</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Mid(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Function that simulates the behavior of the VB6 Mid function receiving an object
+            </summary>
+            <param name="text">Test to apply the Mid</param>
+            <param name="start">Position where it starts (1 Based)</param>
+            <param name="length">Amount of characters that will return</param>
+            <returns>The sub string requested</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Mid(System.Object,System.Int32)">
+            <summary>
+            Function that simulates the behavior of the VB6 Mid function receiving an object
+            </summary>
+            <param name="text">Test to apply the Mid</param>
+            <param name="start">Position where it starts (1 Based)</param>
+            <returns>The sub string requested</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.PatternAt(System.Int32,System.Byte[],System.Byte[])">
+            <summary>
+            Search and compare the strings using Linq
+            </summary>
+            <param name="value">String where the value will be searched.</param>
+            <param name="seek">Value to look for in the String.</param>
+            <returns>Returns the index of the first matching pattern. 0 means not found.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.InStrB(System.Int32,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            Gets the byte position of the first occurrence of one string within another
+            </summary>
+            <param name="start">Position where the search starts.</param>
+            <param name="value">String where the value will be searched.</param>
+            <param name="seek">Value to look for in the String.</param>
+            <returns>Returns an integer with the position where the first occurrence was found in a byte array. 0 means not found. </returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.InStrB(System.Int32,System.String,System.String)">
+            <summary>
+            Calls InStrB with default encoding
+            </summary>
+            <param name="start">Position where the search starts.</param>
+            <param name="value">String where the value will be searched.</param>
+            <param name="seek">Value to look for in the String.</param>
+            <returns>Returns an integer with the position where the first occurrence was found in a byte array. 0 means not found. </returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.InStrB(System.String,System.String)">
+            <summary>
+            Calls InStrB with default start position
+            </summary>
+            <param name="start">Position where the search starts.</param>
+            <param name="value">String where the value will be searched.</param>
+            <param name="seek">Value to look for in the String.</param>
+            <returns>Returns an integer with the position where the first occurrence was found in a byte array. 0 means not found. </returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.AscB(System.String)">
+            <summary>
+            Calls AscB with the default encoding
+            </summary>
+            <param name="input">String that contains the data to obtain the byte.</param>
+            <returns>Returns the value of the first byte in a string</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.AscB(System.String,System.Text.Encoding)">
+            <summary>
+            Gets the character code for the first character
+            </summary>
+            <param name="input">String that contains the data to obtain the byte.</param>
+            <returns>Returns the value of the first byte in a string</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.MidB(System.String,System.Int32)">
+            <summary>
+            Calls the main MidB with the default parameters (all remaining bytes and Encoding.Unicode)
+            </summary>
+            <param name="str">The string to get bytes from</param>
+            <param name="start">The start index to get bytes</param>
+            <returns>A string with the first <i>nChars</i> bytes from the <i>str</i> starting from the specified position.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.MidB(System.String,System.Int32,System.Int32)">
+            <summary>
+            Calls the main MidB with the default Encoding (Unicode)
+            </summary>
+            <param name="str">The string to get bytes from</param>
+            <param name="start">The start index to get bytes</param>
+            <param name="nBytes">The number of bytes</param>
+            <returns>A string with the first <i>nChars</i> bytes from the <i>str</i> starting from the specified position.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.MidB(System.String,System.Int32,System.Text.Encoding)">
+            <summary>
+            /// Calls the main MidB with the default length (the remaining bytes from the start point)
+            </summary>
+            <param name="str">The string to get bytes from</param>
+            <param name="start">The start index to get bytes</param>
+            <param name="encoding">The encoding to interpret the string</param>
+            <returns>A string with the first <i>nChars</i> bytes from the <i>str</i> starting from the specified position.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.MidB(System.String,System.Int32,System.Int32,System.Text.Encoding)">
+            <summary>nBytes
+            Obtains the indicated amount of bytes starting from a specified point in the string interpreted as the given encoding <i>str</i>.
+            </summary>
+            <param name="str">String from which bytes are to be extracted.</param>
+            <param name="start">The starting point.</param>
+            <param name="nBytes">The amount of bytes to get.</param>
+            <returns>A string with the first <i>nChars</i> bytes from the <i>str</i> starting from the specified position.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.MidAssignment(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Replaces a portion of a string with other string. Provides the same functionality than
+            MidAssignment for Visual Basic 6.
+            </summary>
+            <param name="str">The string to be changed.</param>
+            <param name="start">The index into the string where to start the changing.</param>
+            <param name="length">The length of the portion of string to change.</param>
+            <param name="val">The new string to change into the other one.</param>
+            <returns>The changed string with the new portion.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.MidAssignment(System.String,System.Int32,System.String)">
+            <summary>
+            Replaces a portion of a string with other string. Provides the same functionality than
+            MidAssignment for Visual Basic 6.
+            </summary>
+            <param name="str">The string to be changed.</param>
+            <param name="start">The index into the string where to start the replace.</param>
+            <param name="val">The new string to change into the other one.</param>
+            <returns>The changed string with the new portion.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Like(System.String,System.String)">
+            <summary>
+            Matches a string value with a regular expression pattern.
+            </summary>
+            <param name="value">The string to be matched.</param>
+            <param name="pattern">The regular expression used to match the string.</param>
+            <returns>True if the pattern matches into the string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Format(System.Object,System.Object,Microsoft.VisualBasic.FirstDayOfWeek,Microsoft.VisualBasic.FirstWeekOfYear)">
+            <summary>
+            Returns the String toFormat formatted with the given mask.
+            </summary>
+            <param name="_toFormat">The String object to format.</param>
+            <param name="_mask">The format to apply.</param>
+            <param name="dayOfWeek">A value chosen from the FirstDayOfWeek enumeration that specifies the first day of the week.</param>
+            <param name="weekOfYear">A value chosen from the FirstWeekOfYear enumeration that specifies the first week of the year.</param>
+            <returns>Empty String if toFormat is null or empty, othewise the formatted string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Format(System.Object,System.Object,Microsoft.VisualBasic.FirstDayOfWeek)">
+            <summary>
+            Returns the String toFormat formatted with the given mask.
+            </summary>
+            <param name="toFormat">The String object to format.</param>
+            <param name="mask">The format to apply.</param>
+            <param name="dayOfWeek">A value chosen from the FirstDayOfWeek enumeration that specifies the first day of the week.</param>
+            <returns>Empty String if toFormat is null or empty, othewise the formatted string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Format(System.Object,System.Object,Microsoft.VisualBasic.FirstWeekOfYear)">
+            <summary>
+            Returns the String toFormat formatted with the given mask.
+            </summary>
+            <param name="toFormat">The String object to format.</param>
+            <param name="mask">The format to apply.</param>
+            <param name="weekOfYear">A value chosen from the FirstWeekOfYear enumeration that specifies the first week of the year.</param>
+            <returns>Empty String if toFormat is null or empty, othewise the formatted string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Format(System.Object,System.Object)">
+            <summary>
+            Returns the String toFormat formatted with the given mask.
+            </summary>
+            <param name="toFormat">The String object to format.</param>
+            <param name="mask">The format to apply.</param>
+            <returns>Empty String if toFormat is null or empty, otherwise the formatted string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Format(System.Object)">
+            <summary>
+            Returns the String toFormat formatted with an empty mask.
+            </summary>
+            <param name="toFormat">The String object to format.</param>
+            <returns>Empty String if toFormat is null or empty, othewise the formatted string.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.ToDoubleSafe(System.String)">
+            <summary>
+            Gets a double value represented by the given String value. If value contains an
+            invalid number then a Double.NaN is returned.
+            This method is used to do safe castings between strings and numeric values.
+            It is required for comparisons between strings and primitive types which were allowed by VB6 but are invalid in .NET.
+            </summary>
+            <param name="value">String containing the double value to convert.</param>
+            <returns>A double value.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.Replace(System.String,System.String,System.String,System.Int32,System.Int32,Microsoft.VisualBasic.CompareMethod)">
+            <summary>
+            Returns a string after applying Strings.Replace. If res is null it returns an
+            empty string.
+            </summary>
+            <param name="expression">String containing substring to replace.</param>
+            <param name="find">Substring being searched for.</param>
+            <param name="replacement">Replacement substring.</param>
+            <param name="start">Position within expression that starts a substring used for replacement. Default value: 1</param>
+            <param name="count">Number of substring substitutions to perform.</param>
+            <param name="Compare">Numeric value indicating the kind of comparison to use when evaluating substrings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.StringsHelper.BinaryCompare(System.String,System.String)">
+            <summary>
+            Runtime implementation for VBA.Strings.StrComp
+            </summary>
+            <param name="String1">The first string to compare.</param>
+            <param name="String2">The second string to compare.</param>
+            <returns>-1 if String1 is less than String2; 0 if String1 is equal to String2; 1 if String1 is greater than String2</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.WeakDictionary`2">
+            <summary>
+            Implements a Dictionary containing as the Key a WeakReference. It facilitates that references
+            inside this Dictionary could be released with any problem.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.AddWeakRef(`0,`1)">
+            <summary>
+            Adds an entry to the Dictionary.
+            </summary>
+            <param name="key">The entry key.</param>
+            <param name="value">The entry value.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.RemoveDeletedWeakRefs">
+            <summary>
+            Review and remove all the WeakReference that were freed by Garbage Collector.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.Add(`0,`1)">
+            <summary>
+            Adds an entry to the Dictionary.
+            </summary>
+            <param name="key">The entry key.</param>
+            <param name="value">The entry value.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.ContainsKey(`0)">
+            <summary>
+            Indicates if a key element is contained in the Dictionary.
+            </summary>
+            <param name="key">The entry key.</param>
+            <returns>True if key element is contained in the Dictionary.</returns>
+        </member>
+        <member name="P:UpgradeHelpers.Helpers.WeakDictionary`2.Keys">
+            <summary>
+            Returns the collection of Keys from the Dictionary
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.Remove(`0)">
+            <summary>
+            Removes a key element from the Dictionary.
+            </summary>
+            <param name="key">The entry key.</param>
+            <returns>True if key element was removed succesfully.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.TryGetValue(`0,`1@)">
+            <summary>
+            Tries to get a value and returned it.
+            </summary>
+            <param name="key">The entry key.</param>
+            <param name="value">The entry value where result will be returned.</param>
+            <returns>True if key element was found and returned successfully.</returns>
+        </member>
+        <member name="P:UpgradeHelpers.Helpers.WeakDictionary`2.Values">
+            <summary>
+            Returns the collection of Values from the Dictionary
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.Helpers.WeakDictionary`2.Item(`0)">
+            <summary>
+            Gets a value from the Dictionary.
+            </summary>
+            <param name="key">The entry key.</param>
+            <returns>The value corresponding to the key element.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Adds an entry to the Dictionary.
+            </summary>
+            <param name="item">The key value pair to be added.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.Clear">
+            <summary>
+            Clears and removes all elements from the Dictionary.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Indicates if the key value pair is in the Dictionary.
+            </summary>
+            <param name="item">The key value pair to be searched.</param>
+            <returns>True if key element is contained in the Dictionary.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.Helpers.WeakDictionary`2.Count">
+            <summary>
+            Returns the number of elements from the Dictionary.
+            </summary>
+            <returns>The number of elements contained in the Dictionary.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.AliveCount">
+            <summary>
+            Returns the number of alive references in the dictionary
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:UpgradeHelpers.Helpers.WeakDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#IsReadOnly">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Removes a item from the Dictionary.
+            </summary>
+            <param name="item">The item to be removed.</param>
+            <returns>True if key element was removed succesfully.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.GetEnumerator">
+            <summary>
+            Gets an enumerator for the Dictionary.
+            </summary>
+            <returns>A enumerator.</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.WeakDictionary`2.InternalWeakReference">
+            <summary>
+            Represents an internal WeakReference that overloads the comparative methods in order
+            to change the behaviour of equality functions.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.InternalWeakReference.Equals(System.Object)">
+            <summary>
+            Compares this object with another object.
+            </summary>
+            <param name="o">The object to be compared.</param>
+            <returns>True is they are the same instance.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.InternalWeakReference.GetHashCode">
+            <summary>
+            Gets the hash code for this instance.
+            </summary>
+            <returns>The hash code for the instance.</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.WeakDictionary`2.WeakKeyComparer`1">
+            <summary>
+            Comparer to be used in the WeakDictionary to overload the behaviour for comparing
+            objects for InternalWeakReference.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.WeakKeyComparer`1.Equals(`2,`2)">
+            <summary>
+            Compares two object instances.
+            </summary>
+            <param name="x">An object to be compared.</param>
+            <param name="y">An object to be compared.</param>
+            <returns>True is they are the same instance.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.WeakDictionary`2.WeakKeyComparer`1.GetHashCode(`2)">
+            <summary>
+            Gets the hash code for an object.
+            </summary>
+            <param name="obj">The object to get the hash code.</param>
+            <returns>The hash code for the object.</returns>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.XTYPE">
+            <summary>
+            XTYPE enum of XArrayDBObject Library
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.XORDER">
+            <summary>
+            XORDER enum of XArrayDBObject Library
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.Helpers.XArrayHelper">
+            <summary>
+            This simulates the XarrayDbObject funcionality based on DataTable class.
+            </summary>
+            <remarks>
+            This class only supports two-dimensional arrays. Multi-dimensional arrays are not supported.
+            </remarks>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.XArrayHelper.DimensionLowerBounds">
+            <summary>
+             Stores the LowerBounds to handle indexes.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.Helpers.XArrayHelper.DimensionLengths">
+            <summary>
+             Stores the lengths to handle indexes.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.#ctor">
+            <summary>
+             Constructor for the XArrayHelper.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.CreateInstanceXarray(System.Int32[],System.Int32[])">
+            <summary>
+            This function is a Factory to create Xarray instances.
+            </summary>
+            <param name="Lengths">The length of each dimension.</param>
+            <param name="LowerBounds">The lower bounds to use for each dimension.</param>
+            <returns>A new XArrayHelper instance.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.RedimXArray(System.Int32[],System.Int32[])">
+            <summary>
+            This function redimensions a Xarray instance.
+            </summary>
+            <param name="lengths">The length of each dimension.</param>
+            <param name="lowerBounds">The lower bounds to use for each dimension.</param>
+            <returns>It returns a redimensioned instance of itself.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.GetUpperBound(System.Int32)">
+            <summary>
+            Gets the upper bound of the specified dimension.
+            </summary>
+            <param name="dimension">A zero-based dimension whose upper bound needs to be determined.</param>
+            <returns>The upper bound for the specificed dimension.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.GetLowerBound(System.Int32)">
+            <summary>
+            Gets the Lower bound of the specified dimension.
+            </summary>
+            <param name="dimension">A zero-based dimension whose lower bound needs to be determined.</param>
+            <returns>The lower bound for the specificed dimension.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.GetLength(System.Int32)">
+            <summary>
+            Gets the number of elements in the specified dimension.
+            </summary>
+            <param name="dimension">A zero-based dimension whose length needs to be determined.</param>
+            <returns>The length of elements of the specified dimension.</returns>
+        </member>
+        <member name="P:UpgradeHelpers.Helpers.XArrayHelper.Item(System.Int32,System.Int32)">
+            <summary>
+            Returns the element at the specified row and column.
+            </summary>
+            <param name="row">Row index where the element is located.</param>
+            <param name="column">Column index where the element is located.</param>
+            <value>Value for the specified element.</value>
+            <returns>The element at the specified index.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.GetValue(System.Int32,System.Int32)">
+            <summary>
+            Gets the value at the specified position.
+            </summary>
+            <param name="row">Index row where the element is located.</param>
+            <param name="column">Index column where the element is located.</param>
+            <returns>The value at the specified position.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.SetValue(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Sets a value to the element at the specified position.
+            </summary>
+            <param name="value">The new value for the specified element.</param>
+            <param name="row">Index row where the element is located.</param>
+            <param name="column">Index column where the element is located.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.Clear(UpgradeHelpers.Helpers.XArrayHelper@)">
+            <summary>
+            Creates a cleared XArrayHelper.
+            </summary>
+            <param name="arr">XArrayHelper whose elements need to be cleared.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.AppendRows">
+            <summary>
+            Adds a new row to the current instance of XArrayHelper.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.AppendRows(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Adds a new row to the current instance of XArrayHelper and sets a value to the specified
+            row and column.
+            </summary>
+            <param name="value">The value to be set the specified position.</param>
+            <param name="row">The row in the XArrayHelper where to be set the value.</param>
+            <param name="column">The column in the XArrayHelper where to be set the value.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.DeleteRows(System.Int32)">
+            <summary>
+            Deletes a row in the specified position and redimensions the XArrayHelper.
+            </summary>
+            <param name="row">The row in the XArrayHelper to be deleted.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.LoadRows(System.Object[0:,0:])">
+            <summary>
+            Creates a XArrayHelper and copies the values from an object array.
+            </summary>
+            <param name="array">The source array to be copied.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.LoadRows(UpgradeHelpers.Helpers.XArrayHelper)">
+            <summary>
+            Creates a XArrayHelper and copies the values from a XArrayHelper.
+            </summary>
+            <param name="table">The source XArrayHelper to be copied.</param>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.Find(System.Object)">
+            <summary>
+            Finds a value into a XArrayHelper.
+            </summary>
+            <param name="value">The value to be found.</param>
+            <returns>True if the value is found into the XArrayHelper.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.Find(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Finds a value into a XArrayHelper from a specified position.
+            </summary>
+            <param name="value">The value to be found.</param>
+            <param name="rowStart">The row where to start searching.</param>
+            <param name="column">The specific column to search.</param>
+            <returns>The index where the values is found or -1 if it is not found.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.Helpers.XArrayHelper.QuickSort(System.Int32,System.Int32,System.Object[])">
+             <summary>
+             Sorts the data in the XArrayHelper using the DataSet's DefaultView.
+             The rowStart and rowEnd arguments are provided for compatibility with the VB6 implementation but aren't supported.
+             The underlying structure is modified by the sorting for non-string columns (to allow sorting using the provided type's default comparer)
+            
+             Example: xa.QuickSort(0, xa.GetUpperBound(0), 0, "DESC", XTYPE_STRING, 1, "ASC", XTYPE_INTEGER);
+             String comparisons are case insensitive by default. Use the instance.CaseSensitive property to change this behavior.
+             </summary>
+             <param name="rowStart">Not used. Will throw an exception if not 0.</param>
+             <param name="rowEnd">Not used. Will throw an exception if not equal to the number of elements in the structure.</param>
+             <param name="args">Sorting arguments. Groups of three arguments: index of the column, order ("ASC or "DESC") and the type of the data.</param>
+        </member>
+    </members>
+</doc>

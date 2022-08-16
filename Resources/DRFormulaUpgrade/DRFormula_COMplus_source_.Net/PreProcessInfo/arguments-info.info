@@ -1,0 +1,1 @@
+[segment (>>byref-info-entry "RegisterArgument" "DRFormula.modGetDataFromDB.CreateRs.sqlcode") (>>byref-info-entry "RegisterArgument" "DRFormula.modGetDataFromDB.GetDataFromDB.vSql") (>>byref-info-entry "RegisterArgument" "DRFormula.Calculations.Simple.ROperand") (>>byref-info-entry "RegisterArgument" "DRFormula.Calculations.Simple.LOperand")]

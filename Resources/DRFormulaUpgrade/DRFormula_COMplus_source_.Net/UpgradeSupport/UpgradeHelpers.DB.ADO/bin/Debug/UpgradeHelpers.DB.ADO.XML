@@ -1,0 +1,1547 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UpgradeHelpers.DB.ADO</name>
+    </assembly>
+    <members>
+        <member name="T:UpgradeHelpers.DB.ADO.ADORecordSetHelper">
+            <summary>
+                Support class for the ADO.Recorset the object that represents the records in a base table or the records that result from running a query.
+            </summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.EndOfRecordset">
+            <summary>Occurs when EOF/BOF hit.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.WillChangeField">
+            <summary>Occurs before a field change.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.FieldChangeComplete">
+            <summary>Occurs after a field change.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.WillChangeRecord">
+            <summary>Occurs before a record change.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.RecordChangeComplete">
+            <summary>Occurs after a record change.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.WillChangeRecordset">
+            <summary>Occurs before a recordset change.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.RecordsetChangeComplete">
+            <summary>Occurs after a recordset change.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.WillMove">
+            <summary>Occurs before a different row becomes the current row.</summary>
+        </member>
+        <member name="E:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MoveComplete">
+            <summary>Occurs after a row becomes the current row.</summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.ADORecordSetHelper._dbvRow">
+            <summary>
+                New Datarow view when adding to a sorted or filtered collection
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.ADORecordSetHelper._pagesize">
+            <summary>
+                page size
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.SqlDeleteQuery">
+            <summary>
+                string for delete query
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.SqlInsertQuery">
+            <summary>
+                string for insert query
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.SqlSelectQuery">
+            <summary>
+                string for select query
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.SqlUpdateQuery">
+            <summary>
+                string for update query
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.PageSize">
+            <summary>
+                Gets/Sets the number of rows per page.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.PageCount">
+            <summary>
+                Gets the number of pages.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.ADORecordSetHelper.DisableEventsWhileDeleting">
+            <summary>
+                This flag is used to stop the propagation of events while performing a delete.
+                It was found that deleting a DataRow raised several events on the binding source
+                and these events update the current row which must remain the same until the update logic is executed
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CurrentRecordSet">
+            <summary>
+            Pointer to current recordset data table
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CurrentRow">
+            <summary>
+                Gets a DataRow with the information of the current record on the RecordsetHelper.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.ConnectionString">
+            <summary>
+                Gets or sets the connection string being use by this RecordsetHelper object.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.IsCachingAdapter">
+            <summary>
+                Return true if the recordsethelper is caching the adapters
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.EditMode">
+            <summary>
+                Property to indicate the editing status of the current record
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Status">
+            <summary>
+                Property to handle the Status of the recordset
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.FieldsValues">
+            <summary>
+                Gets a DataRow object containing the field values of the current record.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.UsingView">
+            <summary>
+                Property used to determine if the data needs to be get from a dataview or the table directly
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Sort">
+            <summary>
+                Property to get and set the order of the recordset
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.State">
+            <summary>
+                Property to handle the state of the recordset
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.ActiveConnection">
+            <summary>
+                This is an override to wire the event necesary to handle the proper state of the recordset
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.BOF">
+            <summary>
+                Returns a value that indicates whether the current record position is before the first record in an ADORecordsetHelper object. Read-only Boolean.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.LockType">
+            <summary>
+                Gets/Sets the LockType for this object.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CursorType">
+            <summary>
+                Gets/Sets the CursorType for this object.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CursorLocation">
+            <summary>
+                Gets/Sets the CursorLocation for this object.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.AbsolutePosition">
+            <summary>
+                Gets and Sets the position of the current record on the recordset instance.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Item(System.String,System.Data.DataRowVersion)">
+            <summary>
+                Gets the specified version of the column.
+            </summary>
+            <param name="columnName">Name of the column to look for.</param>
+            <param name="rowVersion">The version of the row.</param>
+            <returns>The value at the given index.</returns>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Item(System.Int32,System.Data.DataRowVersion)">
+            <summary>
+                Gets the specified version of the column.
+            </summary>
+            <param name="columnIndex">Index of the column to look for.</param>
+            <param name="rowVersion">The version of the row.</param>
+            <returns>The value at the given index.</returns>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Bookmark">
+            <summary>
+                Sets a bookmark to an specific record inside the ADORecordsetHelper.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.AbsolutePage">
+            <summary>
+                Gets/Sets the current page number.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Source_PositionChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event that when the bindedsrouce moves this recordset also does.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.DataSource">
+            <summary>
+            This property is used to create data-bound controls with the Data Environment.
+            The Data Environment maintains collections of data (data sources) containing named objects (data members)
+            that will be represented as a Recordset object*.*
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.DataMember">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.FieldsMetadata">
+            <summary>
+                Gets a DataColumnCollection object that contains the information of all columns on the RecordsetHelper.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.ValidateProvider">
+            <summary>
+                Makes sure that the current ADO.NET provider is set
+                and if it is compatible with the current
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.findBookmarkIndex(System.Data.DataRow)">
+            <summary>
+                Finds the index in the RecordsetHelper for the “value”.
+            </summary>
+            <param name="value">The DataRow to look for.</param>
+            <returns>The index number if is found, otherwise -1.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.#ctor">
+            <summary>
+                Creates a new ADORecordsetHelper instance using the default factory specified on the configuration xml.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.#ctor(System.Data.Common.DbProviderFactory)">
+            <summary>
+                Creates a new ADORecordsetHelper
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.#ctor(System.String)">
+            <summary>
+                Creates a new ADORecordsetHelper instance using the factory specified on the “factoryName” parameter.
+            </summary>
+            <param name="factoryName">The name of the factory to by use by this ADORecordsetHelper object (the name most exist on the configuration xml file).</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.#ctor(System.String,System.String)">
+            <summary>
+                Creates a new ADORecordsetHelper instance using provided parameters.
+            </summary>
+            <param name="factoryName">The name of the factory to by use by this ADORecordsetHelper object (the name most exist on the configuration xml file).</param>
+            <param name="connString">The connection string to be used by this ADORecordsetHelper.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.#ctor(System.String,System.String,System.String)">
+            <summary>
+                Creates a new ADORecordsetHelper instance using provided parameters.
+            </summary>
+            <param name="factoryName">The name of the factory to by use by this ADORecordsetHelper object (the name most exist on the configuration xml file).</param>
+            <param name="connString">The connection string to be used by this ADORecordsetHelper.</param>
+            <param name="sqlSelectString">A string containing the SQL Query to be loaded on the ADORecordsetHelper.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Constructor.
+            </summary>
+            <param name="info">System.Runtime.Serialization.SerializationInfo, all the data needed to load and store an object.</param>
+            <param name="context">
+                System.Runtime.Serialization.StreamingContext, describes the source and destination of
+                a given serialized stream , and provides an additional caller-defined context.
+            </param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Gets Object Data
+            </summary>
+            <param name="info">SerializationInfo</param>
+            <param name="context">StreamingContext</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.SupportsDisconnectedRecordsetOperations">
+            <summary>
+                Performs a check to determine if the recordset is working disconnected
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open">
+            <summary>
+                Opens the connection and initialize the RecordsetHelper object.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Boolean)">
+            <summary>
+                Opens the ADORecordsetHelper and requeries according to the value of “requery” parameter.
+            </summary>
+            <param name="requery">Indicates if a requery most be done.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Object)">
+            <summary>
+                Opens the ADORecordsetHelper using an object Source.
+            </summary>
+            <param name="source">An object containing a Source of Data. It can be a DataSet, another ADORecordSetHelper or a string path.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CreateCommand(System.String,System.Data.CommandType,System.Collections.Generic.List{System.Data.Common.DbParameter})">
+            <summary>
+                Creates a DBCommand object using de provided parameters.
+            </summary>
+            <param name="commandText">A string containing the SQL query.</param>
+            <param name="commandType">The desire type for the command.</param>
+            <param name="parameters">A list with the parameters to be included on the DBCommand object.</param>
+            <returns>A new DBCommand object.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.getCommandType(System.String,System.Collections.Generic.List{System.Data.Common.DbParameter}@)">
+            <summary>
+                Infers the command type from an SQL string getting the schema metadata from the database.
+            </summary>
+            <param name="sqlCommand">The sql string to be analyzed.</param>
+            <param name="parameters">List of DbParameters</param>
+            <returns>The command type</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(UpgradeHelpers.DB.LockTypeEnum)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="lockType">The LockTypeEnum of this ADORecordsetHelper object.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Data.Common.DbCommand)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="command">A command containing the query to be execute to load the ADORecordsetHelper object.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Data.Common.DbConnection)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,UpgradeHelpers.DB.ADO.StringParameterType)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="str">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="type">StringParameterType of the str.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,UpgradeHelpers.DB.ADO.PersistFormatEnum)">
+            <summary>
+                Open the information on the RecordsetHelper from a file.
+            </summary>
+            <param name="fullName">The full path name where to open the file.</param>
+            <param name="persistFormat">The format type to open the file.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Data.Common.DbCommand,UpgradeHelpers.DB.LockTypeEnum)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="command">A command containing the query to be execute to load the ADORecordsetHelper object.</param>
+            <param name="lockType">The LockTypeEnum of this ADORecordsetHelper object.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Data.Common.DbConnection,UpgradeHelpers.DB.LockTypeEnum)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper.</param>
+            <param name="lockType">The LockTypeEnum of this ADORecordsetHelper object.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,UpgradeHelpers.DB.LockTypeEnum,UpgradeHelpers.DB.ADO.StringParameterType)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="str">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="lockType">The LockTypeEnum of this ADORecordsetHelper object.</param>
+            <param name="type">StringParameterType of the str.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.Data.Common.DbConnection)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.String,UpgradeHelpers.DB.LockTypeEnum)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connString">Strings that contains information about how to connect to the database.</param>
+            <param name="lockType">The LockTypeEnum of this ADORecordsetHelper object.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.String)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connString">Strings that contains information about how to connect to the database.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.Data.Common.DbConnection,UpgradeHelpers.DB.LockTypeEnum)">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+                NOTE: It is better to provide the CommandType when executing the command
+                If the command type is not given, performance would be affected due to several
+                request to the DB schema
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper.</param>
+            <param name="lockType">The LockTypeEnum of this ADORecordsetHelper object.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.Data.Common.DbConnection,UpgradeHelpers.DB.LockTypeEnum,System.Data.CommandType,System.Collections.Generic.List{System.Data.Common.DbParameter})">
+            <summary>
+                Opens this ADORecordsetHelper using the provided parameters.
+                This is the preferred Open method for performance reasons. However this call might required
+                some extra parameters like CommandType and ParameterList.
+                For most scenerios just provide a null parameter for the parameter list;
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper.</param>
+            <param name="lockType">The LockTypeEnum of this ADORecordsetHelper object.</param>
+            <param name="commandType">The CommandType of this ADORecordsetHelper object.</param>
+            <param name="parameters">The list of parameters.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.Data.Common.DbConnection,System.Int64@,System.String)">
+            <summary>
+                Creates a new ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper.</param>
+            <param name="recordsAffected">Out parameter indicating the amount of records affected by the execution of the “SQLstr” query.</param>
+            <param name="factoryName">The name of the factory to by use by this ADORecordsetHelper object (the name most exist on the configuration xml file).</param>
+            <returns>The new ADORecordsetHelper object.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.Data.Common.DbConnection,System.String)">
+            <summary>
+                Creates a new ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper.</param>
+            <param name="factoryName">The name of the factory to by use by this ADORecordsetHelper object (the name most exist on the configuration xml file).</param>
+            <returns>The new ADORecordsetHelper object.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.String,System.Data.Common.DbConnection,System.Data.Common.DbProviderFactory)">
+            <summary>
+                Creates a new ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="sqLstr">The string containing the SQL query to be loaded into this ADORecodsetHelper object.</param>
+            <param name="connection">Connection object to be use by this ADORecordsetHelper.</param>
+            <param name="factory">The DBProviderFactory to be used on the ADORecordsetHelper.</param>
+            <returns>The new ADORecordsetHelper object.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Data.Common.DbCommand,System.String)">
+            <summary>
+                Creates a new ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="command">A command containing the query to be execute to load the ADORecordsetHelper object.</param>
+            <param name="factoryName">The name of the factory to by use by this ADORecordsetHelper object (the name most exist on the configuration xml file).</param>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Data.Common.DbCommand,System.Int64@,System.String)">
+            <summary>
+                Creates a new ADORecordsetHelper using the provided parameters.
+            </summary>
+            <param name="command"></param>
+            <param name="recordsAffected"></param>
+            <param name="factoryName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Open(System.Xml.XmlDocument)">
+            <summary>
+            Populates a recordsetHelper with the information defined in a XmlDocument.
+            </summary>
+            <param name="document">XmlDocument to load into the RecordsetHelper.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.IsStoredProcedure(System.Data.Common.DbCommand)">
+            <summary>
+            Determines if a command executes an stored procedure.
+            If the command type is explicit or if its type is 'Text' and calls 'exec' or 'execute' the return value is true.
+            </summary>
+            <param name="command">Command.</param>
+            <returns>Boolean value indicating if the command is a stored procedure.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.FixAutoincrementColumns(System.Data.DataTable)">
+            <summary>
+                Sets the primary key to a DataTable object.
+            </summary>
+            <param name="dataTable">The DataTable that holds the currently loaded data.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnNewRecord">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.EndOfRecordsetLogic">
+            <summary>
+                Verifies that no more data is pending on the ADORecordsetHelper.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Move(System.Int32,UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+                Move the current record according to the value of “records”.
+            </summary>
+            <param name="records">The number of records to move forward (if positive), backwards (if negative).</param>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MoveFirst(UpgradeHelpers.DB.ADO.Events.EventReasonEnum)">
+            <summary>
+                Move the current record to the beginning of the ADORecordsetHelper object.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Update(System.Boolean)">
+            <summary>
+                Saves the current content of the ADORecordsetHelper to the database.
+            </summary>
+            <param name="reportMove">Bool flag that indicates if this operation will notify others process raising an event or not.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.AssignDefaultValues(System.Data.DataRow)">
+            <summary>
+                Sets default values to a fields to avoid insert null in the DB when the field does not accept it.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetColumnSizeAttributeNameOnSchema">
+            <summary>
+            Return the respective column value for the column character size depending on connection type
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetColumnDefaultAttributeNameOnSchema">
+            <summary>
+            Return the respective column value for the column default value depending on connection type
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.iterateFields(System.Object[],System.Object[],System.Boolean,System.Boolean)">
+            <summary>
+                iterate fields, to assign current row the values for each specific fields
+            </summary>
+            <param name="fields">array of fields</param>
+            <param name="values">array of values</param>
+            <param name="isString">is string the field items</param>
+            <param name="currentValues">has the current values</param>
+            <returns>the row with the assigned values on each field</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.isBatchEnabled">
+            <summary>
+                Indicates if the ADORecordsetHelper is in batch mode.
+            </summary>
+            <returns>True if the ADORecordsetHelper is in batch mode, otherwise false.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Validate">
+            <summary>
+                Verifies if the ADORecordset object have been open.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnEndOfRecordset(System.Boolean@,UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+                The EndOfRecordset event is called when there is an attempt to move to a row past the end of the Recordset.
+            </summary>
+            <param name="moredata">Bool value that indicates if more data have been added to the ADORecordsetHelper.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnWillChangeField(UpgradeHelpers.DB.ADO.Events.EventStatusEnum@,System.Int32,System.Object[])">
+            <summary>
+                The WillChangeField event is called before a pending operation changes the value of one or more Field objects in the ADORecordsetHelper.
+            </summary>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+            <param name="numfields">Indicates the number of fields objects contained in the “fieldvalues” array.</param>
+            <param name="fieldvalues">Array with the new values of the modified fields.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnFieldChangeComplete(UpgradeHelpers.DB.ADO.Events.EventStatusEnum@,System.Int32,System.Object[],System.String[])">
+            <summary>
+                The FieldChangeComplete event is called after the value of one or more Field objects has changed.
+            </summary>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+            <param name="numfields">Indicates the number of fields objects contained in the “fieldvalues” array.</param>
+            <param name="fieldvalues">Array with the new values of the modified fields.</param>
+            <param name="errors">Array containing all the errors occurred during the field change.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnWillChangeRecord(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum@,System.Int32)">
+            <summary>
+                The OnWillChangeRecord event is called before one or more records (rows) in the Recordset change.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+            <param name="numRecords">Value indicating the number of records changed (affected).</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnRecordChangeComplete(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum@,System.Int32,System.String[])">
+            <summary>
+                OnRecordChangeComplete event is called after one or more records change.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+            <param name="numRecords">Value indicating the number of records changed (affected).</param>
+            <param name="errors">Array containing all the errors occurred during the field change.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnWillChangeRecordset(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum@)">
+            <summary>
+                OnWillChangeRecordset event is called before a pending operation changes the ADORecordsetHelper.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnRecordsetChangeComplete(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum@,System.String[])">
+            <summary>
+                OnRecordsetChangeComplete event is called after the ADORecordsetHelper has changed.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+            <param name="errors">Array containing all the errors occurred during the field change.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnWillMove(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum@)">
+            <summary>
+                OnWillMove event is called before a pending operation changes the current position in the ADORecordsetHelper.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OnMoveComplete(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum@,System.String[])">
+            <summary>
+                OnMoveComplete event is called after the current position in the ADORecordsetHelper changes.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">An EventStatusEnum value that indicates the state of the ADORecordsetHelper in the moment that the event rose.</param>
+            <param name="errors">Array containing all the errors occurred during the field change.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.BasicMove(System.Int32,UpgradeHelpers.DB.ADO.Events.EventReasonEnum)">
+            <summary>
+                Performs the basic move operation on the ADORecordsetHelper, moving the current record forward or backwards.
+            </summary>
+            <param name="newIndex">The index of the new position for the current record.</param>
+            <param name="reason">The type of Move to perform.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.UpdateWithNoEvents(System.Data.DataRow)">
+            <summary>
+                Saves any changes made to the DataRow recieved as parameter.
+            </summary>
+            <param name="theRow">The row to be save on the Database.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetConnection(System.String)">
+            <summary>
+                Returns the ActiveConnection object if it has been initialized otherwise creates a new DBConnection object.
+            </summary>
+            <param name="connectionString">The connection string to be used by the connection.</param>
+            <returns>A DBConnection containing with the connection string set. </returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CreateAdapter(System.Data.Common.DbConnection,System.Boolean)">
+            <summary>
+                Using connection parameter creates a Database Data Adapter
+            </summary>
+            <param name="connection">DbConnection parameter</param>
+            <param name="updating">if updating creates all internal query strings</param>
+            <returns></returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.OpenRecordset(System.Boolean)">
+            <summary>
+                Opens the ADORecordsetHelper using the object public information.
+            </summary>
+            <param name="requery">Flag that indicates if a requery is necessary.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.ResetVars">
+            <summary>
+                Resets Vars according to current status
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.DataView_ListChanged(System.Object,System.ComponentModel.ListChangedEventArgs)">
+            <summary>
+            When the RecordSet is Sorted and a value in the column(s) used in the sort criteria is changed, the rows in the
+            DataView could be resorted making the index pointing to the CurrentRow invalid. This method handles rows moved
+            to a new position and updates the index used for the CurrentRow.
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Dispose(System.Boolean)">
+            <summary>
+                Overrides the IDisposable.Dispose to cleanup
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CreateUpdateCommand(System.Data.Common.DbDataAdapter,System.Data.Common.DbCommandBuilder)">
+            <summary>
+                Creates the update command for the database update operations of the recordset
+            </summary>
+            <param name="adapter">The data adapter that will contain the update command</param>
+            <param name="cmdBuilder">The command builder to get the update command from.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CompleteInsertCommand(System.Data.Common.DbDataAdapter)">
+            <summary>
+                Assigns the InsertCommand to the adaptar parameter
+            </summary>
+            <param name="adapter">DbDataAdapter</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MsInsertCommandCompletion(System.Data.Common.DbDataAdapter,System.String,System.String)">
+            <summary>
+                SqlServer Identity value for last insert execution.
+            </summary>
+            <param name="adapter">DbDataAdapter to set</param>
+            <param name="identityInfo">Name of Identity field</param>
+            <param name="extraCommandText">used to set the query to get the identity value</param>
+            <returns>returns the entire query in the adapter</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.doAddNew">
+            <summary>
+                Executes the atomic addNew Operation creating the new row and setting the newRow flag.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CreateConnetion(System.String)">
+            <summary>
+                This function use the protected method GetConnection to create a DBConnection based on a connection string.
+            </summary>
+            <param name="connectionString"> A string used to establish a connection </param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Find(System.String)">
+            <summary>
+                Looks in all records for a field that matches the “criteria”.
+            </summary>
+            <param name="criteria">A String used to locate the record. It is like the WHERE clause in an SQL statement, but without the word WHERE.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Find(System.String,System.String)">
+            <summary>
+                Looks in all records for a field that matches the “criteria”.
+            </summary>
+            <param name="rowName">A String used to locate the row from the record.</param>
+            <param name="pCriteria">A String used to locate the record. It is like the WHERE clause in an SQL statement, but without the word WHERE.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.StartCachingAdapter">
+            <summary>
+                Start caching the adapters used for connections. Use carefully because it needs an explicit call to StopCachingAdapter
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.StopCachingAdapter">
+            <summary>
+                Stop caching the adapters used for connections
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.ClearDataAdaptersCached">
+            <summary>
+                Clear data adapters cached
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Save(System.Xml.XmlDocument)">
+            <summary>
+                Saves the information on the RecordsetHelper to a XML document.
+            </summary>
+            <param name="document">The XML document to save the data to.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Save(System.String,UpgradeHelpers.DB.ADO.PersistFormatEnum)">
+            <summary>
+                Saves the information on the RecordsetHelper to a file.
+            </summary>
+            <param name="fullName">The full path name where to save the file.</param>
+            <param name="persistFormat">The format type to save the file.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetColumns">
+            <summary>
+                Returns the ColumnCollection corresponding to this RecordSet.
+            </summary>
+            <returns>An collection containing a number of columns.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetRows">
+            <summary>
+                Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <returns>An array containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetRows(System.Int32)">
+            <summary>
+                Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <returns>An array containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetRows(System.Int32,System.Object)">
+            <summary>
+                Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <param name="startfrom">A bookmark representing the row to begin from</param>
+            <returns>An array containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetRows(System.Int32,System.Object,System.String)">
+            <summary>
+                Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <param name="startfrom">A bookmark representing the row to begin from</param>
+            <param name="fieldname">The field name to be get from the row</param>
+            <returns>An array containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetRows(System.Int32,System.Object,System.String[])">
+            <summary>
+                Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be r    etrieved.</param>
+            <param name="startfrom">A bookmark representing the row to begin from</param>
+            <param name="fieldnames">An array of field names to be get from the recordset</param>
+            <returns>An array containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetRows(System.Int32,System.Object,System.Int32)">
+            <summary>
+                Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <param name="startfrom">A bookmark representing the row to begin from</param>
+            <param name="fieldposition">The field index to be get from the recordset </param>
+            <returns>An array containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetRows(System.Int32,System.Object,System.Int32[])">
+            <summary>
+                Returns a two dimmension array representing 'n' rows in a result set.
+            </summary>
+            <param name="numrows">Number of rows to be retrieved.</param>
+            <param name="startfrom">A bookmark representing the row to begin from</param>
+            <param name="fieldpositions">The field indexes to be get from the recordset</param>
+            <returns>An array containing a number of rows.</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Move(System.Int32)">
+            <summary>
+                Moves the position of the currentRecord in a RecordSet.
+            </summary>
+            <param name="records">Amount of records positive or negative to move from the current record.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MoveFirst">
+            <summary>
+                Moves the current record to the beginning of the ADORecordsetHelper.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MoveLast(System.Int32)">
+            <summary>
+                Moves the current record to the end of the ADORecordsetHelper.
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MoveLast">
+            <summary>
+                Moves the current record to the end of the ADORecordsetHelper.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MoveNext">
+            <summary>
+                Moves the current record forward one position.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MovePrevious">
+            <summary>
+                Moves the current record backwards one position.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.AddNew(System.String,System.String)">
+            <summary>
+                Creates a new record for an updatable Recordset.
+            </summary>
+            <param name="col">Name of the columns to be added to the ADORecordsetHelper.</param>
+            <param name="value">Value for the row to be inserted on the ADORecordsetHelper.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.AddNew(System.Object[],System.Object[])">
+            <summary>
+                Creates a new record for an updatable Recordset.
+            </summary>
+            <param name="cols">Array containing the names of the columns to be added to the ADORecordsetHelper.</param>
+            <param name="values">Array containing the values for the rows to be inserted on the ADORecordsetHelper.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.AddNew">
+            <summary>
+                Creates a new record for an updatable Recordset.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Delete(System.Int32)">
+            <summary>
+                Deletes the current record or a group of records.
+            </summary>
+            <param name="deleteBehavior">AffectEnum value indicating if the deletion applies to the current group or a group.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Delete">
+            <summary>
+                Deletes the current record.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Edit">
+            <summary>
+                Not implemented yet.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Update">
+            <summary>
+                Saves any changes you make to the current row of an ADORecordsetHelper object.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Update(System.Int32,System.Boolean)">
+            <summary>
+                Saves the current content of the ADORecordsetHelper to the database.
+            </summary>
+            <param name="updateType">>The UpdateType to be use by this update.</param>
+            <param name="force">A Boolean value indicating whether or not to force the changes into the database.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Update(System.Object[],System.Object[])">
+            <summary>
+                Updates the provided “Fields” with the “values” received has parameter.
+            </summary>
+            <param name="fields">Array containing the fields to be updated.</param>
+            <param name="values">Array containing the values to be used to update the fields.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.UpdateBatch">
+            <summary>
+                Writes all pending batch updates to disk.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CancelBatch">
+            <summary>
+                Cancels a pending batch update.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Update(System.Object,System.Object)">
+            <summary>
+                Updates the provided "field" with the "value" recieved has parameter.
+            </summary>
+            <param name="field">The field to be updated.</param>
+            <param name="value">The value to update the field with.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CancelUpdate">
+            <summary>
+                Cancels any changes made to the current or new row of a ADORecordsetHelper object.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Close">
+            <summary>
+                Closes an open object and any dependent objects.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Clone">
+            <summary>
+                This method clones the recordset instance
+            </summary>
+            <returns>The cloned recordset</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Clone(UpgradeHelpers.DB.LockTypeEnum)">
+            <summary>
+                This method clones the recordset instance
+            </summary>
+            <param name="lockType">The lock type to be used by the cloned recorset</param>
+            <returns>The cloned recordset</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CloneIt(UpgradeHelpers.DB.ADO.ADORecordSetHelper,UpgradeHelpers.DB.ADO.ADORecordSetHelper)">
+            <summary>
+                Clone a source ADORecordSetHelper through a target ADORecordSetHelper
+            </summary>
+            <param name="source">The source ADORecordSetHelper</param>
+            <param name="target">The target ADORecordSetHelper</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Refresh">
+            <summary>
+                Updates the data in a Recordset object by re-executing the query on which the object is based.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.NextRecordSet">
+            <summary>
+                Returns a new recordset according to the compound statement on the current recordset
+            </summary>
+            <returns>A new open recordset</returns>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.Requery">
+            <summary>
+                Updates the data in a Recordset object by re-executing the query on which the object is based.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.SetNewValue(System.Int32,System.Object)">
+            <summary>
+                Sets the “value” to the column at index “ColumnIndex”.
+            </summary>
+            <param name="columnIndex">Index of the column to update.</param>
+            <param name="value">The new value for the column.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.GetADOFieldDefaultValue(System.Data.DbType)">
+            <summary>
+                Returns the default value for a specific DBType
+            </summary>
+            <param name="type">DbType from where we want to get the default value</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CreateInstance">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CanMovePrevious">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.ADORecordSetHelper.CanMoveNext">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.MoveAfterFilter">
+            <summary>
+            Performs the move action after setting a filter
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.ADORecordSetHelper.TryAddODBCParameters(System.Data.Common.DbCommand)">
+            <summary>
+            Allows the correct syntax for ODBC stored procedures
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.AffectEnum">
+            <summary>
+            Determines which records will be affected by the operation.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.AffectEnum.adAffectCurrent">
+            <summary>
+            Affect Current
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.AffectEnum.adAffectGroup">
+            <summary>
+            Affect Group
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.AffectEnum.adAffectAll">
+            <summary>
+            Affect All
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.AffectEnum.adAffectAllChapters">
+            <summary>
+            Affect All Chapters
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.BookmarkEnum">
+            <summary>
+            Enum to describe the bookmark prosition to be used by the GetRows method
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.BookmarkEnum.adBookmarkCurrent">
+            <summary>
+            Uses the current position 
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.BookmarkEnum.adBookmarkFirst">
+            <summary>
+            Starts at the first record
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.BookmarkEnum.adBookmarkLast">
+            <summary>
+            Starts at the last record
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.CursorLocationEnum">
+            <summary>
+            Determines if server-side or client-side cursors are used (which cursor engine used).
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorLocationEnum.adUseNone">
+            <summary>
+            Use None
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorLocationEnum.adUseServer">
+            <summary>
+            Use Server
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorLocationEnum.adUseClient">
+            <summary>
+            Use Client
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.CursorTypeEnum">
+            <summary>Sets or returns the type of cursor to use in this Recordset.</summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorTypeEnum.adOpenUnspecified">
+            <summary>
+            Not specific Cursor, value -1
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorTypeEnum.adOpenForwardOnly">
+            <summary>
+            Open Forward Only Cursor, value 0
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorTypeEnum.adOpenKeyset">
+            <summary>
+            Open Keyset Cursor, value 1
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorTypeEnum.adOpenDynamic">
+            <summary>
+            Open Dynamic Cursor, value 2
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.CursorTypeEnum.adOpenStatic">
+            <summary>
+            Open Static Cursor, value 3
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.EndOfRecordsetEventHandler">
+            <summary>
+            Delegate to handle the EndOfRecordset event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.FieldChangeEventHandler">
+            <summary>
+            Delegate to handle the FieldChangeEvent event.
+            </summary>
+            <param name="sender">The object which rises the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.FieldChangeCompleteEventHandler">
+            <summary>
+            Delegate to handle the FieldChangeCompleteEvent event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordChangeEventHandler">
+            <summary>
+            Delegate to handle the RecordChangeEvent event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordChangeCompleteEventHandler">
+            <summary>
+            Delegate to handle the RecordChangeCompleteEvent event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordSetChangeEventHandler">
+            <summary>
+            Delegate to handle the RecordSetChangeEvent event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordSetChangeCompleteEventHandler">
+            <summary>
+            Delegate to handle the RecordSetChangeCompleteEvent event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.MoveEventHandler">
+            <summary>
+            Delegate to handle the MoveEvent event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.MoveCompleteEventHandler">
+            <summary>
+            Delegate to handle the MoveCompleteEvent event.
+            </summary>
+            <param name="sender">The object which rises the event.</param>
+            <param name="e">The arguments of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.EventReasonEnum">
+            <summary>
+            The EventReasonEnum enumeration classifies the reason why an event is being raised.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnAddNew">
+            <summary>
+            Add New
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnDelete">
+            <summary>
+            Delete
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnUpdate">
+            <summary>
+            Update
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnUndoUpdate">
+            <summary>
+            Undo update
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnUndoAddNew">
+            <summary>
+            Undo add new
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnUndoDelete">
+            <summary>
+            Undo delete
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnRequery">
+            <summary>
+            Requery
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnResynch">
+            <summary>
+            Resynch
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnClose">
+            <summary>
+            Close
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnMove">
+            <summary>
+            Move
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnFirstChange">
+            <summary>
+            First Change
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnMoveFirst">
+            <summary>
+            Move first
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnMoveNext">
+            <summary>
+            Move next
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnMovePrevious">
+            <summary>
+            Move previous
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventReasonEnum.adRsnMoveLast">
+            <summary>
+            Move Last
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.EventStatusEnum">
+            <summary>
+            The EventStatusEnum enumeration classifies the status of an event.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventStatusEnum.adStatusOK">
+            <summary>
+            Status Ok
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventStatusEnum.adStatusErrorsOccurred">
+            <summary>
+            Errors Ocurred
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventStatusEnum.adStatusCantDeny">
+            <summary>
+            Can't Deny
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventStatusEnum.adStatusCancel">
+            <summary>
+            Cancel
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EventStatusEnum.adStatusUnwantedEvent">
+            <summary>
+            Unwanted Event
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.BaseAdoEventArgs">
+            <summary>
+            Base class for the ADODB events helpers.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.BaseAdoEventArgs.adStatus">
+            <summary>
+            private member which declares an EventStatusEnum instance.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.BaseAdoEventArgs.Status">
+            <summary>
+            Gets and sets the event status (EventStatusEnum).
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.BaseAdoEventArgs.errors">
+            <summary>
+            private member to collect error information.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.BaseAdoEventArgs.Errors">
+            <summary>
+            Gets the errors array
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.BaseAdoEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.BaseAdoEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventStatusEnum,System.String[])">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="status">The status of the event.</param>
+            <param name="errors">The errors on the operation.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.EndOfRecordsetEventArgs">
+            <summary>
+            Arguments class for the EndOfRecordsetEvent.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.EndOfRecordsetEventArgs._moreData">
+            <summary>
+            private member to store moreDataFlag
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.EndOfRecordsetEventArgs.MoreData">
+            <summary>
+            Gets and Sets the more data flag
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.EndOfRecordsetEventArgs.#ctor(System.Boolean,UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new EndOfRecordsetEventArgs instance.
+            </summary>
+            <param name="moreData">Indicates if there are more data to get.</param>
+            <param name="status">The status of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.FieldChangeEventArgs">
+            <summary>
+            Arguments class for the FieldChangeEvent.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.FieldChangeEventArgs.numberOfFields">
+            <summary>
+            private member to store number of fields affected value.
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.Events.FieldChangeEventArgs.fieldValues">
+            <summary>
+            private member to store field's values before applying a change.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.FieldChangeEventArgs.#ctor(System.Int32,System.Object[],System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new FieldChangeEventArgs instance.
+            </summary>
+            <param name="numberOfFields">The number of fields affected.</param>
+            <param name="fieldValues">The field's values before the change.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.FieldChangeEventArgs.#ctor(System.Int32,System.Object[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new FieldChangeEventArgs instance.
+            </summary>
+            <param name="numberOfFields">The number of fields affected.</param>
+            <param name="fieldValues">The field's values before the change.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.FieldChangeEventArgs.NumberOfFields">
+            <summary>
+            Gets the number of fields affected.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.FieldChangeEventArgs.FieldValues">
+            <summary>
+            The values of the fields affected.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.FieldChangeCompleteEventArgs">
+            <summary>
+            Arguments class for the FieldChangeCompleteEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.FieldChangeCompleteEventArgs.#ctor(System.Int32,System.Object[],System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new FieldChangeCompleteEventArgs instance.
+            </summary>
+            <param name="numberOfFields">The number of fields affected.</param>
+            <param name="fieldValues">The field's values after the change.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordChangeEventArgs">
+            <summary>
+            Arguments class for the RecordChangeEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.RecordChangeEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,System.Int32,System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new RecordChangeEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="numberOfRecords">The number of fields affected.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.RecordChangeEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,System.Int32,UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new RecordChangeEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="numberOfRecords">The number of fields affected.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.RecordChangeEventArgs.Reason">
+            <summary>
+            Gets the reason of the event.
+            </summary>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.RecordChangeEventArgs.NumberOfRecords">
+            <summary>
+            Gets the number of records affected.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordChangeCompleteEventArgs">
+            <summary>
+            Arguments class for the RecordChangeCompleteEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.RecordChangeCompleteEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,System.Int32,System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new RecordChangeCompleteEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="numberOfRecords">The number of fields affected.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordSetChangeEventArgs">
+            <summary>
+            Arguments class for the RecordSetChangeEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.RecordSetChangeEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new RecordSetChangeEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.RecordSetChangeEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new RecordSetChangeEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.RecordSetChangeEventArgs.Reason">
+            <summary>
+            Gets the reason of the event.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.RecordSetChangeCompleteEventArgs">
+            <summary>
+            Arguments class for the RecordSetChangeCompleteEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.RecordSetChangeCompleteEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new RecordSetChangeCompleteEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the change.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.MoveEventArgs">
+            <summary>
+            Arguments class for the MoveEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.MoveEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new MoveEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the move.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.MoveEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new MoveEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the move.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="P:UpgradeHelpers.DB.ADO.Events.MoveEventArgs.Reason">
+            <summary>
+            Gets the reason of the event.
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.Events.MoveCompleteEventArgs">
+            <summary>
+            Arguments class for the MoveCompleteEvent.
+            </summary>
+        </member>
+        <member name="M:UpgradeHelpers.DB.ADO.Events.MoveCompleteEventArgs.#ctor(UpgradeHelpers.DB.ADO.Events.EventReasonEnum,System.String[],UpgradeHelpers.DB.ADO.Events.EventStatusEnum)">
+            <summary>
+            Creates a new MoveCompleteEventArgs instance.
+            </summary>
+            <param name="reason">The reason of the move.</param>
+            <param name="errors">The errors ocurred during the operation.</param>
+            <param name="status">The status of the event.</param>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.PersistFormatEnum">
+            <summary>Indicates the type of format a ADORecordsetHelper is serialized.</summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.PersistFormatEnum.adPersistBinary">
+            <summary>
+            Binary Format
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.PersistFormatEnum.adPersistXML">
+            <summary>
+            XML Format
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.PositionEnum">
+            <summary>Determines if the operation will affect the records in a specific position.</summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.PositionEnum.adPosBOF">
+            <summary>
+            Begin of File Position
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.PositionEnum.adPosEOF">
+            <summary>
+            End Of File Position
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.PositionEnum.adPosUnknown">
+            <summary>
+            Postion unknown
+            </summary>
+        </member>
+        <member name="T:UpgradeHelpers.DB.ADO.StringParameterType">
+            <summary>
+            String Parameter Type Enum
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.StringParameterType.Source">
+            <summary>
+            Source
+            </summary>
+        </member>
+        <member name="F:UpgradeHelpers.DB.ADO.StringParameterType.ConnectionString">
+            <summary>
+            Connection String
+            </summary>
+        </member>
+    </members>
+</doc>
