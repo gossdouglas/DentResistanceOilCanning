@@ -39,6 +39,9 @@ Ext.define('DentResistanceOilCanning.view.main.Main', {
         'DentResistanceOilCanning.view.main.OcBulkCalculationController',
         'DentResistanceOilCanning.store.OcBulkCalculationStore',
         'DentResistanceOilCanning.store.OcBulkErrorStore',
+
+        'DentResistanceOilCanning.view.charts.line.OcLoadDeflection',
+        'DentResistanceOilCanning.store.OcLoadDeflectionStore',
     ],
 
     controller: 'main',

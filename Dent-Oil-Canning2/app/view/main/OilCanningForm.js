@@ -239,7 +239,7 @@ Ext.define('DentResistanceOilCanning.view.main.OilCanningForm', {
                 flex: 2,
                 items:
                     [
-
+                        //{ xtype: 'oc-load-deflection' }
                     ]
             },
             //page footer

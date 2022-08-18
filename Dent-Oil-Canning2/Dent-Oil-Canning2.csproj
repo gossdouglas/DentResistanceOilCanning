@@ -254,15 +254,6 @@
     <Compile Include="ViewModels\DrGradesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Add-ons\DRFormula_COMplus_source\Calculations.cls" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\DRFormula.dll" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\Formula.cls" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\modGetDataFromDB.bas" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\dist\jquery.knob.min.js" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\excanvas.js" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\index.html" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\js\jquery.knob.js" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\secretplan.jpg" />
     <Content Include="Api\DRFormula\UpgradeHelpers.DB.ADO\UpgradeHelpers.DB.ADO.csproj" />
     <Content Include="Api\DRFormula\UpgradeHelpers.DB.Essentials\UpgradeHelpers.DB.Essentials.csproj" />
     <Content Include="Api\DRFormula\UpgradeHelpers.DB.RDO\UpgradeHelpers.DB.RDO.csproj" />
@@ -279,6 +270,11 @@
     <Content Include="app\store\GradeStoreModel1.js" />
     <Content Include="app\store\OcBulkErrorStore.js" />
     <Content Include="app\store\OcBulkCalculationStore.js" />
+    <Content Include="app\store\OcLoadDeflectionStore.js" />
+    <Content Include="app\view\charts\line\OcLoadDeflection.js" />
+    <Content Include="app\view\charts\line\OcLoadDeflectionController.js" />
+    <Content Include="app\view\charts\line\Spline.js" />
+    <Content Include="app\view\charts\line\SplineController.js" />
     <Content Include="app\view\main\OcBulkCalculationController.js" />
     <Content Include="app\view\main\OcBulkInputForm.js" />
     <Content Include="app\view\main\OcBulkInputFormController.js" />
@@ -938,17 +934,6 @@
     <Content Include="OilCanning\secretplan.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\.vs\ProjectSettings.json" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\.vs\slnx.sqlite" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\DRFormula.exp" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\DRFormula.lib" />
-    <Content Include="Add-ons\DRFormula_COMplus_source\DRFormula.vbp" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\.gitignore" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\bower.json" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\knob.jquery.json" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\LICENSE" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\package.json" />
-    <Content Include="Add-ons\Nice-Touchable-jQuery-Dial-Plugin-Knob\README.md" />
     <Content Include="app\Application.scss" />
     <Content Include="build\development\DentResistanceOilCanning\classic.json" />
     <Content Include="build\development\DentResistanceOilCanning\classic\resources\font-ext\fonts\ExtJS.eot" />
@@ -1064,7 +1049,6 @@
     <Folder Include="Api\DRFormula\UpgradeHelpers.DB.RDO\obj\x86\Debug\TempPE\" />
     <Folder Include="Api\DRFormula\UpgradeHelpers.Utils\bin\Debug\" />
     <Folder Include="Api\DRFormula\UpgradeHelpers.Utils\obj\x86\Debug\TempPE\" />
-    <Folder Include="Api\Models\db models\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="OilCanning\_New folder\" />

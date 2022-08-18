@@ -14,9 +14,9 @@
      *      ]
      */
     "requires": [
-      "font-awesome"
+      "font-awesome",
       //"gearbox-import-export"
-      //"charts"
+      "charts"
     ],
 
     /**
