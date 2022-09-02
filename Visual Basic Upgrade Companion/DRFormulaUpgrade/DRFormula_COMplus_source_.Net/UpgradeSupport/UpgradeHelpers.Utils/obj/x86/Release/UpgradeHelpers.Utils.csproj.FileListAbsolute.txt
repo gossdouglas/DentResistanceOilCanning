@@ -1,0 +1,7 @@
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.Utils\bin\Release\UpgradeHelpers.Utils.XML
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.Utils\bin\Release\UpgradeHelpers.Utils.dll
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.Utils\bin\Release\UpgradeHelpers.Utils.pdb
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.Utils\obj\x86\Release\UpgradeHelpers.Utils.csproj.AssemblyReference.cache
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.Utils\obj\x86\Release\UpgradeHelpers.Utils.csproj.CoreCompileInputs.cache
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.Utils\obj\x86\Release\UpgradeHelpers.Utils.dll
+C:\Users\gosstony\OneDrive - ArcelorMittal\Desktop\DRFormulaUpgrade\DRFormula_COMplus_source_.Net\UpgradeSupport\UpgradeHelpers.Utils\obj\x86\Release\UpgradeHelpers.Utils.pdb
